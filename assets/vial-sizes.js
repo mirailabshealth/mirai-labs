@@ -1,5 +1,6 @@
 // Amounts per vial transcribed from the supplied product list; not administration doses.
-// Survodutide, TB-500 and AOD-9604 require specification/identity confirmation.
+// Survodutide and AOD-9604 require specification/identity confirmation.
+// TB-500 vial amounts confirmed by the site owner: 5 mg and 10 mg.
 const vialSizes = {
   "retatrutide": [
     "5 mg/vial",
@@ -50,6 +51,7 @@ const vialSizes = {
     "5 mg/vial",
     "10 mg/vial"
   ],
+  "tb-500": ["5 mg/vial", "10 mg/vial"],
   "bpc-157": [
     "5 mg/vial",
     "10 mg/vial"
