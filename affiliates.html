@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Program — Mirai Labs 未来</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mirai: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',system-ui,sans-serif}</style>
+</head>
+<body class="bg-white text-slate-900">
+<div class="bg-slate-900 text-white text-xs text-center px-4 py-3">For research purposes only. Not for human or animal consumption. Not intended to diagnose, treat, cure, or prevent any disease.</div>
+<nav class="border-b border-slate-100"><div class="max-w-6xl mx-auto px-5 h-20 flex justify-between items-center"><a href="index.html" class="font-bold tracking-tight text-lg">🔴 MIRAI LABS <span class="text-red-600 text-xs">未来</span></a><a href="guide.html" class="text-sm font-medium">Explore the guide →</a></div></nav>
+<main class="max-w-6xl mx-auto px-5 py-12 sm:py-20">
+<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+<section><p class="text-xs font-semibold tracking-widest text-red-600 uppercase mb-5">Mirai Labs Partner Program</p><h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">Share knowledge.<br>Build a partnership.</h1><p class="text-lg text-slate-500 leading-relaxed mt-6">For creators and educators who value clear, responsible communication about laboratory research.</p><span class="inline-block mt-6 px-4 py-2 bg-red-50 text-red-700 rounded-full text-sm font-medium">Applications open · Approval required</span>
+<div class="grid grid-cols-3 gap-3 mt-8"><div class="rounded-2xl bg-slate-50 p-4"><strong class="text-2xl">5%</strong><p class="text-xs text-slate-500 mt-2">Starting commission</p></div><div class="rounded-2xl bg-slate-50 p-4"><strong class="text-2xl">20%</strong><p class="text-xs text-slate-500 mt-2">Maximum commission tier</p></div><div class="rounded-2xl bg-red-50 p-4"><strong class="text-2xl text-red-600">5%</strong><p class="text-xs text-slate-500 mt-2">Audience discount</p></div></div><p class="text-xs text-slate-500 mt-4 leading-relaxed">Approved, activated partners start at 5% commission. Higher rates, up to 20%, depend on sales-tier requirements that will be confirmed before activation. Your audience receives 5% off eligible items with an approved code, or the better available quantity discount. Discounts do not stack.</p>
+<div class="mt-10 space-y-6">
+<div><h2 class="font-semibold">01 · Introduce yourself</h2><p class="text-sm text-slate-500 mt-2">Tell us about your audience, channels, and interest in research education.</p></div>
+<div><h2 class="font-semibold">02 · We review your application</h2><p class="text-sm text-slate-500 mt-2">Mirai Labs will contact you by email. Applying does not activate an affiliate account or guarantee acceptance.</p></div>
+<div><h2 class="font-semibold">03 · Agree on your partner terms</h2><p class="text-sm text-slate-500 mt-2">Approved partners receive their referral link and code after commission rates, customer discounts, and payment terms have been confirmed in writing. No commissions accrue before activation.</p></div>
+</div>
+<div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6"><h2 class="font-semibold mb-3">Research integrity comes first</h2><ul class="text-sm text-slate-600 space-y-3"><li>Keep content strictly research-focused. No personal-use, treatment, weight-loss, or performance claims.</li><li>Do not publish dosing, injection, or human-use instructions for research compounds.</li><li>Clearly disclose affiliate relationships and any compensation.</li><li>Use only verified product information and approved brand materials.</li></ul></div>
+</section>
+<section class="rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-100 p-6 sm:p-8" aria-labelledby="apply-title"><h2 id="apply-title" class="text-2xl font-semibold tracking-tight">Apply to partner with Mirai</h2><p class="text-sm text-slate-500 mt-2 mb-7">A few details to get started. Required fields are marked *.</p>
+<form id="affiliate-form" class="space-y-5">
+<div><label for="partner-name">Full name *</label><input id="partner-name" name="name" autocomplete="name" maxlength="120" required></div>
+<div><label for="partner-email">Email address *</label><input id="partner-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+<div><label for="partner-brand">Creator or business name</label><input id="partner-brand" name="brand" maxlength="120"></div>
+<div><label for="partner-profile">Primary social profile or website *</label><input id="partner-profile" name="profile" type="url" placeholder="https://www.instagram.com/yourhandle" maxlength="500" required></div>
+<div class="grid sm:grid-cols-2 gap-4"><div><label for="partner-platform">Main platform *</label><select id="partner-platform" name="platform" required><option value="">Select platform</option><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Podcast</option><option>Newsletter / website</option><option>Other</option></select></div><div><label for="partner-audience">Audience size *</label><select id="partner-audience" name="audience" required><option value="">Select range</option><option>Under 1,000</option><option>1,000–9,999</option><option>10,000–49,999</option><option>50,000–99,999</option><option>100,000+</option></select></div></div>
+<div><label for="partner-country">Country / region *</label><input id="partner-country" name="country" autocomplete="country-name" maxlength="100" required></div>
+<div><label for="partner-code">Preferred referral code</label><input id="partner-code" name="requested_code" pattern="[A-Za-z0-9_-]{3,24}" minlength="3" maxlength="24" placeholder="YOURNAME" autocapitalize="characters"><p class="text-xs text-slate-500 mt-2">Optional. 3–24 letters, numbers, hyphens, or underscores. Subject to approval and availability; not an active discount code.</p></div>
+<div><label for="partner-about">Tell us about your content and audience *</label><textarea id="partner-about" name="about" rows="4" minlength="20" maxlength="3000" required placeholder="What do you cover, who is your audience, and how would you approach research education?"></textarea></div>
+<div class="hidden" aria-hidden="true"><label for="partner-trap">Leave blank</label><input id="partner-trap" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<label class="flex gap-3 items-start text-sm text-slate-600"><input type="checkbox" name="adult" required class="mt-1"> <span>I am at least 18 years old. *</span></label>
+<label class="flex gap-3 items-start text-sm text-slate-600"><input type="checkbox" name="research_policy" required class="mt-1"> <span>I understand the research-use-only content standards above and that this is an application, not an activated affiliate account. *</span></label>
+<label class="flex gap-3 items-start text-sm text-slate-600"><input type="checkbox" name="contact_consent" required class="mt-1"> <span>I agree to Mirai Labs reviewing these details and contacting me about this application. *</span></label>
+<p class="text-xs text-slate-500 leading-relaxed">Your application is sent to Mirai Labs through Formspree. Please do not include passwords, payment details, tax IDs, or medical information.</p>
+<p id="application-status" role="status" aria-live="polite" class="text-sm"></p>
+<button id="application-submit" type="submit" class="w-full rounded-full bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white font-semibold py-4">Submit application →</button>
+</form>
+<div id="application-success" hidden class="py-8"><span class="text-3xl text-green-600">✓</span><h3 class="text-2xl font-semibold mt-4">Thank you for applying!</h3><p class="text-slate-600 mt-3">Your application was received. The Mirai Labs team will review it and follow up by email. Please check your spam or junk folder too.</p><p class="text-sm text-slate-500 mt-4">Your referral code is not active yet. We will confirm acceptance and partner terms before activation.</p><a href="guide.html" class="inline-block text-red-600 font-semibold mt-6">Explore the research guide →</a></div>
+</section></div></main>
+<footer class="bg-slate-900 text-slate-400 p-8 text-center text-xs leading-relaxed"><p>For research purposes only. Not for human or animal consumption. Not intended to diagnose, treat, cure, or prevent any disease.</p><p class="mt-3">© 2026 Mirai Labs 未来</p></footer>
+<style>#affiliate-form label:not(.flex){display:block;font-size:14px;font-weight:500;margin-bottom:8px}#affiliate-form input:not([type=checkbox]),#affiliate-form select,#affiliate-form textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px;background:white;font-size:16px}#affiliate-form input:focus,#affiliate-form select:focus,#affiliate-form textarea:focus{outline:2px solid #dc2626;outline-offset:2px}#affiliate-form input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:#dc2626}[hidden]{display:none!important}</style>
+<script>
+document.getElementById('affiliate-form').addEventListener('submit',async event=>{
+ event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;
+ const button=document.getElementById('application-submit'),status=document.getElementById('application-status');
+ if(button.disabled)return;button.disabled=true;button.textContent='Submitting…';status.textContent='';
+ const payload=Object.fromEntries(new FormData(form));payload.application_type='Affiliate partner application';payload.application_status='Pending review';payload.requested_code=(payload.requested_code||'').toUpperCase();payload._subject='Mirai Labs — New affiliate application';
+ try{const response=await fetch('https://formspree.io/f/mgavjrrw',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});if(!response.ok)throw new Error('Submission failed');form.hidden=true;document.getElementById('application-success').hidden=false;document.getElementById('apply-title').textContent='Application received';form.reset();}
+ catch(error){status.textContent='Your application could not be sent. Please try again. Your entries have been kept.';status.className='text-sm text-red-700';}
+ finally{button.disabled=false;button.textContent='Submit application →';}
+});
+</script><script src="assets/age-gate.js"></script></body></html>
