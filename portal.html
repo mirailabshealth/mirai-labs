@@ -16,7 +16,7 @@
 // Publishable client key only. Database policies and server functions enforce access.
 const portalConfig={url:'https://qymwaujpaxbmeohcmueh.supabase.co',key:'sb_publishable_sIt2p8INDif9VfTb4F81YQ_yEoGr5fE',registrationOpen:false};
 const $=id=>document.getElementById(id),esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])),money=cents=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(cents/100),compound=id=>typeof peptides!=='undefined'?(peptides.find(p=>p.id===id)?.name||id):id;
-let db,session=null,account=null,catalog=[],cart=[],authMode='signin',activeTab='client',recovery=false,requestKey=null,quote=null,refreshNumber=0,cartVersion=0;
+let db,session=null,account=null,catalog=[],cart=[],authMode='signin',activeTab='client',recovery=new URLSearchParams(location.hash.slice(1)).get('type')==='invite',requestKey=null,quote=null,refreshNumber=0,cartVersion=0;
 const redirectURL=new URL('./portal.html',location.href).href;
 function message(text){$('message').textContent=text;}
 async function rpc(name,args){const result=await db.rpc(name,args);if(result.error)throw result.error;return result.data;}
