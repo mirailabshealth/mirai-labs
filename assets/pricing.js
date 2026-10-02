@@ -1,6 +1,6 @@
 // Public customer estimates only. Values are USD cents per vial by quantity tier.
 // Edit each size's [1, 2, 3-4, 5-9, 10+] rates here. No supplier costs are published.
-const miraiPriceVersion = '2026-10-02-ss31-update';
+const miraiPriceVersion = '2026-10-02-fox-tesa';
 const miraiPrices = {
   "retatrutide": {
     "5 mg/vial": [
@@ -375,11 +375,11 @@ const miraiPrices = {
       5180
     ],
     "20 mg/vial": [
-      9356,
-      9356,
-      8420,
-      7485,
-      6549
+      15000,
+      15000,
+      13500,
+      12000,
+      10500
     ]
   },
   "sermorelin": {
@@ -583,11 +583,11 @@ const miraiPrices = {
       3119
     ],
     "10 mg/vial": [
-      9000,
-      9000,
-      8100,
-      7200,
-      6300
+      16600,
+      16600,
+      14940,
+      13280,
+      11620
     ]
   },
   "glutathione": {
