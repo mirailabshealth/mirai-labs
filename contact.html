@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Mirai Labs 未来</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mirai: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',system-ui,sans-serif}</style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+  <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
+    <span class="text-red-400 font-medium">FOR RESEARCH USE ONLY</span>
+    <span class="mx-2 text-slate-500">•</span>
+    Not for human or animal consumption
+  </div>
+
+  <nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center"><div class="w-3 h-3 rounded-full bg-white"></div></div>
+          <div class="flex flex-col leading-none">
+            <span class="font-semibold text-[15px] tracking-tight">MIRAI LABS</span>
+            <span class="text-[10px] text-red-600 tracking-widest">未来</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="index.html" class="text-slate-600 hover:text-red-600 transition">Home</a>
+          <a href="guide.html" class="text-slate-600 hover:text-red-600 transition">Peptide Guide</a>
+          <a href="stack.html" class="text-slate-600 hover:text-red-600 transition">Stack Builder</a>
+          <a href="about.html" class="text-slate-600 hover:text-red-600 transition">About</a>
+          <a href="faq.html" class="text-slate-600 hover:text-red-600 transition">FAQ</a>
+          <a href="contact.html" class="text-red-600">Contact</a>
+        </div>
+        <a href="guide.html" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-medium transition">Shop Research</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-3xl font-bold tracking-tight mb-2">Contact</h1>
+    <p class="text-slate-500 mb-10">This is a demonstration site. The form below does not send real messages.</p>
+
+    <form class="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 space-y-5" onsubmit="event.preventDefault(); alert('Demo only — no message was sent.');">
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
+        <input type="text" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="Your name">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+        <input type="email" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="you@institution.edu">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Subject</label>
+        <select class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white">
+          <option>General inquiry</option>
+          <option>COA / Testing question</option>
+          <option>Catalog question</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+        <textarea rows="4" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="Your message..."></textarea>
+      </div>
+      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-full font-medium transition">
+        Send Message (Demo)
+      </button>
+    </form>
+
+    <div class="mt-10 text-center text-sm text-slate-500">
+      <p>@mirailabs.health</p>
+      <p class="mt-2">For real research peptide suppliers, always verify licensing, testing documentation, and legal compliance in your jurisdiction.</p>
+    </div>
+  </div>
+
+  <footer class="bg-slate-900 text-slate-400 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-xs">
+      <p class="mb-2">Educational resource only. Not for human consumption. Not medical advice.</p>
+      <p>© 2026 Mirai Labs 未来 — Science for a Brighter Tomorrow.</p>
+    </div>
+  </footer>
+<script src="assets/age-gate.js"></script>
+</body>
+</html>

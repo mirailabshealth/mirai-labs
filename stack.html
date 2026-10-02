@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack Builder — Mirai Labs 未来</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mirai: {50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d'}
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',system-ui,sans-serif}</style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+  <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
+    <span class="text-red-400 font-medium">FOR RESEARCH & EDUCATIONAL USE ONLY</span>
+    <span class="mx-2 text-slate-500">•</span>
+    Not for human or animal consumption • Not medical advice
+  </div>
+
+  <nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center"><div class="w-3 h-3 rounded-full bg-white"></div></div>
+          <div class="flex flex-col leading-none">
+            <span class="font-semibold text-[15px] tracking-tight">MIRAI LABS</span>
+            <span class="text-[10px] text-red-600 tracking-widest">未来</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+          <a href="index.html" class="text-slate-600 hover:text-red-600 transition">Home</a>
+          <a href="guide.html" class="text-slate-600 hover:text-red-600 transition">Peptide Guide</a>
+          <a href="stack.html" class="text-red-600">Stack Builder</a>
+          <a href="about.html" class="text-slate-600 hover:text-red-600 transition">About</a>
+          <a href="contact.html" class="text-slate-600 hover:text-red-600 transition">Contact</a>
+        </div>
+        <a href="guide.html" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-medium transition">Peptide Guide</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold tracking-tight">Research Stack Builder</h1>
+      <p class="text-slate-500 mt-1 max-w-2xl">Select any peptides you are interested in to explore research-based notes on mechanisms and combinations. This is an educational tool — not a recommendation for use.</p>
+    <div class="mt-5 bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-900 max-w-2xl">
+      <strong>Important:</strong> Information about stacking or combining research compounds is provided for educational and scientific discussion only. It is not medical advice and does not recommend or encourage human use. Always consult a qualified healthcare provider before considering any research compound or combination. Research dose ranges on peptide pages are literature context only — not use instructions.
+      <a href="about.html" class="underline font-medium ml-1">Read our Safety &amp; Research Considerations →</a>
+    </div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8">
+      <!-- Selection panel -->
+      <div class="lg:col-span-2">
+        <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5 sticky top-24">
+          <h2 class="font-semibold mb-1">Your Research List</h2>
+          <p class="text-xs text-slate-500 mb-4">Add any compounds you are interested in</p>
+          
+          <div id="selected-list" class="space-y-2 min-h-[80px] mb-4">
+            <p class="text-sm text-slate-400 italic" id="empty-msg">No peptides selected yet</p>
+          </div>
+
+          <div id="stack-note" class="hidden bg-white border border-slate-200 rounded-xl p-4 mb-4">
+            <div class="text-xs font-semibold text-red-600 uppercase tracking-wider mb-1" id="note-title"></div>
+            <p class="text-sm font-medium text-slate-800 mb-2" id="note-summary"></p>
+            <p class="text-xs text-slate-600 leading-relaxed" id="note-details"></p>
+          </div>
+
+          <button id="request-btn" disabled class="w-full bg-slate-200 text-slate-400 py-3 rounded-full text-sm font-medium cursor-not-allowed transition">
+            Request More Information
+          </button>
+          <p class="text-[11px] text-slate-400 mt-2 text-center">Submit your list to receive educational follow-up</p>
+          <p class="text-[11px] text-amber-700 mt-3 text-center leading-snug">Stacking notes are educational only. Consult a healthcare provider regarding any research compounds.</p>
+        </div>
+      </div>
+
+      <!-- Peptide picker -->
+      <div class="lg:col-span-3">
+        <div class="flex items-center gap-3 mb-5">
+          <input type="text" id="picker-search" placeholder="Search peptides..." class="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <div id="picker-grid" class="grid sm:grid-cols-2 gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interest Modal -->
+  <div id="interest-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="relative bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold mb-1">Request Research Information</h2>
+      <p class="text-sm text-slate-500 mb-6">Submit your interest list and we’ll follow up with additional educational material.</p>
+      
+      <form id="interest-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+          <input type="text" id="form-name" required class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Your name">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+          <input type="email" id="form-email" required class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="you@institution.edu">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Selected compounds</label>
+          <div id="form-selected" class="text-sm text-slate-600 bg-slate-50 rounded-xl px-3.5 py-2.5 border border-slate-100"></div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Notes (optional)</label>
+          <textarea id="form-notes" rows="2" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Research focus or questions..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-medium transition">
+          Submit Interest
+        </button>
+      </form>
+      <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl leading-none">&times;</button>
+    </div>
+  </div>
+
+  <!-- Success toast -->
+  <div id="success-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm shadow-lg z-[110]">
+    Interest submitted. We’ll be in touch with educational information.
+  </div>
+
+  <footer class="bg-slate-900 text-slate-400 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs">
+      <p class="mb-1">Educational resource only. Not for human consumption. Not medical advice.</p>
+      <p>© 2026 Mirai Labs 未来</p>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script>
+    let selected = JSON.parse(localStorage.getItem('mirai_research_list') || '[]');
+
+    function save() {
+      localStorage.setItem('mirai_research_list', JSON.stringify(selected));
+    }
+
+    function updateUI() {
+      const list = document.getElementById('selected-list');
+      const empty = document.getElementById('empty-msg');
+      const btn = document.getElementById('request-btn');
+      const noteBox = document.getElementById('stack-note');
+
+      if (selected.length === 0) {
+        list.innerHTML = '<p class="text-sm text-slate-400 italic" id="empty-msg">No peptides selected yet</p>';
+        btn.disabled = true;
+        btn.className = 'w-full bg-slate-200 text-slate-400 py-3 rounded-full text-sm font-medium cursor-not-allowed transition';
+        noteBox.classList.add('hidden');
+      } else {
+        list.innerHTML = selected.map(id => {
+          const p = peptides.find(x => x.id === id);
+          if (!p) return '';
+          return `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2">
+            <span class="text-sm font-medium">${p.name}</span>
+            <button data-remove="${id}" class="text-slate-400 hover:text-red-600 text-lg leading-none">&times;</button>
+          </div>`;
+        }).join('');
+        list.querySelectorAll('[data-remove]').forEach(b => {
+          b.addEventListener('click', () => {
+            selected = selected.filter(x => x !== b.dataset.remove);
+            save();
+            updateUI();
+            renderPicker();
+          });
+        });
+        btn.disabled = false;
+        btn.className = 'w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full text-sm font-medium transition';
+        
+        const note = getStackNote(selected);
+        if (note) {
+          noteBox.classList.remove('hidden');
+          document.getElementById('note-title').textContent = note.title;
+          document.getElementById('note-summary').textContent = note.summary;
+          document.getElementById('note-details').textContent = note.details;
+        }
+      }
+    }
+
+    function renderPicker(filter = '') {
+      const grid = document.getElementById('picker-grid');
+      const filtered = peptides.filter(p => 
+        !filter || p.name.toLowerCase().includes(filter) || p.shortDesc.toLowerCase().includes(filter)
+      );
+      grid.innerHTML = filtered.map(p => {
+        const isSelected = selected.includes(p.id);
+        return `
+          <button data-id="${p.id}" 
+            class="text-left p-4 rounded-xl border transition ${isSelected ? 'border-red-500 bg-red-50' : 'border-slate-100 hover:border-red-200 bg-white'}"
+            >
+            <div class="text-[10px] font-semibold text-red-600 uppercase tracking-wider">${p.categoryLabel}</div>
+            <div class="font-semibold text-sm mt-0.5">${p.name}</div>
+            <div class="text-xs text-slate-500 mt-1 line-clamp-2">${p.shortDesc}</div>
+            <div class="mt-2 text-xs font-medium ${isSelected ? 'text-red-600' : 'text-slate-400'}">
+              ${isSelected ? '✓ Added' : '+ Add to list'}
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      grid.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          if (selected.includes(id)) {
+            selected = selected.filter(x => x !== id);
+          } else if (true) {
+            selected.push(id);
+          }
+          save();
+          updateUI();
+          renderPicker(document.getElementById('picker-search').value.toLowerCase());
+        });
+      });
+    }
+
+    document.getElementById('picker-search').addEventListener('input', e => {
+      renderPicker(e.target.value.toLowerCase().trim());
+    });
+
+    document.getElementById('request-btn').addEventListener('click', () => {
+      if (selected.length === 0) return;
+      const names = selected.map(id => peptides.find(p => p.id === id).name);
+      document.getElementById('form-selected').textContent = names.join(', ');
+      document.getElementById('interest-modal').classList.remove('hidden');
+    });
+
+    document.getElementById('close-modal').addEventListener('click', () => {
+      document.getElementById('interest-modal').classList.add('hidden');
+    });
+    document.getElementById('modal-backdrop').addEventListener('click', () => {
+      document.getElementById('interest-modal').classList.add('hidden');
+    });
+
+    document.getElementById('interest-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        peptides: selected.map(id => (peptides.find(p => p.id === id) || {}).name).filter(Boolean).join(', '),
+        notes: document.getElementById('form-notes').value,
+        _subject: 'Mirai Labs research interest request'
+      };
+
+      // === CONNECT YOUR EMAIL HERE ===
+      // 1. Sign up free at https://formspree.io
+      // 2. Create a form and paste your endpoint below (looks like https://formspree.io/f/xxxxxxxx)
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgavjrrw';
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+      try {
+        if (FORMSPREE_ENDPOINT) {
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Send failed');
+        } else {
+          throw new Error('Interest form endpoint is not configured');
+        }
+        document.getElementById('interest-modal').classList.add('hidden');
+        document.getElementById('success-toast').classList.remove('hidden');
+        setTimeout(() => document.getElementById('success-toast').classList.add('hidden'), 4000);
+        e.target.reset();
+      } catch (err) {
+        alert('Could not send right now. Please try again or email us directly.');
+        console.error(err);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Interest'; }
+      }
+    });
+
+    updateUI();
+    renderPicker();
+  </script>
+  <script src="assets/age-gate.js"></script>
+</body>
+</html>
