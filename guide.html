@@ -84,12 +84,13 @@
 
   <footer class="bg-slate-900 text-slate-400 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs">
-      <p class="mb-1">Educational resource only. Not for human consumption. Not medical advice.</p>
+      <p class="mb-1">For research purposes only. Not for human or animal consumption. Not intended to diagnose, treat, cure, or prevent any disease.</p>
       <p>© 2026 Mirai Labs 未来</p>
     </div>
   </footer>
 
   <script src="assets/data.js"></script>
+  <script src="assets/pricing.js?v=20261002"></script>
   <script>
     let currentCat = 'all', currentSearch = '';
     const params = new URLSearchParams(window.location.search);
@@ -106,7 +107,7 @@
         <a href="peptide.html?id=${p.id}" class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-red-200 hover:shadow-lg transition flex flex-col">
           <div class="p-5 flex-1 flex flex-col">
             <div class="text-[10px] font-semibold text-red-600 uppercase tracking-wider mb-1">${p.categoryLabel}</div>
-            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3>
+            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3><p class="text-sm font-semibold text-red-700 mt-2">${priceFrom(p.id)}</p><p class="text-xs text-slate-500 mt-1">Select size for estimate. Shipping and tax additional.</p>
             <p class="text-xs text-slate-500 mt-2 line-clamp-3 flex-1">${p.shortDesc}</p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               ${p.tags.slice(0,3).map(t => `<span class="px-2 py-0.5 rounded-full bg-slate-50 text-slate-500 text-[10px]">${t}</span>`).join('')}

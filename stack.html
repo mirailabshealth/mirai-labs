@@ -70,6 +70,7 @@
             <p class="text-sm text-slate-400 italic" id="empty-msg">No peptides selected yet</p>
           </div>
 
+          <div id="price-summary" aria-live="polite" class="text-sm font-semibold text-red-700 mb-3"></div><p class="text-xs text-slate-500 mb-4">USD estimates only. Final pricing and availability confirmed on inquiry; shipping and tax additional. Quantity rates apply per compound and size.</p>
           <div id="stack-note" class="hidden bg-white border border-slate-200 rounded-xl p-4 mb-4">
             <div class="text-xs font-semibold text-red-600 uppercase tracking-wider mb-1" id="note-title"></div>
             <p class="text-sm font-medium text-slate-800 mb-2" id="note-summary"></p>
@@ -77,9 +78,9 @@
           </div>
 
           <button id="request-btn" disabled class="w-full bg-slate-200 text-slate-400 py-3 rounded-full text-sm font-medium cursor-not-allowed transition">
-            Request More Information
+            Request Pricing &amp; Information
           </button>
-          <p class="text-[11px] text-slate-400 mt-2 text-center">Submit your list to receive educational follow-up</p>
+          <p class="text-[11px] text-slate-400 mt-2 text-center">Submit your list for pricing confirmation and research information</p>
           <p class="text-[11px] text-amber-700 mt-3 text-center leading-snug">Stacking notes are educational only. Consult a healthcare provider regarding any research compounds.</p>
         </div>
       </div>
@@ -97,9 +98,9 @@
   <!-- Interest Modal -->
   <div id="interest-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" id="modal-backdrop"></div>
-    <div class="relative bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl">
-      <h2 class="text-xl font-bold mb-1">Request Research Information</h2>
-      <p class="text-sm text-slate-500 mb-6">Submit your interest list and we’ll follow up with additional educational material.</p>
+    <div class="relative bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold mb-1">Request Research Pricing &amp; Information</h2>
+      <p class="text-sm text-slate-500 mb-6">Submit your interest list for pricing confirmation and research information. Estimates are not a confirmed order.</p>
       
       <form id="interest-form" class="space-y-4">
         <div>
@@ -128,17 +129,18 @@
 
   <!-- Success toast -->
   <div id="success-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm shadow-lg z-[110]">
-    Interest submitted. We’ll be in touch with educational information.
+    Inquiry submitted. We’ll follow up with pricing and research information.
   </div>
 
   <footer class="bg-slate-900 text-slate-400 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs">
-      <p class="mb-1">Educational resource only. Not for human consumption. Not medical advice.</p>
+      <p class="mb-1">For research purposes only. Not for human or animal consumption. Not intended to diagnose, treat, cure, or prevent any disease.</p>
       <p>© 2026 Mirai Labs 未来</p>
     </div>
   </footer>
 
   <script src="assets/data.js"></script>
+  <script src="assets/pricing.js?v=20261002"></script>
   <script src="assets/vial-sizes.js"></script>
   <script>
     let selected = readSaved('mirai_research_list', []);
@@ -155,7 +157,7 @@
       if (!(vialSizes[id] || []).includes(selectedSizes[id])) selectedSizes[id] = '';
     }
     function interestSummary() {
-      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'} — ${quantityFor(id)} ${quantityFor(id) === 1 ? 'vial' : 'vials'}`).join('; ');
+      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'} — ${quantityFor(id)} ${quantityFor(id) === 1 ? 'vial' : 'vials'} — ${priceText(id, selectedSizes[id], quantityFor(id))}`).join('; ');
     }
 
     function save() {
@@ -183,7 +185,7 @@
             <div class="min-w-0 flex-1 mr-3"><span class="text-sm font-medium">${p.name}</span>
             ${vialSizes[id] ? `<label for="size-${id}" class="block text-sm text-slate-500 mt-2">Amount per vial</label><select id="size-${id}" data-size="${id}" class="block w-full max-w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm mt-1">${sizeOptions(id, selectedSizes[id])}</select>` : '<p class="text-sm text-slate-500 mt-1">Vial specifications awaiting confirmation</p>'}
             <label for="quantity-${id}" class="block text-sm text-slate-500 mt-2">Number of vials</label>
-            <input id="quantity-${id}" data-quantity="${id}" type="number" min="1" max="999" step="1" required inputmode="numeric" value="${quantityFor(id)}" class="block w-28 bg-slate-50 border border-slate-200 rounded-lg p-2 text-base mt-1"></div>
+            <input id="quantity-${id}" data-quantity="${id}" type="number" min="1" max="999" step="1" required inputmode="numeric" value="${quantityFor(id)}" class="block w-28 bg-slate-50 border border-slate-200 rounded-lg p-2 text-base mt-1"><p id="price-${id}" aria-live="polite" class="text-sm font-semibold text-red-700 mt-3"></p></div>
             <button data-remove="${id}" class="text-slate-400 hover:text-red-600 text-lg leading-none">&times;</button>
           </div>`;
         }).join('');
@@ -191,6 +193,7 @@
           control.addEventListener('change', () => {
             selectedSizes[control.dataset.size] = control.value;
             save();
+            refreshPrices();
           });
         });
         list.querySelectorAll('[data-quantity]').forEach(control => {
@@ -199,6 +202,7 @@
               selectedQuantities[control.dataset.quantity] = Number(control.value);
               save();
             }
+            refreshPrices();
           });
         });
         list.querySelectorAll('[data-remove]').forEach(b => {
@@ -220,6 +224,19 @@
           document.getElementById('note-details').textContent = note.details;
         }
       }
+      refreshPrices();
+    }
+
+    function refreshPrices() {
+      let total=0, missing=0;
+      for (const id of selected) {
+        const quantity=Number(document.getElementById('quantity-'+id)?.value);
+        const q=priceQuote(id,selectedSizes[id],quantity);
+        if(q) total+=q.total; else missing++;
+        const label=document.getElementById('price-'+id);
+        if(label) label.textContent=priceText(id,selectedSizes[id],quantity);
+      }
+      document.getElementById('price-summary').textContent=selected.length ? (missing ? 'Priced items subtotal: ' : 'Estimated subtotal: ')+priceMoney(total)+(missing ? ' · '+missing+' selection(s) need size or price confirmation.' : '') : '';
     }
 
     function renderPicker(filter = '') {
@@ -287,6 +304,8 @@
         vial_sizes: interestSummary(),
         vial_quantities: selected.map(id => `${peptides.find(p => p.id === id).name}: ${quantityFor(id)}`).join('; '),
         total_vials: selected.reduce((sum, id) => sum + quantityFor(id), 0),
+        pricing_version: miraiPriceVersion,
+        pricing_summary: document.getElementById('price-summary').textContent + ' USD; shipping and tax excluded; final quote requires review.',
         notes: document.getElementById('form-notes').value,
         _subject: 'Mirai Labs research interest request'
       };
