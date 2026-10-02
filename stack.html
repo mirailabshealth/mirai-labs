@@ -64,7 +64,7 @@
       <div class="lg:col-span-2">
         <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5 sticky top-24">
           <h2 class="font-semibold mb-1">Your Research List</h2>
-          <p class="text-xs text-slate-500 mb-4">Add any compounds you are interested in</p>
+          <p class="text-xs text-slate-500 mb-4">Select compounds and optional vial sizes. Amounts are per vial, not administration doses.</p>
           
           <div id="selected-list" class="space-y-2 min-h-[80px] mb-4">
             <p class="text-sm text-slate-400 italic" id="empty-msg">No peptides selected yet</p>
@@ -139,11 +139,22 @@
   </footer>
 
   <script src="assets/data.js"></script>
+  <script src="assets/vial-sizes.js"></script>
   <script>
-    let selected = JSON.parse(localStorage.getItem('mirai_research_list') || '[]');
+    let selected = readSaved('mirai_research_list', []);
+    selected = Array.isArray(selected) ? selected.filter(id => peptides.some(p => p.id === id)) : [];
+    let selectedSizes = readSaved('mirai_vial_sizes', {});
+    if (typeof selectedSizes !== 'object' || Array.isArray(selectedSizes)) selectedSizes = {};
+    for (const id of selected) {
+      if (!(vialSizes[id] || []).includes(selectedSizes[id])) selectedSizes[id] = '';
+    }
+    function interestSummary() {
+      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'}`).join('; ');
+    }
 
     function save() {
       localStorage.setItem('mirai_research_list', JSON.stringify(selected));
+      localStorage.setItem('mirai_vial_sizes', JSON.stringify(selectedSizes));
     }
 
     function updateUI() {
@@ -162,10 +173,17 @@
           const p = peptides.find(x => x.id === id);
           if (!p) return '';
           return `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2">
-            <span class="text-sm font-medium">${p.name}</span>
+            <div class="min-w-0 flex-1 mr-3"><span class="text-sm font-medium">${p.name}</span>
+            ${vialSizes[id] ? `<label for="size-${id}" class="block text-sm text-slate-500 mt-2">Amount per vial</label><select id="size-${id}" data-size="${id}" class="block w-full max-w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm mt-1">${sizeOptions(id, selectedSizes[id])}</select>` : '<p class="text-sm text-slate-500 mt-1">Vial specifications awaiting confirmation</p>'}</div>
             <button data-remove="${id}" class="text-slate-400 hover:text-red-600 text-lg leading-none">&times;</button>
           </div>`;
         }).join('');
+        list.querySelectorAll('[data-size]').forEach(control => {
+          control.addEventListener('change', () => {
+            selectedSizes[control.dataset.size] = control.value;
+            save();
+          });
+        });
         list.querySelectorAll('[data-remove]').forEach(b => {
           b.addEventListener('click', () => {
             selected = selected.filter(x => x !== b.dataset.remove);
@@ -229,8 +247,7 @@
 
     document.getElementById('request-btn').addEventListener('click', () => {
       if (selected.length === 0) return;
-      const names = selected.map(id => peptides.find(p => p.id === id).name);
-      document.getElementById('form-selected').textContent = names.join(', ');
+      document.getElementById('form-selected').textContent = interestSummary();
       document.getElementById('interest-modal').classList.remove('hidden');
     });
 
@@ -246,7 +263,8 @@
       const payload = {
         name: document.getElementById('form-name').value,
         email: document.getElementById('form-email').value,
-        peptides: selected.map(id => (peptides.find(p => p.id === id) || {}).name).filter(Boolean).join(', '),
+        peptides: interestSummary(),
+        vial_sizes: interestSummary(),
         notes: document.getElementById('form-notes').value,
         _subject: 'Mirai Labs research interest request'
       };

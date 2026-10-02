@@ -64,6 +64,7 @@
   </footer>
 
   <script src="assets/data.js"></script>
+  <script src="assets/vial-sizes.js"></script>
   <script>
     const id = new URLSearchParams(window.location.search).get('id');
     const p = peptides.find(x => x.id === id);
@@ -87,6 +88,12 @@
         <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-10 text-sm text-amber-900">
           <strong>Stacking &amp; combinations:</strong> Any discussion of combining research compounds is for scientific education only. Always consult a qualified healthcare provider before considering any research compound or combination.
         </div>
+
+        <section class="mb-10 bg-slate-50 border border-slate-200 rounded-2xl p-5">
+          <h2 class="text-lg font-semibold mb-3">Available vial sizes</h2>
+          <p class="text-sm text-slate-600 mb-4">Amounts describe the total contents of one vial, not a dose or instructions for use. Availability is confirmed on inquiry.</p>
+          ${vialSizes[p.id] ? `<label for="vial-size" class="block text-sm font-medium mb-2">Amount per vial</label><select id="vial-size" class="w-full max-w-full border border-slate-300 rounded-xl p-3 bg-white text-base">${sizeOptions(p.id)}</select>` : '<p class="text-sm text-slate-600">Vial specifications awaiting confirmation. You can still request research information.</p>'}
+        </section>
 
         <section class="mb-10">
           <h2 class="text-lg font-semibold mb-3">Mechanism of Interest</h2>
@@ -122,7 +129,7 @@
         </div>
 
         <div class="flex flex-wrap gap-3">
-          <a href="stack.html" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full text-sm font-medium transition">
+          <a id="add-research-list" href="stack.html" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full text-sm font-medium transition">
             Add to Stack Builder
           </a>
           <a href="guide.html" class="border border-slate-200 hover:border-slate-300 px-6 py-3 rounded-full text-sm font-medium transition">
@@ -130,6 +137,15 @@
           </a>
         </div>
       `;
+      document.getElementById('add-research-list').addEventListener('click', () => {
+        let list = readSaved('mirai_research_list', []);
+        if (!Array.isArray(list)) list = [];
+        if (!list.includes(p.id)) list.push(p.id);
+        const saved = readSaved('mirai_vial_sizes', {});
+        saved[p.id] = document.getElementById('vial-size')?.value || '';
+        localStorage.setItem('mirai_research_list', JSON.stringify(list));
+        localStorage.setItem('mirai_vial_sizes', JSON.stringify(saved));
+      });
     }
   </script>
   <script src="assets/age-gate.js"></script>
