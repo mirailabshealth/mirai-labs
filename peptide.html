@@ -68,7 +68,7 @@
   </footer>
 
   <script src="assets/data.js"></script>
-  <script src="assets/pricing.js?v=20261002-margin-update"></script>
+  <script src="assets/pricing.js?v=20261002-quantity-update"></script>
   <script src="assets/vial-sizes.js"></script>
 <script>
 // Shared selector UI; all amounts come from the central public pricing data.
@@ -89,7 +89,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
     }
   }
   const quantityLabel=document.querySelector('label[for="'+quantityInput.id+'"]');
-  const heading=document.createElement('div');heading.className='pack-heading';heading.innerHTML='Pack size <span>Save up to 40%</span>';
+  const heading=document.createElement('div');heading.className='pack-heading';heading.innerHTML='Pack size <span>Save up to 30%</span>';
   const grid=document.createElement('div');grid.className='pack-grid';grid.setAttribute('role','group');grid.setAttribute('aria-label','Pack size');
   quantityLabel.before(heading,grid);
   const customWrap=document.createElement('div');customWrap.className='custom-quantity-wrap';
@@ -107,7 +107,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
     const size=sizeInput?.value||'',quantity=Number(quantityInput.value);
     if(sizeInput)sizeInput.previousElementSibling.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===size)));
     cards.forEach((card,index)=>{
-      const count=presets[index],quote=priceQuote(id,size,count),discount=[0,10,20,30,40][index];
+      const count=presets[index],quote=priceQuote(id,size,count),discount=[0,0,10,20,30][index];
       card.setAttribute('aria-pressed',String(!customMode&&quantity===count));
       card.innerHTML='<span class="pack-name">'+(count===1?'Single vial':count+'-pack')+'</span>'+(quote?'<span class="pack-total">'+priceMoney(quote.total)+'</span><span class="pack-unit">'+priceMoney(quote.unit)+' / vial</span>':'<span class="pack-total" style="font-size:15px">'+(size?'Pricing on inquiry':'Select vial size')+'</span>')+(quote&&discount?'<span class="pack-saving">Save '+discount+'%</span>':'');
     });
