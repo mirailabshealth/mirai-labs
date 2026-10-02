@@ -18,6 +18,10 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>body{font-family:'Inter',system-ui,sans-serif}</style>
+
+<style>
+.vial-options{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 24px}.vial-choice{border:1px solid #cbd5e1;background:white;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:600;color:#334155;max-width:100%;text-align:left}.vial-choice[aria-pressed="true"]{background:#0f172a;border-color:#0f172a;color:white}.pack-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 12px;font-weight:600;font-size:15px}.pack-heading span{font-size:12px;font-weight:500;color:#64748b}.pack-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pack-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;border:1px solid #dce2ea;background:white;border-radius:18px;padding:16px 12px;color:#0f172a;transition:border-color .15s,box-shadow .15s}.pack-card:hover{border-color:#94a3b8}.pack-card[aria-pressed="true"]{border:2px solid #dc2626;padding:15px 11px;background:#fff7f7;box-shadow:0 0 0 3px #fee2e2}.pack-card[aria-pressed="true"]:after{content:'✓';position:absolute;right:12px;top:12px;color:#dc2626;font-weight:700}.pack-name{font-size:14px;font-weight:600;padding-right:20px}.pack-total{font-size:23px;line-height:1.2;letter-spacing:-.5px;font-weight:700;margin:12px 0 4px;overflow-wrap:anywhere}.pack-unit{font-size:12px;color:#64748b}.pack-saving{font-size:11px;font-weight:600;color:#166534;background:#dcfce7;border-radius:999px;padding:4px 8px;margin-top:10px}.pack-custom{background:#f8fafc;justify-content:center}.pack-custom .pack-total{font-size:18px}.vial-choice:focus-visible,.pack-card:focus-visible{outline:3px solid #0f766e;outline-offset:3px}.pack-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:#f1f5f9;border-radius:16px;padding:16px;margin-top:18px}.pack-summary small{display:block;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#64748b;margin-bottom:6px}.pack-summary strong{display:block;font-size:19px;color:#0f172a}.pack-summary p{grid-column:1/-1;font-size:12px;font-weight:500;color:#166534;margin:0}.pack-note{font-size:11px;color:#64748b;margin:12px 0;line-height:1.6}.pack-empty{font-size:14px;color:#64748b;margin-top:14px}.custom-quantity-wrap{margin-top:16px}.custom-quantity-wrap[hidden]{display:none!important}
+</style>
 </head>
 <body class="bg-white text-slate-900 antialiased">
 
@@ -62,7 +66,7 @@
     <div class="grid lg:grid-cols-5 gap-8">
       <!-- Selection panel -->
       <div class="lg:col-span-2">
-        <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5 sticky top-24">
+        <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5">
           <h2 class="font-semibold mb-1">Your Research List</h2>
           <p class="text-xs text-slate-500 mb-4">Select compounds, optional vial sizes, and the number of vials wanted. Amounts are per vial, not administration doses.</p>
           
@@ -150,6 +154,57 @@
   <script src="assets/data.js"></script>
   <script src="assets/pricing.js?v=20261002-volume-all"></script>
   <script src="assets/vial-sizes.js"></script>
+<script>
+// Shared selector UI; all amounts come from the central public pricing data.
+const vialPickers = new Map();
+function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
+  const sizeLabel = sizeInput && document.querySelector('label[for="'+sizeInput.id+'"]');
+  if (sizeInput) {
+    const group = document.createElement('div'); group.className='vial-options';
+    group.setAttribute('role','group'); group.setAttribute('aria-label','Amount per vial');
+    sizeInput.before(group); sizeInput.hidden=true; sizeInput.style.display='none';
+    if(sizeLabel) { const title=document.createElement('p'); title.className='text-sm font-semibold mt-4'; title.textContent='Amount per vial'; sizeLabel.replaceWith(title); }
+    for(const option of sizeInput.options) {
+      const button=document.createElement('button'); button.type='button'; button.className='vial-choice';
+      button.textContent=option.value ? option.textContent.replace('/vial','') : 'Not sure yet';
+      button.dataset.value=option.value;
+      button.addEventListener('click',()=>{sizeInput.value=option.value;sizeInput.dispatchEvent(new Event('change',{bubbles:true}));render();});
+      group.append(button);
+    }
+  }
+  const quantityLabel=document.querySelector('label[for="'+quantityInput.id+'"]');
+  const heading=document.createElement('div');heading.className='pack-heading';heading.innerHTML='Pack size <span>Save up to 40%</span>';
+  const grid=document.createElement('div');grid.className='pack-grid';grid.setAttribute('role','group');grid.setAttribute('aria-label','Pack size');
+  quantityLabel.before(heading,grid);
+  const customWrap=document.createElement('div');customWrap.className='custom-quantity-wrap';
+  quantityLabel.before(customWrap); customWrap.append(quantityLabel,quantityInput);quantityLabel.textContent='Custom number of vials';
+  const presets=[1,2,3,5,10];let customMode=!presets.includes(Number(quantityInput.value));
+  const cards=presets.map(q=>{
+    const card=document.createElement('button');card.type='button';card.className='pack-card';card.dataset.quantity=q;
+    card.addEventListener('click',()=>{customMode=false;quantityInput.value=q;quantityInput.dispatchEvent(new Event('input',{bubbles:true}));render();});grid.append(card);return card;
+  });
+  const customCard=document.createElement('button');customCard.type='button';customCard.className='pack-card pack-custom';customCard.innerHTML='<span class="pack-name">Custom quantity</span><span class="pack-total">Choose amount</span><span class="pack-unit">Any quantity from 1–999</span>';
+  customCard.addEventListener('click',()=>{customMode=true;render();quantityInput.focus();});grid.append(customCard);
+  const note=document.createElement('p');note.className='pack-note';note.textContent='Discounts apply to the same compound and vial size. Highest qualifying discount only; offers do not stack.';grid.after(note);
+  priceOutput.className='';
+  function render() {
+    const size=sizeInput?.value||'',quantity=Number(quantityInput.value);
+    if(sizeInput)sizeInput.previousElementSibling.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===size)));
+    cards.forEach((card,index)=>{
+      const count=presets[index],quote=priceQuote(id,size,count),discount=[0,10,20,30,40][index];
+      card.setAttribute('aria-pressed',String(!customMode&&quantity===count));
+      card.innerHTML='<span class="pack-name">'+(count===1?'Single vial':count+'-pack')+'</span>'+(quote?'<span class="pack-total">'+priceMoney(quote.total)+'</span><span class="pack-unit">'+priceMoney(quote.unit)+' / vial</span>':'<span class="pack-total" style="font-size:15px">'+(size?'Pricing on inquiry':'Select vial size')+'</span>')+(quote&&discount?'<span class="pack-saving">Save '+discount+'%</span>':'');
+    });
+    customCard.setAttribute('aria-pressed',String(customMode));customWrap.hidden=!customMode;
+    const quote=priceQuote(id,size,quantity);
+    if(!quote){priceOutput.innerHTML='';const message=document.createElement('p');message.className='pack-empty';message.textContent=priceText(id,size,quantity);priceOutput.append(message);return;}
+    priceOutput.innerHTML='<div class="pack-summary"><div><small>Selected quantity</small><strong>'+quantity+(quantity===1?' vial':' vials')+'</strong></div><div><small>Estimated total</small><strong>'+priceMoney(quote.total)+'</strong></div>'+(quote.saving?'<p>You save '+priceMoney(quote.saving)+' compared with single-vial pricing.</p>':'')+'</div>';
+  }
+  quantityInput.addEventListener('input',render);sizeInput?.addEventListener('change',render);
+  vialPickers.set(id,{render});render();
+}
+</script>
+
   <script>
     let selected = readSaved('mirai_research_list', []);
     selected = Array.isArray(selected) ? selected.filter(id => peptides.some(p => p.id === id)) : [];
@@ -175,6 +230,7 @@
     }
 
     function updateUI() {
+      vialPickers.clear();
       const list = document.getElementById('selected-list');
       const empty = document.getElementById('empty-msg');
       const btn = document.getElementById('request-btn');
@@ -189,7 +245,7 @@
         list.innerHTML = selected.map(id => {
           const p = peptides.find(x => x.id === id);
           if (!p) return '';
-          return `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2">
+          return `<div class="flex items-start justify-between bg-white border border-slate-200 rounded-2xl px-3 py-4">
             <div class="min-w-0 flex-1 mr-3"><span class="text-sm font-medium">${p.name}</span>
             ${vialSizes[id] ? `<label for="size-${id}" class="block text-sm text-slate-500 mt-2">Amount per vial</label><select id="size-${id}" data-size="${id}" class="block w-full max-w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm mt-1">${sizeOptions(id, selectedSizes[id])}</select>` : '<p class="text-sm text-slate-500 mt-1">Vial specifications awaiting confirmation</p>'}
             <label for="quantity-${id}" class="block text-sm text-slate-500 mt-2">Number of vials</label>
@@ -221,6 +277,7 @@
             renderPicker();
           });
         });
+        for(const id of selected) mountVialPicker(id,document.getElementById('size-'+id),document.getElementById('quantity-'+id),document.getElementById('price-'+id));
         btn.disabled = false;
         btn.className = 'w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full text-sm font-medium transition';
         
@@ -242,7 +299,8 @@
         const q=priceQuote(id,selectedSizes[id],quantity);
         if(q) total+=q.total; else missing++;
         const label=document.getElementById('price-'+id);
-        if(label) label.textContent=priceText(id,selectedSizes[id],quantity);
+        if(vialPickers.has(id)) vialPickers.get(id).render();
+        else if(label) label.textContent=priceText(id,selectedSizes[id],quantity);
       }
       document.getElementById('price-summary').textContent=selected.length ? (missing ? 'Priced items subtotal: ' : 'Estimated subtotal: ')+priceMoney(total)+(missing ? ' · '+missing+' selection(s) need size or price confirmation.' : '') : '';
     }
