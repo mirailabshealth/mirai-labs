@@ -90,9 +90,11 @@
         </div>
 
         <section class="mb-10 bg-slate-50 border border-slate-200 rounded-2xl p-5">
-          <h2 class="text-lg font-semibold mb-3">Available vial sizes</h2>
+          <h2 class="text-lg font-semibold mb-3">Vial size & quantity</h2>
           <p class="text-sm text-slate-600 mb-4">Amounts describe the total contents of one vial, not a dose or instructions for use. Availability is confirmed on inquiry.</p>
           ${vialSizes[p.id] ? `<label for="vial-size" class="block text-sm font-medium mb-2">Amount per vial</label><select id="vial-size" class="w-full max-w-full border border-slate-300 rounded-xl p-3 bg-white text-base">${sizeOptions(p.id)}</select>` : '<p class="text-sm text-slate-600">Vial specifications awaiting confirmation. You can still request research information.</p>'}
+          <label for="vial-quantity" class="block text-sm font-medium mt-4 mb-2">Number of vials</label>
+          <input id="vial-quantity" type="number" min="1" max="999" step="1" required inputmode="numeric" value="1" class="w-28 border border-slate-300 rounded-xl p-3 bg-white text-base">
         </section>
 
         <section class="mb-10">
@@ -137,14 +139,21 @@
           </a>
         </div>
       `;
-      document.getElementById('add-research-list').addEventListener('click', () => {
+      document.getElementById('add-research-list').addEventListener('click', (event) => {
+        const quantityControl = document.getElementById('vial-quantity');
+        if (!quantityControl.reportValidity()) { event.preventDefault(); return; }
         let list = readSaved('mirai_research_list', []);
         if (!Array.isArray(list)) list = [];
         if (!list.includes(p.id)) list.push(p.id);
-        const saved = readSaved('mirai_vial_sizes', {});
+        let saved = readSaved('mirai_vial_sizes', {});
+        if (typeof saved !== 'object' || Array.isArray(saved)) saved = {};
+        let quantities = readSaved('mirai_vial_quantities', {});
+        if (typeof quantities !== 'object' || Array.isArray(quantities)) quantities = {};
+        quantities[p.id] = Number(quantityControl.value);
         saved[p.id] = document.getElementById('vial-size')?.value || '';
         localStorage.setItem('mirai_research_list', JSON.stringify(list));
         localStorage.setItem('mirai_vial_sizes', JSON.stringify(saved));
+        localStorage.setItem('mirai_vial_quantities', JSON.stringify(quantities));
       });
     }
   </script>

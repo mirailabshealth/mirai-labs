@@ -64,7 +64,7 @@
       <div class="lg:col-span-2">
         <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5 sticky top-24">
           <h2 class="font-semibold mb-1">Your Research List</h2>
-          <p class="text-xs text-slate-500 mb-4">Select compounds and optional vial sizes. Amounts are per vial, not administration doses.</p>
+          <p class="text-xs text-slate-500 mb-4">Select compounds, optional vial sizes, and the number of vials wanted. Amounts are per vial, not administration doses.</p>
           
           <div id="selected-list" class="space-y-2 min-h-[80px] mb-4">
             <p class="text-sm text-slate-400 italic" id="empty-msg">No peptides selected yet</p>
@@ -145,16 +145,23 @@
     selected = Array.isArray(selected) ? selected.filter(id => peptides.some(p => p.id === id)) : [];
     let selectedSizes = readSaved('mirai_vial_sizes', {});
     if (typeof selectedSizes !== 'object' || Array.isArray(selectedSizes)) selectedSizes = {};
+    let selectedQuantities = readSaved('mirai_vial_quantities', {});
+    if (typeof selectedQuantities !== 'object' || Array.isArray(selectedQuantities)) selectedQuantities = {};
+    function quantityFor(id) {
+      const value = Number(selectedQuantities[id]);
+      return Number.isInteger(value) && value >= 1 && value <= 999 ? value : 1;
+    }
     for (const id of selected) {
       if (!(vialSizes[id] || []).includes(selectedSizes[id])) selectedSizes[id] = '';
     }
     function interestSummary() {
-      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'}`).join('; ');
+      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'} — ${quantityFor(id)} ${quantityFor(id) === 1 ? 'vial' : 'vials'}`).join('; ');
     }
 
     function save() {
       localStorage.setItem('mirai_research_list', JSON.stringify(selected));
       localStorage.setItem('mirai_vial_sizes', JSON.stringify(selectedSizes));
+      localStorage.setItem('mirai_vial_quantities', JSON.stringify(selectedQuantities));
     }
 
     function updateUI() {
@@ -174,7 +181,9 @@
           if (!p) return '';
           return `<div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-3 py-2">
             <div class="min-w-0 flex-1 mr-3"><span class="text-sm font-medium">${p.name}</span>
-            ${vialSizes[id] ? `<label for="size-${id}" class="block text-sm text-slate-500 mt-2">Amount per vial</label><select id="size-${id}" data-size="${id}" class="block w-full max-w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm mt-1">${sizeOptions(id, selectedSizes[id])}</select>` : '<p class="text-sm text-slate-500 mt-1">Vial specifications awaiting confirmation</p>'}</div>
+            ${vialSizes[id] ? `<label for="size-${id}" class="block text-sm text-slate-500 mt-2">Amount per vial</label><select id="size-${id}" data-size="${id}" class="block w-full max-w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-sm mt-1">${sizeOptions(id, selectedSizes[id])}</select>` : '<p class="text-sm text-slate-500 mt-1">Vial specifications awaiting confirmation</p>'}
+            <label for="quantity-${id}" class="block text-sm text-slate-500 mt-2">Number of vials</label>
+            <input id="quantity-${id}" data-quantity="${id}" type="number" min="1" max="999" step="1" required inputmode="numeric" value="${quantityFor(id)}" class="block w-28 bg-slate-50 border border-slate-200 rounded-lg p-2 text-base mt-1"></div>
             <button data-remove="${id}" class="text-slate-400 hover:text-red-600 text-lg leading-none">&times;</button>
           </div>`;
         }).join('');
@@ -182,6 +191,14 @@
           control.addEventListener('change', () => {
             selectedSizes[control.dataset.size] = control.value;
             save();
+          });
+        });
+        list.querySelectorAll('[data-quantity]').forEach(control => {
+          control.addEventListener('input', () => {
+            if (control.validity.valid) {
+              selectedQuantities[control.dataset.quantity] = Number(control.value);
+              save();
+            }
           });
         });
         list.querySelectorAll('[data-remove]').forEach(b => {
@@ -247,6 +264,9 @@
 
     document.getElementById('request-btn').addEventListener('click', () => {
       if (selected.length === 0) return;
+      for (const control of document.querySelectorAll('[data-quantity]')) {
+        if (!control.reportValidity()) return;
+      }
       document.getElementById('form-selected').textContent = interestSummary();
       document.getElementById('interest-modal').classList.remove('hidden');
     });
@@ -265,6 +285,8 @@
         email: document.getElementById('form-email').value,
         peptides: interestSummary(),
         vial_sizes: interestSummary(),
+        vial_quantities: selected.map(id => `${peptides.find(p => p.id === id).name}: ${quantityFor(id)}`).join('; '),
+        total_vials: selected.reduce((sum, id) => sum + quantityFor(id), 0),
         notes: document.getElementById('form-notes').value,
         _subject: 'Mirai Labs research interest request'
       };
