@@ -1,6 +1,6 @@
 // Public customer estimates only. Values are USD cents per vial by quantity tier.
 // Edit each size's [1, 2, 3-4, 5-9, 10+] rates here. No supplier costs are published.
-const miraiPriceVersion = '2026-10-02-quantity-update';
+const miraiPriceVersion = '2026-10-02-ss31-update';
 const miraiPrices = {
   "retatrutide": {
     "5 mg/vial": [
@@ -544,11 +544,11 @@ const miraiPrices = {
       3034
     ],
     "50 mg/vial": [
-      10223,
-      10223,
-      9201,
-      8178,
-      7156
+      13900,
+      13900,
+      12510,
+      11120,
+      9730
     ]
   },
   "nad": {
