@@ -1,23 +1,26 @@
 // Public customer estimates only. Values are USD cents per vial by quantity tier.
-// Edit each size's [1-2, 3-4, 5-9, 10+] rates here. No supplier costs are published.
-const miraiPriceVersion = '2026-10-02-volume-30-40';
+// Edit each size's [1, 2, 3-4, 5-9, 10+] rates here. No supplier costs are published.
+const miraiPriceVersion = '2026-10-02-volume-all';
 const miraiPrices = {
   "retatrutide": {
     "10 mg/vial": [
       7900,
-      7505,
+      7110,
+      6320,
       5530,
       4740
     ],
     "20 mg/vial": [
       11900,
-      11305,
+      10710,
+      9520,
       8330,
       7140
     ],
     "30 mg/vial": [
       15900,
-      15105,
+      14310,
+      12720,
       11130,
       9540
     ]
@@ -25,25 +28,29 @@ const miraiPrices = {
   "tirzepatide": {
     "10 mg/vial": [
       6900,
-      6555,
+      6210,
+      5520,
       4830,
       4140
     ],
     "20 mg/vial": [
       10900,
-      10355,
+      9810,
+      8720,
       7630,
       6540
     ],
     "30 mg/vial": [
       13900,
-      13205,
+      12510,
+      11120,
       9730,
       8340
     ],
     "60 mg/vial": [
       17900,
-      17005,
+      16110,
+      14320,
       12530,
       10740
     ]
@@ -51,31 +58,36 @@ const miraiPrices = {
   "semaglutide": {
     "5 mg/vial": [
       3712,
-      3712,
+      3341,
+      2970,
       2598,
       2227
     ],
     "10 mg/vial": [
       3845,
-      3845,
+      3461,
+      3076,
       2692,
       2307
     ],
     "15 mg/vial": [
       4000,
-      4000,
+      3600,
+      3200,
       2800,
       2400
     ],
     "20 mg/vial": [
       4145,
-      4145,
+      3731,
+      3316,
       2902,
       2487
     ],
     "30 mg/vial": [
       4334,
-      4334,
+      3901,
+      3467,
       3034,
       2600
     ]
@@ -83,19 +95,22 @@ const miraiPrices = {
   "cagrilintide": {
     "2 mg/vial": [
       4067,
-      4067,
+      3660,
+      3254,
       2847,
       2440
     ],
     "5 mg/vial": [
       4534,
-      4534,
+      4081,
+      3627,
       3174,
       2720
     ],
     "10 mg/vial": [
       5634,
-      5634,
+      5071,
+      4507,
       3944,
       3380
     ]
@@ -103,7 +118,8 @@ const miraiPrices = {
   "mazdutide": {
     "10 mg/vial": [
       6023,
-      6023,
+      5421,
+      4818,
       4216,
       3614
     ]
@@ -111,13 +127,15 @@ const miraiPrices = {
   "5-amino-1mq": {
     "5 mg/vial": [
       3912,
-      3912,
+      3521,
+      3130,
       2738,
       2347
     ],
     "50 mg/vial": [
       4634,
-      4634,
+      4171,
+      3707,
       3244,
       2780
     ]
@@ -125,13 +143,15 @@ const miraiPrices = {
   "adipotide": {
     "5 mg/vial": [
       5356,
-      5356,
+      4820,
+      4285,
       3749,
       3214
     ],
     "10 mg/vial": [
       5912,
-      5912,
+      5321,
+      4730,
       4138,
       3547
     ]
@@ -139,13 +159,15 @@ const miraiPrices = {
   "tb-500": {
     "5 mg/vial": [
       4112,
-      4112,
+      3701,
+      3290,
       2878,
       2467
     ],
     "10 mg/vial": [
       4945,
-      4945,
+      4451,
+      3956,
       3462,
       2967
     ]
@@ -153,13 +175,15 @@ const miraiPrices = {
   "bpc-157": {
     "5 mg/vial": [
       3823,
-      3823,
+      3441,
+      3058,
       2676,
       2294
     ],
     "10 mg/vial": [
       4112,
-      4112,
+      3701,
+      3290,
       2878,
       2467
     ]
@@ -167,7 +191,8 @@ const miraiPrices = {
   "kpv": {
     "10 mg/vial": [
       4189,
-      4189,
+      3770,
+      3351,
       2932,
       2513
     ]
@@ -175,13 +200,15 @@ const miraiPrices = {
   "thymosin-a1": {
     "5 mg/vial": [
       4478,
-      4478,
+      4030,
+      3582,
       3135,
       2687
     ],
     "10 mg/vial": [
       5200,
-      5200,
+      4680,
+      4160,
       3640,
       3120
     ]
@@ -189,7 +216,8 @@ const miraiPrices = {
   "ara-290": {
     "10 mg/vial": [
       4223,
-      4223,
+      3801,
+      3378,
       2956,
       2534
     ]
@@ -197,13 +225,15 @@ const miraiPrices = {
   "ipamorelin": {
     "5 mg/vial": [
       3823,
-      3823,
+      3441,
+      3058,
       2676,
       2294
     ],
     "10 mg/vial": [
       4200,
-      4200,
+      3780,
+      3360,
       2940,
       2520
     ]
@@ -211,13 +241,15 @@ const miraiPrices = {
   "cjc-1295": {
     "5 mg/vial": [
       4378,
-      4378,
+      3940,
+      3502,
       3065,
       2627
     ],
     "10 mg/vial": [
       5000,
-      5000,
+      4500,
+      4000,
       3500,
       3000
     ]
@@ -225,19 +257,22 @@ const miraiPrices = {
   "tesamorelin": {
     "5 mg/vial": [
       4478,
-      4478,
+      4030,
+      3582,
       3135,
       2687
     ],
     "10 mg/vial": [
       5400,
-      5400,
+      4860,
+      4320,
       3780,
       3240
     ],
     "20 mg/vial": [
       7356,
-      7356,
+      6620,
+      5885,
       5149,
       4414
     ]
@@ -245,13 +280,15 @@ const miraiPrices = {
   "sermorelin": {
     "5 mg/vial": [
       4200,
-      4200,
+      3780,
+      3360,
       2940,
       2520
     ],
     "10 mg/vial": [
       4912,
-      4912,
+      4421,
+      3930,
       3438,
       2947
     ]
@@ -259,19 +296,22 @@ const miraiPrices = {
   "ghrp-2": {
     "5 mg/vial": [
       3712,
-      3712,
+      3341,
+      2970,
       2598,
       2227
     ],
     "10 mg/vial": [
       3934,
-      3934,
+      3541,
+      3147,
       2754,
       2360
     ],
     "15 mg/vial": [
       4167,
-      4167,
+      3750,
+      3334,
       2917,
       2500
     ]
@@ -279,13 +319,15 @@ const miraiPrices = {
   "ghrp-6": {
     "5 mg/vial": [
       3712,
-      3712,
+      3341,
+      2970,
       2598,
       2227
     ],
     "10 mg/vial": [
       3934,
-      3934,
+      3541,
+      3147,
       2754,
       2360
     ]
@@ -293,13 +335,15 @@ const miraiPrices = {
   "igf-1-lr3": {
     "0.1 mg/vial": [
       3845,
-      3845,
+      3461,
+      3076,
       2692,
       2307
     ],
     "1 mg/vial": [
       5489,
-      5489,
+      4940,
+      4391,
       3842,
       3293
     ]
@@ -307,13 +351,15 @@ const miraiPrices = {
   "ghk-cu": {
     "50 mg/vial": [
       3623,
-      3623,
+      3261,
+      2898,
       2536,
       2174
     ],
     "100 mg/vial": [
       3823,
-      3823,
+      3441,
+      3058,
       2676,
       2294
     ]
@@ -321,13 +367,15 @@ const miraiPrices = {
   "ahk-cu": {
     "20 mg/vial": [
       3723,
-      3723,
+      3351,
+      2978,
       2606,
       2234
     ],
     "50 mg/vial": [
       4067,
-      4067,
+      3660,
+      3254,
       2847,
       2440
     ]
@@ -335,7 +383,8 @@ const miraiPrices = {
   "snap-8": {
     "2 mg/vial": [
       3845,
-      3845,
+      3461,
+      3076,
       2692,
       2307
     ]
@@ -343,7 +392,8 @@ const miraiPrices = {
   "matrixyl": {
     "10 mg/vial": [
       3767,
-      3767,
+      3390,
+      3014,
       2637,
       2260
     ]
@@ -351,13 +401,15 @@ const miraiPrices = {
   "epitalon": {
     "10 mg/vial": [
       3845,
-      3845,
+      3461,
+      3076,
       2692,
       2307
     ],
     "50 mg/vial": [
       4945,
-      4945,
+      4451,
+      3956,
       3462,
       2967
     ]
@@ -365,13 +417,15 @@ const miraiPrices = {
   "mots-c": {
     "10 mg/vial": [
       4056,
-      4056,
+      3650,
+      3245,
       2839,
       2434
     ],
     "40 mg/vial": [
       6067,
-      6067,
+      5460,
+      4854,
       4247,
       3640
     ]
@@ -379,13 +433,15 @@ const miraiPrices = {
   "ss-31": {
     "10 mg/vial": [
       4334,
-      4334,
+      3901,
+      3467,
       3034,
       2600
     ],
     "50 mg/vial": [
       8223,
-      8223,
+      7401,
+      6578,
       5756,
       4934
     ]
@@ -393,19 +449,22 @@ const miraiPrices = {
   "nad": {
     "100 mg/vial": [
       3734,
-      3734,
+      3361,
+      2987,
       2614,
       2240
     ],
     "500 mg/vial": [
       4056,
-      4056,
+      3650,
+      3245,
       2839,
       2434
     ],
     "1000 mg/vial": [
       4912,
-      4912,
+      4421,
+      3930,
       3438,
       2947
     ]
@@ -413,13 +472,15 @@ const miraiPrices = {
   "foxo4-dri": {
     "2 mg/vial": [
       4456,
-      4456,
+      4010,
+      3565,
       3119,
       2674
     ],
     "10 mg/vial": [
       7000,
-      7000,
+      6300,
+      5600,
       4900,
       4200
     ]
@@ -427,7 +488,8 @@ const miraiPrices = {
   "glutathione": {
     "1500 mg/vial": [
       4056,
-      4056,
+      3650,
+      3245,
       2839,
       2434
     ]
@@ -435,13 +497,15 @@ const miraiPrices = {
   "semax": {
     "5 mg/vial": [
       3989,
-      3989,
+      3590,
+      3191,
       2792,
       2393
     ],
     "10 mg/vial": [
       4378,
-      4378,
+      3940,
+      3502,
       3065,
       2627
     ]
@@ -449,13 +513,15 @@ const miraiPrices = {
   "selank": {
     "5 mg/vial": [
       3912,
-      3912,
+      3521,
+      3130,
       2738,
       2347
     ],
     "10 mg/vial": [
       4334,
-      4334,
+      3901,
+      3467,
       3034,
       2600
     ]
@@ -463,13 +529,15 @@ const miraiPrices = {
   "dsip": {
     "5 mg/vial": [
       3800,
-      3800,
+      3420,
+      3040,
       2660,
       2280
     ],
     "10 mg/vial": [
       4334,
-      4334,
+      3901,
+      3467,
       3034,
       2600
     ]
@@ -477,13 +545,15 @@ const miraiPrices = {
   "pinealon": {
     "10 mg/vial": [
       4067,
-      4067,
+      3660,
+      3254,
       2847,
       2440
     ],
     "20 mg/vial": [
       4434,
-      4434,
+      3991,
+      3547,
       3104,
       2660
     ]
@@ -491,7 +561,8 @@ const miraiPrices = {
   "p21": {
     "5 mg/vial": [
       6923,
-      6923,
+      6231,
+      5538,
       4846,
       4154
     ]
@@ -499,7 +570,8 @@ const miraiPrices = {
   "pt-141": {
     "10 mg/vial": [
       4145,
-      4145,
+      3731,
+      3316,
       2902,
       2487
     ]
@@ -507,7 +579,8 @@ const miraiPrices = {
   "mt-2": {
     "10 mg/vial": [
       3912,
-      3912,
+      3521,
+      3130,
       2738,
       2347
     ]
@@ -515,13 +588,15 @@ const miraiPrices = {
   "kisspeptin-10": {
     "5 mg/vial": [
       3967,
-      3967,
+      3570,
+      3174,
       2777,
       2380
     ],
     "10 mg/vial": [
       4423,
-      4423,
+      3981,
+      3538,
       3096,
       2654
     ]
@@ -529,19 +604,22 @@ const miraiPrices = {
   "oxytocin": {
     "2 mg/vial": [
       3678,
-      3678,
+      3310,
+      2942,
       2575,
       2207
     ],
     "5 mg/vial": [
       3912,
-      3912,
+      3521,
+      3130,
       2738,
       2347
     ],
     "10 mg/vial": [
       4423,
-      4423,
+      3981,
+      3538,
       3096,
       2654
     ]
@@ -549,19 +627,22 @@ const miraiPrices = {
   "cagrisema": {
     "5 mg/vial (2.5 mg + 2.5 mg)": [
       4256,
-      4256,
+      3830,
+      3405,
       2979,
       2554
     ],
     "10 mg/vial (5 mg + 5 mg)": [
       5356,
-      5356,
+      4820,
+      4285,
       3749,
       3214
     ],
     "20 mg/vial (10 mg + 10 mg)": [
       5778,
-      5778,
+      5200,
+      4622,
       4045,
       3467
     ]
@@ -569,7 +650,8 @@ const miraiPrices = {
   "cjc-ipa": {
     "10 mg/vial (CJC-1295 without DAC 5 mg + Ipamorelin 5 mg)": [
       4634,
-      4634,
+      4171,
+      3707,
       3244,
       2780
     ]
@@ -577,19 +659,22 @@ const miraiPrices = {
   "bpc-tb": {
     "10 mg/vial (BPC-157 5 mg + TB-500 5 mg)": [
       4423,
-      4423,
+      3981,
+      3538,
       3096,
       2654
     ],
     "20 mg/vial (BPC-157 10 mg + TB-500 10 mg)": [
       5356,
-      5356,
+      4820,
+      4285,
       3749,
       3214
     ],
     "30 mg/vial (BPC-157 15 mg + TB-500 15 mg)": [
       7000,
-      7000,
+      6300,
+      5600,
       4900,
       4200
     ]
@@ -597,7 +682,8 @@ const miraiPrices = {
   "glow": {
     "70 mg/vial (BPC-157 10 mg + GHK-Cu 50 mg + TB-500 10 mg)": [
       6389,
-      6389,
+      5750,
+      5111,
       4472,
       3833
     ]
@@ -605,7 +691,8 @@ const miraiPrices = {
   "klow": {
     "80 mg/vial (BPC-157 10 mg + GHK-Cu 50 mg + TB-500 10 mg + KPV 10 mg)": [
       6389,
-      6389,
+      5750,
+      5111,
       4472,
       3833
     ]
@@ -615,7 +702,7 @@ function priceMoney(cents) { return new Intl.NumberFormat('en-US',{style:'curren
 function priceQuote(id,size,quantity) {
   const rates=miraiPrices[id]?.[size];
   if(!rates || !Number.isInteger(quantity) || quantity<1 || quantity>999) return null;
-  const tier=quantity>=10?3:quantity>=5?2:quantity>=3?1:0;
+  const tier=quantity>=10?4:quantity>=5?3:quantity>=3?2:quantity>=2?1:0;
   const unit=rates[tier];
   return {unit,total:unit*quantity,saving:(rates[0]-unit)*quantity};
 }
@@ -623,7 +710,7 @@ function priceText(id,size,quantity) {
   if(!Number.isInteger(quantity)||quantity<1||quantity>999) return 'Enter a whole number of vials from 1 to 999.';
   if(!size) return 'Select a vial size to see an estimate.';
   const q=priceQuote(id,size,quantity);
-  return q ? `${priceMoney(q.unit)} per vial · ${priceMoney(q.total)} estimated total${quantity>=10?' · 40% off':quantity>=5?' · 30% off':''}${q.saving ? ' · quantity savings '+priceMoney(q.saving) : ''} · 5–9 vials: 30% off; 10+ vials: 40% off (same compound and size).` : 'Price available on inquiry for this vial size.';
+  return q ? `${priceMoney(q.unit)} per vial · ${priceMoney(q.total)} estimated total${quantity>=10?' · 40% off':quantity>=5?' · 30% off':quantity>=3?' · 20% off':quantity>=2?' · 10% off':''}${q.saving ? ' · quantity savings '+priceMoney(q.saving) : ''} · 2 vials: 10% off; 3–4: 20%; 5–9: 30%; 10+: 40% (same compound and size; discounts do not stack).` : 'Price available on inquiry for this vial size.';
 }
 function priceFrom(id) {
   const entries=Object.values(miraiPrices[id]||{});
