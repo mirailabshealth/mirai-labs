@@ -68,7 +68,7 @@
   </footer>
 
   <script src="assets/data.js"></script>
-  <script src="assets/pricing.js?v=20261002-fox-tesa"></script>
+  <script src="assets/pricing.js?v=20261002-stacked-offers"></script>
   <script src="assets/vial-sizes.js"></script>
 <script>
 // Shared selector UI; all amounts come from the central public pricing data.
@@ -89,7 +89,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
     }
   }
   const quantityLabel=document.querySelector('label[for="'+quantityInput.id+'"]');
-  const heading=document.createElement('div');heading.className='pack-heading';heading.innerHTML='Pack size <span>Save up to 30%</span>';
+  const heading=document.createElement('div');heading.className='pack-heading';heading.innerHTML='Pack size <span>Save up to 20%</span>';
   const grid=document.createElement('div');grid.className='pack-grid';grid.setAttribute('role','group');grid.setAttribute('aria-label','Pack size');
   quantityLabel.before(heading,grid);
   const customWrap=document.createElement('div');customWrap.className='custom-quantity-wrap';
@@ -101,13 +101,13 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
   });
   const customCard=document.createElement('button');customCard.type='button';customCard.className='pack-card pack-custom';customCard.innerHTML='<span class="pack-name">Custom quantity</span><span class="pack-total">Choose amount</span><span class="pack-unit">Any quantity from 1–999</span>';
   customCard.addEventListener('click',()=>{customMode=true;render();quantityInput.focus();});grid.append(customCard);
-  const note=document.createElement('p');note.className='pack-note';note.textContent='Discounts apply to the same compound and vial size. Highest qualifying discount only; offers do not stack.';grid.after(note);
+  const note=document.createElement('p');note.className='pack-note';note.textContent='Discounts apply to the same compound and vial size. Highest qualifying quantity discount applies. Approved partner codes take an additional 5% off the discounted price.';grid.after(note);
   priceOutput.className='';
   function render() {
     const size=sizeInput?.value||'',quantity=Number(quantityInput.value);
     if(sizeInput)sizeInput.previousElementSibling.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===size)));
     cards.forEach((card,index)=>{
-      const count=presets[index],quote=priceQuote(id,size,count),discount=[0,0,10,20,30][index];
+      const count=presets[index],quote=priceQuote(id,size,count),discount=[0,0,5,15,20][index];
       card.setAttribute('aria-pressed',String(!customMode&&quantity===count));
       card.innerHTML='<span class="pack-name">'+(count===1?'Single vial':count+'-pack')+'</span>'+(quote?'<span class="pack-total">'+priceMoney(quote.total)+'</span><span class="pack-unit">'+priceMoney(quote.unit)+' / vial</span>':'<span class="pack-total" style="font-size:15px">'+(size?'Pricing on inquiry':'Select vial size')+'</span>')+(quote&&discount?'<span class="pack-saving">Save '+discount+'%</span>':'');
     });
