@@ -117,7 +117,7 @@
         </div>
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">Selected compounds</label>
-          <div id="form-selected" class="text-sm text-slate-600 bg-slate-50 rounded-xl px-3.5 py-2.5 border border-slate-100"></div>
+          <div id="form-selected" style="white-space:pre-line" class="text-sm text-slate-600 bg-slate-50 rounded-xl px-3.5 py-2.5 border border-slate-100"></div>
         </div>
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">Notes (optional)</label>
@@ -220,7 +220,13 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
       if (!(vialSizes[id] || []).includes(selectedSizes[id])) selectedSizes[id] = '';
     }
     function interestSummary() {
-      return selected.map(id => `${peptides.find(p => p.id === id).name} — ${selectedSizes[id] || 'No size preference'} — ${quantityFor(id)} ${quantityFor(id) === 1 ? 'vial' : 'vials'} — ${priceText(id, selectedSizes[id], quantityFor(id))}`).join('; ');
+      return selected.map(id => {
+        const quantity = quantityFor(id);
+        const size = selectedSizes[id] || '';
+        const quote = priceQuote(id, size, quantity);
+        const total = quote ? priceMoney(quote.total) + ' total' : 'Total pending confirmation';
+        return `${peptides.find(p => p.id === id).name} — ${size || 'Size not selected'} — ${quantity} ${quantity === 1 ? 'vial' : 'vials'} — ${total}`;
+      }).join('\n');
     }
 
     function save() {
