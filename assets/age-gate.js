@@ -199,3 +199,103 @@
     window.location.href = 'https://www.google.com';
   });
 })();
+
+// Shared account navigation. Runs independently of the age-gate early return.
+// Existing public pages load this common entry point; no age checks are removed.
+(async function initMiraiAccountMenu() {
+  if (document.getElementById('mirai-account-bar')) return;
+  const header = document.querySelector('body > nav, body > header');
+  if (!header) return;
+  const portalURL = new URL('./portal.html', location.href);
+  const css = document.createElement('style');
+  css.textContent = `
+    #mirai-account-bar{position:sticky;top:var(--mirai-nav-offset,64px);z-index:49;background:#fff;border-bottom:1px solid #e2e7ee;font:13px/1.5 Inter,system-ui,sans-serif;color:#172033}
+    #mirai-account-bar .mirai-account-inner{max-width:1280px;margin:auto;min-height:52px;padding:8px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    #mirai-account-bar a{color:#172033;text-decoration:none;font-weight:600}
+    #mirai-account-bar .mirai-account-actions{display:flex;align-items:center;gap:16px}
+    #mirai-account-bar details{position:relative}
+    #mirai-account-bar summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-weight:650;padding:7px 10px;border-radius:8px;background:#f3f5f8}
+    #mirai-account-bar summary::-webkit-details-marker{display:none}
+    #mirai-account-bar summary::after{content:'⌄';font-size:15px}
+    #mirai-account-bar .mirai-account-dropdown{position:absolute;right:0;top:calc(100% + 10px);width:min(300px,calc(100vw - 32px));padding:12px;background:#fff;border:1px solid #e2e7ee;border-radius:14px;box-shadow:0 15px 40px #14203925}
+    #mirai-account-bar .mirai-account-dropdown a{display:block;padding:10px;border-radius:7px}
+    #mirai-account-bar .mirai-account-dropdown a:hover{background:#f3f5f8}
+    #mirai-account-bar .mirai-account-email{font-size:12px;color:#627086;overflow-wrap:anywhere;padding:5px 10px 12px;border-bottom:1px solid #e2e7ee;margin:0 0 5px}
+    #mirai-account-bar button{font:600 13px/1.5 Inter,system-ui,sans-serif;cursor:pointer;background:none;border:0;color:#b91c1c;padding:8px 0;border-radius:4px}
+    #mirai-account-bar button:disabled{opacity:.5;cursor:wait}
+    #mirai-account-bar [hidden]{display:none!important}
+    #mirai-account-bar :focus-visible{outline:3px solid #e9939c;outline-offset:3px}
+    #mirai-account-status{margin:0;padding:0 22px 10px;color:#b91c1c;font-size:12px}
+    #mirai-account-status:empty{display:none}
+    @media(max-width:600px){#mirai-account-bar .mirai-account-inner{padding:8px 16px;gap:8px}#mirai-account-bar .mirai-account-actions{gap:12px}}
+  `;
+  document.head.append(css);
+  const bar = document.createElement('nav');
+  bar.id = 'mirai-account-bar';
+  bar.setAttribute('aria-label', 'Account navigation');
+  bar.innerHTML = `<div class="mirai-account-inner"><a data-home href="./portal.html">My portal</a><div class="mirai-account-actions"><a data-signin href="./portal.html">Sign in</a><details><summary>Account menu</summary><div class="mirai-account-dropdown"><p class="mirai-account-email">Checking account…</p><a href="./guide.html">Research guide</a><a data-client href="./portal.html?view=client" hidden>Client portal</a><a data-affiliate href="./portal.html?view=affiliate" hidden>Affiliate portal</a><a data-owner href="./portal.html?view=admin" hidden>Owner portal</a><a data-profile href="./portal.html?view=profile" hidden>Account settings</a><a data-guest href="./portal.html">Sign in / registration</a><a href="./contact.html">Contact support</a></div></details><button data-signout type="button" hidden>Sign out</button></div></div><p id="mirai-account-status" role="status" aria-live="polite"></p>`;
+  header.after(bar);
+  const resize = () => bar.style.setProperty('--mirai-nav-offset', header.getBoundingClientRect().height + 'px');
+  resize();
+  new ResizeObserver(resize).observe(header);
+  const el = selector => bar.querySelector(selector);
+  const details = el('details');
+  document.addEventListener('click', e => { if (!details.contains(e.target)) details.open = false; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && details.open) { details.open = false; el('summary').focus(); } });
+  let auth, revision = 0;
+  function renderSession(session) {
+    const signedIn = !!session?.user;
+    el('[data-signin]').hidden = signedIn;
+    el('[data-signout]').hidden = !signedIn;
+    el('[data-guest]').hidden = signedIn;
+    for (const selector of ['[data-client]', '[data-affiliate]', '[data-profile]']) el(selector).hidden = !signedIn;
+    el('[data-owner]').hidden = true;
+    el('summary').textContent = signedIn ? 'My account' : 'Account menu';
+    el('.mirai-account-email').textContent = signedIn ? session.user.email : 'You are signed out.';
+  }
+  async function syncSession() {
+    const version = ++revision;
+    const { data, error } = await auth.auth.getSession();
+    if (version !== revision) return;
+    if (error) throw error;
+    renderSession(data.session);
+    if (!data.session) return;
+    const result = await auth.rpc('mirai_account', { p_name: null });
+    if (version !== revision) return;
+    if (!result.error) el('[data-owner]').hidden = !result.data?.admin;
+  }
+  try {
+    if (!window.miraiAuth && !window.supabase) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+        script.onload = resolve; script.onerror = () => reject(Error('Account service could not load. Open My portal to retry.'));
+        document.head.append(script);
+      });
+    }
+    auth = window.miraiAuth || window.supabase.createClient('https://qymwaujpaxbmeohcmueh.supabase.co', 'sb_publishable_sIt2p8INDif9VfTb4F81YQ_yEoGr5fE');
+    window.miraiAuth = auth;
+    el('[data-signout]').onclick = async () => {
+      const button = el('[data-signout]'); button.disabled = true;
+      el('#mirai-account-status').textContent = '';
+      try {
+        const { error } = await auth.auth.signOut({ scope: 'local' });
+        if (error) throw error;
+        revision++; renderSession(null); details.open = false;
+        // Reload removes private data and in-flight renders from this page.
+        location.replace(portalURL.href);
+      } catch (error) {
+        el('#mirai-account-status').textContent = 'Could not sign out. Please retry. ' + error.message;
+        button.disabled = false;
+      }
+    };
+    auth.auth.onAuthStateChange(() => {
+      setTimeout(() => syncSession().catch(error => { el('#mirai-account-status').textContent = error.message; }), 0);
+    });
+    await syncSession();
+  } catch (error) {
+    renderSession(null);
+    el('.mirai-account-email').textContent = 'Account status unavailable.';
+    el('#mirai-account-status').textContent = error.message;
+  }
+})();
