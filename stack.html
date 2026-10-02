@@ -127,10 +127,18 @@
     </div>
   </div>
 
-  <!-- Success toast -->
-  <div id="success-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm shadow-lg z-[110]">
-    Inquiry submitted. We’ll follow up with pricing and research information.
-  </div>
+  <!-- Only shown after the request has been accepted successfully. -->
+  <dialog id="success-dialog" aria-labelledby="success-title" aria-describedby="success-message" class="rounded-2xl p-0 w-[calc(100%_-_2rem)] max-w-md border-0 shadow-2xl text-slate-900" style="max-height:90vh">
+    <div class="p-6 sm:p-8 text-center">
+      <div aria-hidden="true" class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600 text-2xl">✓</div>
+      <h2 id="success-title" class="text-2xl font-bold tracking-tight">Thank you for reaching out!</h2>
+      <p id="success-message" class="mt-4 text-sm leading-relaxed text-slate-600">We’ve received your request. Keep an eye on your inbox—we aim to email you within about an hour.</p>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">If you don’t see our email, please check your spam or junk folder. Response times may vary outside business hours.</p>
+      <p class="mt-4 text-sm font-medium text-slate-800">Thank you for your interest in Mirai Labs.</p>
+      <form method="dialog" class="mt-6"><button autofocus class="w-full rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700">Got it</button></form>
+    </div>
+  </dialog>
+  <style>#success-dialog::backdrop{background:rgba(15,23,42,.7);backdrop-filter:blur(4px)}</style>
 
   <footer class="bg-slate-900 text-slate-400 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs">
@@ -330,8 +338,7 @@
           throw new Error('Interest form endpoint is not configured');
         }
         document.getElementById('interest-modal').classList.add('hidden');
-        document.getElementById('success-toast').classList.remove('hidden');
-        setTimeout(() => document.getElementById('success-toast').classList.add('hidden'), 4000);
+        document.getElementById('success-dialog').showModal();
         e.target.reset();
       } catch (err) {
         alert('Could not send right now. Please try again or email us directly.');
