@@ -1,6 +1,6 @@
 // Public customer estimates only. Values are USD cents per vial by quantity tier.
 // Edit each size's [1, 2, 3-4, 5-9, 10+] rates here. No supplier costs are published.
-const miraiPriceVersion = '2026-10-02-live-catalog-review';
+const miraiPriceVersion = '2026-10-02-confirmed-sizes';
 const miraiPrices = {
   "retatrutide": {
     "5 mg/vial": [
@@ -800,6 +800,31 @@ const miraiPrices = {
       12255,
       10965,
       10320
+    ]
+  },
+  "aod-9604": {
+    "5 mg/vial": [
+      5400,
+      5400,
+      5130,
+      4590,
+      4320
+    ],
+    "10 mg/vial": [
+      6900,
+      6900,
+      6555,
+      5865,
+      5520
+    ]
+  },
+  "survodutide": {
+    "10 mg/vial": [
+      11400,
+      11400,
+      10830,
+      9690,
+      9120
     ]
   }
 };
