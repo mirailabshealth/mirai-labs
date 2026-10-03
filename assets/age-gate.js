@@ -299,3 +299,14 @@
     el('#mirai-account-status').textContent = error.message;
   }
 })();
+
+
+// Order policies are accessible on every page using this shared script.
+(function addMiraiPolicyLinks(){
+ const footer=document.querySelector('footer');
+ if(!footer||document.getElementById('mirai-policy-links'))return;
+ const nav=document.createElement('nav');nav.id='mirai-policy-links';
+ nav.setAttribute('aria-label','Order policies');nav.style.cssText='text-align:center;padding:18px;font:13px/1.6 system-ui';
+ nav.innerHTML='<a href="./policies.html#shipping">Shipping</a> · <a href="./policies.html#returns">Returns & refunds</a> · <a href="./policies.html#payments">Payments</a>';
+ footer.appendChild(nav);
+})();
