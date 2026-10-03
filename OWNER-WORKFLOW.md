@@ -36,3 +36,8 @@ Before enabling customer emails, run an owner-only mirai_test_payment_email() re
 Sent means accepted by Gmail's SMTP server; inbox arrival and bounces require checking Gmail. Failed/ambiguous deliveries must be inspected in Gmail Sent before a manual retry. There is no automatic resend after SMTP begins, preventing repeated payment requests on an uncertain network outcome. A customer could cancel/pay immediately after the final pre-send check; the portal remains the authoritative order status.
 
 Inventory is still mandatory for approval; no stock is invented. Public registration remains closed. The template tests run with node supabase/tests/payment_email.mjs. Database capability tests in supabase/tests/manual_payment_email.sql roll back all fixtures and send no emails.
+
+
+## Order numbers and customer payment reports (2026-10-03)
+Orders receive immutable unique MIR-prefixed sequence numbers. Number gaps are normal. Customer and owner order cards and payment emails use the full short number. Customers acknowledge instructions and submit their Cash App/Venmo transaction reference in the client portal. Reports are restricted to the customer's own approved unpaid order and visible to its customer and owners. Submission does not mark an order paid or create a commission. Owners must verify actual deposits independently. Missing-note corrections go to support.
+Live migration and rollback tests passed for unique numbers, immutable references, cross-account submission denial, required acknowledgment, duplicate submissions and unchanged payment/commission state.
