@@ -20,3 +20,19 @@ The migration supabase/migrations/20261002_inventory_workflow.sql is applied onc
 The repository root inventory-workflow-source.zip preserves this release's migration, tests, and these instructions. Extract it into the repository root when moving to CLI-based development. The optional Stripe/email adapter files in the working checkout were not activated or included in this manual-only release.
 
 Payment method labels are internal bookkeeping categories, not a claim that any named payment service approves this business. Public payment handles have not been configured.
+
+## Approved-order payment email (2026-10-03)
+
+The manual-payment-email function and 20261003_manual_payment_email.sql add a separate Gmail SMTP sender. The approval trigger queues exactly one manual_payment_instructions job per order. A database scheduler dispatches eligible jobs once per minute; delivery stays paused while commerce_settings.email_ready is false. Other existing notification kinds are not handled by this sender and remain inactive.
+
+Payment recipients: Cash App $mirailabshealth and Venmo business @mirailabshealth, both Mirai Labs. Zelle is omitted until recipient details are provided. All totals come from the approved database order; codes and affiliate commissions are not shown in the email. The email asks the customer to reply with payment method and transaction reference. Owners must still verify the actual deposit and record it in the portal. No payment API or automatic deposit verification is enabled.
+
+Required secret: MIRAI_SMTP_PASSWORD, the Gmail app password for mirai.labs.health@gmail.com. Save through Supabase Edge Function Secrets; never place it in repository files, SQL or chat. Gmail Auth SMTP settings are separate and do not populate Edge Function secrets.
+
+Deploy manual-payment-email with gateway JWT verification off because it authenticates one-use, five-minute job capabilities issued only by the private database scheduler. Every RPC that consumes a capability is service-role-only. The worker cannot accept caller-chosen recipients, order details, totals or payment handles. Generic requests and token replays cannot send mail.
+
+Before enabling customer emails, run an owner-only mirai_test_payment_email() request, inspect its delivery status and the TEST — DO NOT PAY message in the owner Gmail inbox. Set email_ready true only after the test is successful. This does not enable other commerce-worker adapters. Test jobs may run while customer delivery is paused.
+
+Sent means accepted by Gmail's SMTP server; inbox arrival and bounces require checking Gmail. Failed/ambiguous deliveries must be inspected in Gmail Sent before a manual retry. There is no automatic resend after SMTP begins, preventing repeated payment requests on an uncertain network outcome. A customer could cancel/pay immediately after the final pre-send check; the portal remains the authoritative order status.
+
+Inventory is still mandatory for approval; no stock is invented. Public registration remains closed. The template tests run with node supabase/tests/payment_email.mjs. Database capability tests in supabase/tests/manual_payment_email.sql roll back all fixtures and send no emails.
