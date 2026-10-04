@@ -20,7 +20,8 @@
   <style>body{font-family:'Inter',system-ui,sans-serif}</style>
 
 
-<script src="./analytics.js?v=20261004" defer></script></head>
+<script src="./analytics.js?v=20261004" defer></script><link rel="stylesheet" href="./vial-art.css?v=20261004">
+<script src="./vial-art.js?v=20261004"></script></head>
 <body class="bg-white text-slate-900 antialiased">
 
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
@@ -84,6 +85,7 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
     } else {
       document.title = `${p.name} — Mirai Labs 未来`;
       document.getElementById('content').innerHTML = `
+        <figure class="vial-detail-art">${window.miraiVial.render(p.name)}<figcaption class="vial-art-note">Product illustration · packaging may vary.<br>Choose your vial size in the account catalog.</figcaption></figure>
         <div class="text-sm font-medium text-red-600 mb-2">${p.categoryLabel}</div>
         <h1 class="text-3xl font-bold tracking-tight mb-3">${p.name}</h1>
         <p class="text-slate-600 text-lg mb-8">${p.shortDesc}</p>
@@ -107,7 +109,7 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
           </a>
         </div>
 
-        ${renderEvidence(p.id)}
+        <div class="vial-detail-clear"></div>${renderEvidence(p.id)}
 
         <div class="flex flex-wrap gap-2 mb-10">
           ${p.tags.map(t => `<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs">${t}</span>`).join('')}

@@ -1,0 +1,14 @@
+.mirai-vial{position:relative;width:100%;max-width:240px;aspect-ratio:2/3;margin:0 auto;container-type:inline-size;background:#fff;isolation:isolate}
+.mirai-vial-photo{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain}
+.mirai-vial-type{position:absolute;left:24%;top:50%;width:52%;height:18%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqw;text-align:center;color:#111;font-family:Georgia,'Times New Roman',serif;line-height:1.12}
+.mirai-vial-name{display:block;font-size:6.5cqw;font-weight:700;overflow-wrap:anywhere}
+.mirai-vial-name-long{font-size:5.4cqw}
+.mirai-vial-subtitle{display:block;font-size:3.6cqw;font-weight:400;line-height:1.15}
+.mirai-vial-amount{display:block;font-size:7cqw;font-weight:400;white-space:nowrap}
+.vial-product-art{background:#fff;border-radius:14px;padding:0 4px 10px;margin-bottom:14px}
+.vial-guide-art{display:block;padding:12px 8px 0;background:#fff;border-bottom:1px solid #f1f5f9}
+.vial-guide-art .mirai-vial{max-width:200px}
+.vial-detail-art{border:1px solid #e2e8f0;border-radius:20px;padding:20px;margin:0 0 26px;background:#fff}
+.vial-detail-art .mirai-vial{max-width:280px}
+.vial-art-note{display:block;text-align:center;font-family:Arial,sans-serif;font-size:10px;line-height:1.4;color:#64748b;margin:6px 0 0}
+@media(min-width:700px){.vial-detail-art{float:right;width:310px;margin:0 0 24px 30px}.vial-detail-clear{clear:both}}
