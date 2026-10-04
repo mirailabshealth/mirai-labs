@@ -46,3 +46,16 @@ Live migration and rollback tests passed for unique numbers, immutable reference
 ## Public account registration (2026-10-03)
 Registration is open. Email/password signup requires email confirmation (Supabase setting verified ON). After verification, account setup requires full name, phone, U.S. shipping address and laboratory/organization, plus 21+/research-use/policy acknowledgment. Saved shipping details prefill order requests and remain editable before submission. The backend blocks new orders from incomplete profiles and snapshots the contact phone onto each order. Phone is an unverified contact number, not SMS authentication or marketing consent. Owners can still access their owner workspace without a shipping profile; personal orders require completion. Top navigation includes Sign out. Registration does not imply product availability: actual inventory is still required for approval.
 Database profile validation tests passed in a rolled-back transaction. No fake customer or stock records were retained.
+
+
+## Support tickets (October 4, 2026)
+
+Open portal.html?view=support. Both existing owners see the owner support queue; clients and affiliates see only their own tickets. Select a ticket to read and reply. All replies are customer-visible. Status choices are Open, In review and Resolved. A customer reply reopens a resolved ticket; an owner reply moves it to In review.
+
+Owner replies automatically queue a customer email with the ticket number and a sign-in link. The email contains no message body, payment credentials or order details. Check Reply email delivery on the ticket for SMTP acceptance or errors. SMTP acceptance does not guarantee inbox delivery. If delivery is uncertain, check Gmail Sent before any manual follow-up. Status-only updates do not email the customer.
+
+Support never approves/cancels orders, records a payment, changes stock, or creates commission. Use the existing Owner portal controls for those actions. Direct email inquiries remain in Gmail, separate from portal tickets. Attachments are not uploaded in the portal; arrange relevant photos by business email.
+
+Limits: five new tickets and thirty messages per account per hour; messages up to 5,000 characters. Ticket numbers begin SUP-. Database access requires a verified account. New tickets/replies are idempotent for the same request key.
+
+Deployment: supabase/migrations/20261004_support.sql and separate support-email Edge Function. Legacy JWT verification is off because a DB-minted, one-use, five-minute capability authenticates each scheduled delivery. No customer can choose a recipient or invoke delivery RPCs. Existing manual-payment-email is unchanged.
