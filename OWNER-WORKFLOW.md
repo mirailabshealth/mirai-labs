@@ -90,3 +90,8 @@ Lifetime qualifying product revenue after discounts and refunds determines the r
 The server refreshes the rate when payments, refunds, payment review, and commission records change. New requests snapshot the earned rate. Existing requests and commissions retain their recorded percentage. Approving an affiliate activates their code; it does not select a manual rate. The affiliate portal shows lifetime progress, and the owner portal shows each affiliate’s current tier. This does not automate payouts or change order/payment approval.
 
 Migration and rollback-only database tests are in affiliate-tiers-source.zip.
+
+
+## One-time affiliate codes
+
+Affiliate applications now begin in the verified account portal (Affiliate tab). Applicants choose an available code once and acknowledge that it is permanent. Codes are normalized to uppercase, reserved atomically on successful application, and cannot be changed or transferred. Failed validation or duplicate attempts do not consume the choice. Owner approval activates the chosen code without an override field. Rejection/deactivation does not release the code. Existing commission milestones and order/payment approval are unchanged. Source migration and rollback-only tests are in affiliate-code-source.zip.
