@@ -82,9 +82,9 @@
           </div>
 
           <button id="request-btn" disabled class="w-full bg-slate-200 text-slate-400 py-3 rounded-full text-sm font-medium cursor-not-allowed transition">
-            Request Pricing &amp; Information
+            Review order in your account
           </button>
-          <p class="text-[11px] text-slate-400 mt-2 text-center">Submit your list for pricing confirmation and research information</p>
+          <p class="text-[11px] text-slate-400 mt-2 text-center">Continue to your account to confirm shipping, review the total, and submit for owner approval.</p>
           <p class="text-[11px] text-amber-700 mt-3 text-center leading-snug">Stacking notes are educational only. Consult a healthcare provider regarding any research compounds.</p>
         </div>
       </div>
@@ -98,52 +98,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Interest Modal -->
-  <div id="interest-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" id="modal-backdrop"></div>
-    <div class="relative bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl">
-      <h2 class="text-xl font-bold mb-1">Request Research Pricing &amp; Information</h2>
-      <p class="text-sm text-slate-500 mb-6">Submit your interest list for pricing confirmation and research information. Estimates are not a confirmed order.</p>
-      
-      <form id="interest-form" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-          <input type="text" id="form-name" required class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Your name">
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-          <input type="email" id="form-email" required class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="you@institution.edu">
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1">Selected compounds</label>
-          <div id="form-selected" style="white-space:pre-line" class="text-sm text-slate-600 bg-slate-50 rounded-xl px-3.5 py-2.5 border border-slate-100"></div>
-        </div>
-        <div class="mb-4"><label for="form-referral" class="block text-sm font-medium text-slate-700 mb-1.5">Referral code (optional)</label><input id="form-referral" maxlength="24" pattern="[A-Za-z0-9_-]{3,24}" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm" placeholder="Partner code"><p class="text-xs text-slate-500 mt-2">Enter a partner code to preview an additional 5% off after quantity savings. This estimate is conditional on code approval; the final quote confirms eligibility.</p></div>
-      <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1">Notes (optional)</label>
-          <textarea id="form-notes" rows="2" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Research focus or questions..."></textarea>
-        </div>
-        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-medium transition">
-          Submit Interest
-        </button>
-      <p class="text-xs text-slate-500 mt-4">Read our <a href="./privacy.html" target="_blank" rel="noopener">Privacy Policy</a> for how we handle submitted information.</p></form>
-      <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl leading-none">&times;</button>
-    </div>
-  </div>
-
-  <!-- Only shown after the request has been accepted successfully. -->
-  <dialog id="success-dialog" aria-labelledby="success-title" aria-describedby="success-message" class="rounded-2xl p-0 w-[calc(100%_-_2rem)] max-w-md border-0 shadow-2xl text-slate-900" style="max-height:90vh">
-    <div class="p-6 sm:p-8 text-center">
-      <div aria-hidden="true" class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600 text-2xl">✓</div>
-      <h2 id="success-title" class="text-2xl font-bold tracking-tight">Thank you for reaching out!</h2>
-      <p id="success-message" class="mt-4 text-sm leading-relaxed text-slate-600">We’ve received your request. Keep an eye on your inbox—we aim to email you within about an hour.</p>
-      <p class="mt-3 text-sm leading-relaxed text-slate-600">If you don’t see our email, please check your spam or junk folder. Response times may vary outside business hours.</p>
-      <p class="mt-4 text-sm font-medium text-slate-800">Thank you for your interest in Mirai Labs.</p>
-      <form method="dialog" class="mt-6"><button autofocus class="w-full rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-700">Got it</button><p class="text-xs text-slate-500 mt-4">Read our <a href="./privacy.html" target="_blank" rel="noopener">Privacy Policy</a> for how we handle submitted information.</p></form>
-    </div>
-  </dialog>
-  <style>#success-dialog::backdrop{background:rgba(15,23,42,.7);backdrop-filter:blur(4px)}</style>
 
   <footer class="bg-slate-900 text-slate-400 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs">
@@ -221,7 +175,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
     for (const id of selected) {
       if (!(vialSizes[id] || []).includes(selectedSizes[id])) selectedSizes[id] = '';
     }
-    function hasReferralEstimate() { return /^[A-Za-z0-9_-]{3,24}$/.test(document.getElementById('form-referral').value.trim()); }
+    function hasReferralEstimate() { return /^[A-Za-z0-9_-]{3,24}$/.test(new URLSearchParams(location.search).get('ref') || ''); }
     function interestSummary() {
       return selected.map(id => {
         const quantity = quantityFor(id);
@@ -355,71 +309,16 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
       renderPicker(e.target.value.toLowerCase().trim());
     });
 
-    document.getElementById('form-referral').addEventListener('input', () => { document.getElementById('form-selected').textContent = interestSummary(); });
-
     document.getElementById('request-btn').addEventListener('click', () => {
-      if (selected.length === 0) return;
-      for (const control of document.querySelectorAll('[data-quantity]')) {
-        if (!control.reportValidity()) return;
-      }
-      const referral=new URLSearchParams(window.location.search).get('ref')||'';
-      if(/^[A-Za-z0-9_-]{3,24}$/.test(referral)&&!document.getElementById('form-referral').value) document.getElementById('form-referral').value=referral.toUpperCase();
-      document.getElementById('form-selected').textContent = interestSummary();
-      document.getElementById('interest-modal').classList.remove('hidden');
-    });
-
-    document.getElementById('close-modal').addEventListener('click', () => {
-      document.getElementById('interest-modal').classList.add('hidden');
-    });
-    document.getElementById('modal-backdrop').addEventListener('click', () => {
-      document.getElementById('interest-modal').classList.add('hidden');
-    });
-
-    document.getElementById('interest-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const payload = {
-        name: document.getElementById('form-name').value,
-        email: document.getElementById('form-email').value,
-        peptides: interestSummary(),
-        vial_sizes: interestSummary(),
-        vial_quantities: selected.map(id => `${peptides.find(p => p.id === id).name}: ${quantityFor(id)}`).join('; '),
-        total_vials: selected.reduce((sum, id) => sum + quantityFor(id), 0),
-        pricing_version: miraiPriceVersion,
-        pricing_summary: interestSummary() + ' USD; shipping and tax excluded; final quote requires review.',
-        partner_offer_status: hasReferralEstimate() ? 'Provisional additional 5% after quantity discount; code not validated; approval required' : 'No partner discount requested',
-        referral_code: document.getElementById('form-referral').value.trim().toUpperCase(),
-        notes: document.getElementById('form-notes').value,
-        _subject: 'Mirai Labs research interest request'
-      };
-
-      // === CONNECT YOUR EMAIL HERE ===
-      // 1. Sign up free at https://formspree.io
-      // 2. Create a form and paste your endpoint below (looks like https://formspree.io/f/xxxxxxxx)
-      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgavjrrw';
-
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
-
+      if (!selected.length) return;
+      for (const control of document.querySelectorAll('[data-quantity]')) if (!control.reportValidity()) return;
+      const items = selected.map(id => ({compound_id:id, vial_size:selectedSizes[id] || '', quantity:quantityFor(id)}));
+      if (items.some(i => !i.vial_size)) { alert('Choose an amount per vial for every compound before continuing to order review.'); return; }
+      const ref = new URLSearchParams(location.search).get('ref') || '';
       try {
-        if (FORMSPREE_ENDPOINT) {
-          const res = await fetch(FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          if (!res.ok) throw new Error('Send failed');
-        } else {
-          throw new Error('Interest form endpoint is not configured');
-        }
-        document.getElementById('interest-modal').classList.add('hidden');
-        document.getElementById('success-dialog').showModal();
-        e.target.reset();
-      } catch (err) {
-        alert('Could not send right now. Please try again or email us directly.');
-        console.error(err);
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Interest'; }
-      }
+        localStorage.setItem('mirai_order_draft', JSON.stringify({version:1, id:crypto.randomUUID(), created_at:Date.now(), items, code:/^[A-Za-z0-9_-]{3,24}$/.test(ref)?ref.toUpperCase():''}));
+        location.href = 'portal.html?view=client&from=stack';
+      } catch { alert('Your browser could not save this selection. Please open My portal and add these items in the catalog.'); }
     });
 
     updateUI();
