@@ -118,7 +118,7 @@ evidence('igf-1-lr3','Animal study',
 'A 1996 rat experiment compared LR3IGF-I with IGF-I for growth and anti-catabolic effects and reported differences in potency and clearance.',
 'Rodent growth data do not establish safe human muscle gain. This analogue is distinct from approved pharmaceutical IGF-I formulations.',
 'Uncontrolled growth and glucose-related effects are important mechanistic concerns. Human interaction risks are not resolved by the cited animal study.',[study('8708565','1996: LR3IGF-I potency and clearance in rats')]);
-evidence('ghk-cu','Cell and animal studies',
+evidence('ghk-cu','Cell studies',
 'GHK-Cu is a copper-binding tripeptide studied in extracellular-matrix remodeling. Copper binding and fibroblast responses are research mechanisms, not proof of systemic rejuvenation.',
 'A 1988 cultured-fibroblast study investigated collagen synthesis. Later cell work examined matrix-remodeling enzymes and their inhibitors.',
 'Cellular collagen signals do not establish visible human skin improvement from injectable material. Route and formulation are essential distinctions.',
@@ -230,7 +230,7 @@ for (const id of ['glow','klow','bpc-tb','cjc-ipa']) {
 for (const p of peptides) {
   const e = researchEvidence[p.id];
   if (!e) throw new Error('Missing evidence profile: '+p.id);
-  p.mechanism=e.mechanism; p.keyFindings=e.findings; p.shortDesc=e.mechanism.split('. ')[0]+'.';
+  p.mechanism=e.mechanism; p.keyFindings=e.findings; p.shortDesc=e.mechanism.split('. ')[0].replace(/\.$/, '')+'.';
   p.researchFocus=[e.level, 'Study-specific findings and limitations', 'Combination evidence and overlapping pathways'];
   delete p.researchDoseNotes;
 }
