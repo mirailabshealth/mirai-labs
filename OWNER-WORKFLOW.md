@@ -59,3 +59,34 @@ Support never approves/cancels orders, records a payment, changes stock, or crea
 Limits: five new tickets and thirty messages per account per hour; messages up to 5,000 characters. Ticket numbers begin SUP-. Database access requires a verified account. New tickets/replies are idempotent for the same request key.
 
 Deployment: supabase/migrations/20261004_support.sql and separate support-email Edge Function. Legacy JWT verification is off because a DB-minted, one-use, five-minute capability authenticates each scheduled delivery. No customer can choose a recipient or invoke delivery RPCs. Existing manual-payment-email is unchanged.
+
+## Owner order alerts — 2026-10-04
+
+Stack Builder now saves its selection and opens the account order review. It no longer submits a separate Formspree inquiry. Customers must sign in, complete their shipping profile, review the server-calculated total and submit the request. The existing `mirai_request_v2` creates the order and queues one `owner_request` job in the same transaction. No payment is collected by this action.
+
+The owner dispatcher checks the queue every minute and sends alerts to **mirai.labs.health@gmail.com** through the existing Gmail sender. Each email includes the order number and an owner portal link. Sign-in is required to review or approve. The sender skips orders no longer awaiting approval and uses private expiring, one-use delivery capabilities. The fixed recipient cannot be supplied by a client. Support reply notifications continue using the same function's original route.
+
+Owner portal → Automation activity displays owner_request delivery state. `sent` means Gmail SMTP accepted the message, not confirmed inbox delivery. Failed or stale sending jobs require review; inspect Gmail Sent before retrying an uncertain delivery. Other legacy job kinds are not activated by this change. Keep Gmail notifications enabled on the owner's phone and check Spam when testing a new sender.
+
+Deployment source: `supabase/migrations/20261004_owner_order_alerts.sql`, `supabase/functions/support-email/index.ts`. Regression checks: `supabase/tests/owner_order_alerts.sql` runs in a rolled-back transaction and uses the real Reta 20 mg request path, including request deduplication, token checks and cancellation handling. It does not leave test orders or send emails.
+
+Approval still reserves actual recorded stock. Existing customer payment-instructions emails and manual Cash App/Venmo verification remain unchanged. The previous Stack Builder inquiry is not automatically converted into an order.
+
+## Standard shipping — October 3, 2026 (New York)
+
+Standard shipping is $15 per order, free at a product subtotal of $250 or more **after quantity and partner discounts, before tax**. U.S. delivery includes Puerto Rico. The account address form supports PR as the state/territory and urbanization in address line 2. The server also normalizes country PR to country US, region PR.
+
+`mirai_shipping_quote` obtains the existing authenticated product quote and adds shipping without changing its product total or affiliate commission basis. New `mirai_request_v2` requests store shipping against that server-calculated product subtotal. Owner approval enforces the same rate and retains the existing inventory reservation and payment-email workflow. Already approved/paid orders are not rewritten. Pending legacy requests receive the standard shipping rate at approval.
+
+Tax remains a required owner-reviewed amount before approval, with no automatic default to zero. Pending customer totals explicitly exclude unconfirmed tax. Tax registration and applicable product/destination treatment must be resolved separately; this change does not configure automatic tax collection.
+
+Regression: `supabase/tests/standard_shipping.sql` verifies $249.99/$250/$250.01, post-discount thresholds, Puerto Rico requests, null pending tax, rejection of shipping overrides, stock approval and the payment email's stored shipping amount. It rolls back all fixtures and sends no email.
+
+
+## Automatic affiliate commission tiers
+
+Lifetime qualifying product revenue after discounts and refunds determines the rate: 5% initially, 8% at $2,500, 12% at $10,000, 15% at $25,000, and 20% at $50,000. Only paid/shipped orders with a verified payment and a non-reversed commission entry count. Shipping, tax, self-purchases, and orders under payment review are excluded. Refunds or holds can reduce the current tier.
+
+The server refreshes the rate when payments, refunds, payment review, and commission records change. New requests snapshot the earned rate. Existing requests and commissions retain their recorded percentage. Approving an affiliate activates their code; it does not select a manual rate. The affiliate portal shows lifetime progress, and the owner portal shows each affiliate’s current tier. This does not automate payouts or change order/payment approval.
+
+Migration and rollback-only database tests are in affiliate-tiers-source.zip.
