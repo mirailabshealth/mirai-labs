@@ -68,6 +68,7 @@
   <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
 
   <script src="assets/data.js"></script>
+  <script src="research-evidence.js?v=20261004"></script>
   <script src="assets/pricing.js?v=20261002-confirmed-sizes"></script>
   <script src="assets/vial-sizes.js?v=20261002-confirmed-sizes"></script>
 <script>
@@ -162,34 +163,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
           </a>
         </div>
 
-        <section class="mb-10">
-          <h2 class="text-lg font-semibold mb-3">Mechanism of Interest</h2>
-          <p class="text-slate-600 leading-relaxed">${p.mechanism}</p>
-        </section>
-
-        <section class="mb-10">
-          <h2 class="text-lg font-semibold mb-3">Primary Research Focus Areas</h2>
-          <ul class="space-y-2">
-            ${p.researchFocus.map(f => `<li class="flex items-start gap-2 text-slate-600"><span class="text-red-500 mt-1">•</span>${f}</li>`).join('')}
-          </ul>
-        </section>
-
-        <section class="mb-10">
-          <h2 class="text-lg font-semibold mb-3">Key Findings from the Literature</h2>
-          <p class="text-slate-600 leading-relaxed">${p.keyFindings}</p>
-        </section>
-
-        ${p.researchDoseNotes ? `
-        <section class="mb-10">
-          <h2 class="text-lg font-semibold mb-3">Research Dose Context</h2>
-          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-            <p class="text-slate-600 leading-relaxed text-sm mb-4">${p.researchDoseNotes}</p>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 leading-relaxed">
-              <strong>Not a dosage recommendation.</strong> The ranges above reflect what has appeared in research literature or study protocols. They are provided for educational discussion only. They are not instructions for use, not medical advice, and not a suggestion that any compound should be used in humans. Always consult a qualified healthcare provider regarding any research compound.
-            </div>
-          </div>
-        </section>
-        ` : ''}
+        ${renderEvidence(p.id)}
 
         <div class="flex flex-wrap gap-2 mb-10">
           ${p.tags.map(t => `<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs">${t}</span>`).join('')}

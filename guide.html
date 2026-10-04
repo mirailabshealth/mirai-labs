@@ -52,9 +52,20 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="mb-10">
       <h1 class="text-3xl font-bold tracking-tight">Peptide Research Guide</h1>
-      <p class="text-slate-500 mt-1">Educational overviews of mechanisms, research focus areas, and key findings from the literature</p>
+      <p class="text-slate-500 mt-1">Explore mechanisms, study findings, safety uncertainties, and the evidence behind combinations.</p>
     </div>
 
+    <section class="mb-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8" aria-labelledby="evidence-guide-title">
+      <p class="text-xs uppercase tracking-widest font-semibold text-red-700 mb-2">Research literacy</p>
+      <h2 id="evidence-guide-title" class="text-2xl font-semibold mb-4">Understand the evidence before the claim.</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-600 leading-relaxed">
+        <div><h3 class="font-semibold text-slate-900 mb-2">Human trials</h3><p>Look for a comparison group, the population studied, the endpoint and the duration. A change in a hormone or biomarker is not necessarily a meaningful health benefit.</p></div>
+        <div><h3 class="font-semibold text-slate-900 mb-2">Cells &amp; animals</h3><p>These studies help explain mechanisms and generate hypotheses. Human cells grown in a laboratory are not a clinical trial, and animal results may not translate to people.</p></div>
+        <div><h3 class="font-semibold text-slate-900 mb-2">Combinations &amp; blends</h3><p>Separate studies of two ingredients do not prove their combination works. Direct combination evidence, duplicated ingredients and shared pathways must be evaluated separately.</p></div>
+      </div>
+      <p class="text-xs text-slate-500 mt-5">Selected primary studies and regulatory references reviewed October 3, 2026 (US Eastern). This is an educational overview, not a systematic review, medical advice, or instructions for use. Study formulations are not interchangeable with research products.</p>
+      <a href="stack.html" class="inline-block mt-5 font-semibold text-red-700 underline">Explore combination evidence →</a>
+    </section>
     <div class="flex flex-col lg:flex-row gap-10">
       <aside class="lg:w-56 flex-shrink-0">
         <div class="bg-slate-50 rounded-2xl border border-slate-100 p-5 sticky top-24">
@@ -90,6 +101,7 @@
   <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
 
   <script src="assets/data.js"></script>
+  <script src="research-evidence.js?v=20261004"></script>
   <script src="assets/pricing.js?v=20261002-confirmed-sizes"></script>
   <script>
     let currentCat = 'all', currentSearch = '';
@@ -107,7 +119,7 @@
         <a href="peptide.html?id=${p.id}" class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-red-200 hover:shadow-lg transition flex flex-col">
           <div class="p-5 flex-1 flex flex-col">
             <div class="text-[10px] font-semibold text-red-600 uppercase tracking-wider mb-1">${p.categoryLabel}</div>
-            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3><p class="text-sm font-semibold text-red-700 mt-2">${priceFrom(p.id)}</p><p class="text-xs text-slate-500 mt-1">Select size for estimate. Shipping and tax additional.</p>
+            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3><p class="text-xs font-medium text-slate-700 bg-slate-100 rounded-lg p-2 mt-3">${researchEscape(researchEvidence[p.id].level)}</p><p class="text-sm font-semibold text-red-700 mt-2">${priceFrom(p.id)}</p><p class="text-xs text-slate-500 mt-1">Select size for estimate. Shipping and tax additional.</p>
             <p class="text-xs text-slate-500 mt-2 line-clamp-3 flex-1">${p.shortDesc}</p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               ${p.tags.slice(0,3).map(t => `<span class="px-2 py-0.5 rounded-full bg-slate-50 text-slate-500 text-[10px]">${t}</span>`).join('')}

@@ -58,7 +58,7 @@
       <h1 class="text-3xl font-bold tracking-tight">Research Stack Builder</h1>
       <p class="text-slate-500 mt-1 max-w-2xl">Select any peptides you are interested in to explore research-based notes on mechanisms and combinations. This is an educational tool — not a recommendation for use.</p>
     <div class="mt-5 bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-900 max-w-2xl">
-      <strong>Important:</strong> Information about stacking or combining research compounds is provided for educational and scientific discussion only. It is not medical advice and does not recommend or encourage human use. Always consult a qualified healthcare provider before considering any research compound or combination. Research dose ranges on peptide pages are literature context only — not use instructions.
+      <strong>Important:</strong> Information about stacking or combining research compounds is provided for educational and scientific discussion only. It is not medical advice and does not recommend or encourage human use. Always consult a qualified healthcare provider before considering any research compound or combination. The notes distinguish direct studies from theoretical overlap. They do not establish physical mixing compatibility or dosing.
       <a href="about.html" class="underline font-medium ml-1">Read our Safety &amp; Research Considerations →</a>
     </div>
     </div>
@@ -78,7 +78,7 @@
           <div id="stack-note" class="hidden bg-white border border-slate-200 rounded-xl p-4 mb-4">
             <div class="text-xs font-semibold text-red-600 uppercase tracking-wider mb-1" id="note-title"></div>
             <p class="text-sm font-medium text-slate-800 mb-2" id="note-summary"></p>
-            <p class="text-xs text-slate-600 leading-relaxed" id="note-details"></p>
+            <p class="text-sm text-slate-600 leading-relaxed whitespace-pre-line" id="note-details"></p><details class="mt-4"><summary class="text-sm font-semibold cursor-pointer">Sources for this selection</summary><ul id="note-sources" class="space-y-2 text-xs mt-3"></ul></details>
           </div>
 
           <button id="request-btn" disabled class="w-full bg-slate-200 text-slate-400 py-3 rounded-full text-sm font-medium cursor-not-allowed transition">
@@ -153,6 +153,7 @@
   <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
 
   <script src="assets/data.js"></script>
+  <script src="research-evidence.js?v=20261004"></script>
   <script src="assets/pricing.js?v=20261002-confirmed-sizes"></script>
   <script src="assets/vial-sizes.js?v=20261002-confirmed-sizes"></script>
 <script>
@@ -295,6 +296,7 @@ function mountVialPicker(id, sizeInput, quantityInput, priceOutput) {
           document.getElementById('note-title').textContent = note.title;
           document.getElementById('note-summary').textContent = note.summary;
           document.getElementById('note-details').textContent = note.details;
+          document.getElementById('note-sources').innerHTML = researchSourceLinks(note.sources || []);
         }
       }
       refreshPrices();
