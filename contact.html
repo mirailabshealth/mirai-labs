@@ -50,42 +50,39 @@
     </div>
   </nav>
 
-  <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-bold tracking-tight mb-2">Contact</h1>
-    <p class="text-slate-500 mb-10">This is a demonstration site. The form below does not send real messages.</p>
-
-    <form class="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 space-y-5" onsubmit="event.preventDefault(); alert('Demo only — no message was sent.');">
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
-        <input type="text" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="Your name">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
-        <input type="email" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="you@institution.edu">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1.5">Subject</label>
-        <select class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white">
-          <option>General inquiry</option>
-          <option>COA / Testing question</option>
-          <option>Catalog question</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
-        <textarea rows="4" class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white" placeholder="Your message..."></textarea>
-      </div>
-      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-full font-medium transition">
-        Send Message (Demo)
-      </button>
-    </form>
-
-    <div class="mt-10 text-center text-sm text-slate-500">
-      <p>@mirailabs.health</p>
-      <p class="mt-2">For real research peptide suppliers, always verify licensing, testing documentation, and legal compliance in your jurisdiction.</p>
+  <main class="max-w-5xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+    <p class="text-red-600 text-sm font-semibold uppercase tracking-widest mb-4">Mirai Labs support</p>
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-tight">A clear answer starts with a conversation.</h1>
+    <p class="text-lg text-slate-600 mt-6 max-w-2xl">Questions about product documentation, an order or a delivery? Open a support ticket from your account and keep every reply in one place.</p>
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
+      <section class="rounded-2xl border border-slate-200 p-7 bg-slate-50">
+        <h2 class="text-2xl font-semibold">Your support portal</h2>
+        <p class="text-slate-600 mt-4">Sign in with your verified email to submit a ticket, link an order, read replies and check its status. Clients and affiliates use the same Support tab.</p>
+        <a href="./portal.html?view=support" class="block text-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold mt-6">Open support portal</a>
+        <p class="text-sm text-slate-500 mt-4">Each ticket receives a unique reference. We email you when our team replies. Please check your spam folder.</p>
+      </section>
+      <section class="rounded-2xl border border-slate-200 p-7">
+        <h2 class="text-2xl font-semibold">Need help accessing your account?</h2>
+        <p class="text-slate-600 mt-4">For sign-in problems or questions before registering, email us directly.</p>
+        <a href="mailto:mirai.labs.health@gmail.com" class="block text-red-700 font-semibold mt-5 break-words">mirai.labs.health@gmail.com</a>
+        <p class="text-sm text-slate-500 mt-4">Include your order or ticket number if available. Direct emails are handled separately and do not automatically create portal tickets.</p>
+      </section>
     </div>
-  </div>
+    <section class="mt-12"><h2 class="text-2xl font-semibold">How can we help?</h2>
+      <ul class="grid sm:grid-cols-2 gap-3 mt-5 text-slate-700">
+        <li class="rounded-xl border border-slate-200 p-4">General inquiries</li><li class="rounded-xl border border-slate-200 p-4">Product specifications & certificates of analysis</li>
+        <li class="rounded-xl border border-slate-200 p-4">Order or address change requests</li><li class="rounded-xl border border-slate-200 p-4">Payment verification questions</li>
+        <li class="rounded-xl border border-slate-200 p-4">Missing or undelivered shipments</li><li class="rounded-xl border border-slate-200 p-4">Incorrect or missing items</li>
+        <li class="rounded-xl border border-slate-200 p-4">Damaged shipments</li><li class="rounded-xl border border-slate-200 p-4">Product quality concerns</li>
+      </ul>
+    </section>
+    <div class="bg-slate-50 border-l-4 border-red-600 p-6 rounded-r-xl mt-10 text-sm text-slate-600 space-y-3">
+      <p><strong class="text-slate-900">For laboratory research only.</strong> We do not provide dosing, administration or human-use guidance.</p>
+      <p>Please do not send passwords, full payment credentials or medical information. For damage, retain packaging and photos so we can review the issue.</p>
+      <p>Submitting a ticket does not change or cancel an order. All requests remain subject to owner review and our <a class="text-red-700 underline" href="./policies.html">shipping, payment and return policies</a>.</p>
+      <p><a class="text-red-700 underline" href="./portal.html?view=client">View your orders</a> · <a class="text-red-700 underline" href="./privacy.html">Privacy Policy</a></p>
+    </div>
+  </main>
 
   <footer class="bg-slate-900 text-slate-400 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-xs">
@@ -93,6 +90,6 @@
       <p>© 2026 Mirai Labs 未来 — Science for a Brighter Tomorrow.</p>
     </div>
   <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
-<script src="assets/age-gate.js"></script>
+
 </body>
 </html>
