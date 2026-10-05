@@ -1,4 +1,4 @@
-/* Curated educational evidence. Reviewed 2026-10-04 UTC. No dosing guidance.
+/* Curated educational evidence. Initial review 2026-10-04 UTC; selected updates 2026-10-05 UTC. No dosing guidance.
    Evidence labels describe the cited studies, not an exhaustive systematic review.
    Product identity, formulation, route and study population limit applicability. */
 const researchEvidence = {};
@@ -58,16 +58,20 @@ evidence('adipotide','Nonhuman primate study',
 'A 2011 study in obese monkeys reported weight and metabolic changes after experimental treatment.',
 'Primate research is not proof of acceptable human risk or routine weight-management benefit.',
 'Renal toxicity was observed in the study. Potential tissue injury is a central limitation, not an incidental detail.',[study('22072637','2011: Adipose vascular targeting in obese primates')]);
-evidence('bpc-157','Cell and animal studies',
-'BPC-157 is studied in injury models involving cell migration, survival and repair-associated signaling. A single established clinical receptor mechanism has not been demonstrated by these experiments.',
-'A 2011 tendon explant/cell study reported increased tendon fibroblast migration and survival linked to FAK-paxillin signaling. Rat tendon-injury experiments have also investigated healing endpoints.',
-'Cells and surgically injured rats do not establish human tendon recovery, gastrointestinal treatment or faster recovery from training.',
-'FDA highlights inadequate human safety information. Pairing with TB-500 does not remove that uncertainty.',[study('21030672','2011: Tendon explants and fibroblast signaling'),study('14554208','2003: Rat Achilles tendon injury model'),safetySource]);
-evidence('tb-500','Identity and clinical evidence gap',
-'TB-500 is a commercial research name associated with thymosin-beta-4-related material. The LKKTETQ fragment and full-length thymosin beta-4 are different molecules; the exact sequence must be established before interpreting a study.',
-'FDA specifically discusses the LKKTETQ thymosin beta-4 fragment and identifies a lack of human exposure data in its review. Findings for full-length thymosin beta-4 cannot simply be assigned to this fragment.',
-'Without sequence-matched evidence, claims about tendon healing, actin regulation or recovery may refer to a different substance.',
-'Human safety and combined effects remain uncertain.',[safetySource]);
+evidence("bpc-157",
+"Preclinical findings; limited human reports",
+"BPC-157 is a synthetic 15-amino-acid peptide. Tendon-cell experiments found migration and survival signals associated with FAK-paxillin signaling; they did not establish a single clinical receptor or prove human tissue repair.",
+"A 2021 retrospective knee-pain report contacted 16 people: 11 of 12 given BPC-157 alone reported improvement, as did 3 of 4 given BPC-157 with material described as thymosin beta-4. There was no randomized comparator or objective demonstration of tissue repair. A 2024 bladder-symptom pilot included 12 women without a control group. A 2025 intravenous pilot involved only two previously exposed adults. FDA also reviewed a 2005 ulcerative-colitis randomized study reported only as a meeting abstract: 53 enrolled, 46 completed, and the between-group confidence interval crossed zero.",
+"Small uncontrolled symptom reports cannot separate treatment effects from placebo, natural recovery or other care. The ulcerative-colitis abstract is insufficient to establish efficacy. The knee combination report does not verify equivalence to a TB-500 fragment blend. Rat and dog pharmacokinetics showed a short intact-peptide half-life, but do not establish human absorption, oral bioavailability or duration. Several human reports share investigators; independent controlled replication is needed.",
+"Short follow-up and very small samples cannot establish safety or exclude uncommon harms. Human long-term safety and combination effects remain unresolved. BPC-157 has no FDA-approved drug product.",
+[{"url": "https://pubmed.ncbi.nlm.nih.gov/21030672/", "label": "2011: Tendon explants and fibroblast signaling"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/34324435/", "label": "2021: Retrospective knee-pain report (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/39325560/", "label": "2024: Uncontrolled bladder-symptom pilot (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/40131143/", "label": "2025: Two-person intravenous pilot (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/36588717/", "label": "2022: Rat and dog pharmacokinetics"}, {"url": "https://www.fda.gov/media/193343/download", "label": "FDA 2026: BPC-157 evidence review, including 2005 meeting abstract"}]);
+evidence("tb-500",
+"Uncertain product identity; no established human efficacy",
+"TB-500 is a commercial name, not a sufficient chemical specification. A 2012 analytical study identified Ac-LKKTETQ, an acetylated seven-amino-acid fragment, in a product sold under this name. This differs from unacetylated LKKTETQ and full-length 43-amino-acid thymosin beta-4. The sequence and modification of the Mirai batch have not been verified in this evidence review.",
+"In a 2024 fibroblast wound-assay study, parent TB-500 did not significantly improve the measured wound-healing outcome; a shorter metabolite, Ac-LKKTE, did. This is evidence against assuming the parent and metabolite have identical effects in that assay. FDA’s 2026 review did not identify human administration studies establishing efficacy or safety of the fragment.",
+"A cell wound assay is not human tendon healing. Full-length thymosin beta-4 findings cannot establish efficacy, actin effects or pharmacokinetics of an unverified fragment product. The negative assay does not resolve all possible biological effects, but must not be omitted from the evidence.",
+"Absence of cytotoxicity in one assay does not establish systemic safety. Human pharmacokinetics, long-term safety and combination risks are not established. TB-500 has no FDA-approved drug product.",
+[{"url": "https://pubmed.ncbi.nlm.nih.gov/22962027/", "label": "2012: Analytical identification of Ac-LKKTETQ (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/38382158/", "label": "2024: Parent TB-500 and metabolite wound assay (abstract reviewed)"}, {"url": "https://www.fda.gov/media/193349/download", "label": "FDA 2026: Thymosin beta-4 fragment evidence and safety gaps"}]);
 evidence('kpv','Cell and animal studies',
 'KPV is a three-amino-acid fragment of alpha-MSH. Experiments investigate inflammatory signaling and transport into intestinal cells through PepT1.',
 'A 2008 study reported anti-inflammatory effects in cell systems and mouse colitis models, including a role for PepT1-mediated uptake.',
@@ -88,11 +92,13 @@ evidence('ipamorelin','Preclinical receptor pharmacology',
 'The original 1998 pharmacology study compared hormone-release selectivity in experimental models.',
 'Selectivity in a laboratory model does not establish better sleep, muscle growth, fat loss or safety in a CJC-1295 combination.',
 'FDA flags limited safety information and serious events in an intravenous study; reported events alone do not establish causation.',[study('9849822','1998: Ipamorelin pharmacology'),safetySource]);
-evidence('cjc-1295','Related-molecule human study; identity mismatch',
-'GHRH analogues stimulate the pituitary growth-hormone-releasing-hormone receptor. Products called CJC-1295 without DAC must be distinguished from the long-acting DAC molecule.',
-'A 2006 healthy-adult study found prolonged GH and IGF-1 increases with long-acting CJC-1295. That study concerns the DAC form, not evidence of identical kinetics for the no-DAC catalog item.',
-'Published results for a differently modified peptide cannot establish the duration, efficacy or safety of this item. Hormone elevation is not itself a clinical benefit.',
-'FDA notes limited data and cardiovascular reactions for CJC-1295.',[study('16352683','2006: Long-acting CJC-1295 in healthy adults'),safetySource]);
+evidence("cjc-1295",
+"Human DAC studies do not validate the no-DAC item",
+"GHRH analogues stimulate pituitary growth-hormone-releasing-hormone receptors. The DAC modification enables albumin binding and prolonged exposure. A product called CJC-1295 without DAC must be chemically distinguished from the long-acting molecule; equivalence to modified GRF(1–29) requires a verified specification.",
+"Two 2006 randomized placebo-controlled healthy-adult studies lasted 28 and 49 days. Long-acting CJC-1295 increased GH and IGF-1 and had an estimated half-life of 5.8–8.1 days. These were endocrine measurements with the DAC molecule, not evidence of clinical benefit from the no-DAC catalog item.",
+"The DAC half-life cannot be assigned to a no-DAC peptide. Hormone increases do not prove muscle gain, improved sleep, injury recovery or longer life. These studies do not establish benefits or long-term safety of CJC no-DAC plus ipamorelin.",
+"No serious adverse reactions were reported in the published trials, but that does not mean no adverse effects. FDA’s appraisal describes reactions including injection-site effects, headache, flushing and hypotension. Long-term and combination risks remain uncertain. CJC-1295 has no FDA-approved drug product.",
+[{"url": "https://pubmed.ncbi.nlm.nih.gov/16352683/", "label": "2006: Two randomized long-acting CJC-1295 studies (abstract reviewed)"}, {"url": "https://www.fda.gov/media/183819/download", "label": "FDA 2024: CJC-1295 identities, clinical studies and safety appraisal"}]);
 evidence('tesamorelin','Human randomized trial',
 'Tesamorelin is a GHRH analogue that stimulates endogenous GH and downstream IGF-1 signaling. Effects on visceral fat differ from general weight reduction.',
 'A 2014 randomized trial in people with HIV and abdominal fat accumulation investigated visceral and liver fat, reporting reductions during six months of treatment.',
@@ -227,6 +233,7 @@ for (const id of ['glow','klow','bpc-tb','cjc-ipa']) {
     'Adding another blend or separate component can duplicate exposure. Combined toxicity, immunogenicity and long-term effects have not been established here.',
     [...new Map(parts.flatMap(x=>researchEvidence[x].sources).map(s=>[s.url,s])).values()]);
 }
+for (const id of ['bpc-157','tb-500','cjc-1295']) researchEvidence[id].reviewed='October 5, 2026 (UTC)';
 for (const p of peptides) {
   const e = researchEvidence[p.id];
   if (!e) throw new Error('Missing evidence profile: '+p.id);
@@ -244,11 +251,12 @@ function renderEvidence(id) {
   return `<section class="mb-8 border border-slate-200 rounded-2xl p-5 sm:p-7 bg-slate-50">
     <p class="text-xs font-semibold uppercase tracking-wider text-red-700 mb-2">Evidence in context</p>
     <h2 class="text-xl font-semibold mb-3">${researchEscape(e.level)}</h2>
-    <p class="text-xs text-slate-500">Source review: October 3, 2026 (US Eastern). Labels describe the cited evidence, not a systematic review or endorsement.</p>
+    <p class="text-xs text-slate-500">Source review: ${researchEscape(e.reviewed || 'October 3, 2026 (US Eastern)')}. Labels describe the cited evidence, not a systematic review or endorsement.</p>
   </section>
   ${[['What it does in research',e.mechanism],['What the cited studies found',e.findings],['What this does not establish',e.limits],['Safety and combination uncertainties',e.safety]].map(([h,t])=>`<section class="mb-8"><h2 class="text-lg font-semibold mb-3">${h}</h2><p class="text-slate-600 leading-relaxed">${researchEscape(t)}</p></section>`).join('')}
   ${components?`<section class="mb-8"><h2 class="text-lg font-semibold mb-3">Read the component evidence</h2><ul class="space-y-2">${components.map(x=>`<li><a class="text-red-700 underline" href="peptide.html?id=${x}">${researchEscape(peptides.find(p=>p.id===x).name)}</a></li>`).join('')}</ul></section>`:''}
   <section class="mb-8"><h2 class="text-lg font-semibold mb-3">Sources & further reading</h2><ul class="space-y-3 text-sm">${researchSourceLinks(e.sources)}</ul></section>
+  <section class="mb-8"><h2 class="text-lg font-semibold mb-3">What a certificate of analysis can establish</h2><p class="text-slate-600 leading-relaxed">Identity, chemical purity, amount per vial, biological potency, sterility, endotoxins and stability require appropriate, separate tests. A purity percentage alone does not establish the amount present, absence of microbes or endotoxins, or stability after storage. Results apply to the sampled batch and tested conditions; a COA does not prove clinical safety or effectiveness.</p><p class="mt-3 text-sm"><a class="text-red-700 underline" href="https://www.fda.gov/media/71510/download" target="_blank" rel="noopener noreferrer">FDA / ICH Q6B: analytical quality principles</a></p></section>
   <div class="mb-8 p-5 rounded-xl bg-amber-50 text-amber-950 text-sm leading-relaxed">Research summaries are not dosing, mixing or treatment instructions. A study of a pharmaceutical preparation does not establish equivalence of a research product. Selecting items together does not establish that they are safe or effective together.</div>`;
 }
 // Assess the entire selection, including ingredients inside blends; never hide extra selections.
@@ -269,7 +277,7 @@ getStackNote = function(ids) {
   if(unique.includes('cagrilintide')&&glp.some(x=>x!=='semaglutide'))notes.push('Amylin plus a different metabolic agonist: the semaglutide combination trial cannot establish results for cagrilintide with tirzepatide, retatrutide, survodutide or mazdutide.');
   const gh=unique.filter(x=>['cjc-1295','ipamorelin','sermorelin','tesamorelin','ghrp-2','ghrp-6','igf-1-lr3'].includes(x));
   if(gh.length>1)notes.push('GH/IGF pathway overlap: different receptors can converge on growth-hormone signaling. A small GHRH(1–29) plus GHRP-2 experiment showed greater acute GH release, not proven muscle, sleep or recovery benefit. It does not validate CJC no-DAC plus ipamorelin or the full selection.');
-  if(unique.includes('bpc-157')&&unique.includes('tb-500'))notes.push('BPC-157 plus TB-500: a repair-related rationale is not demonstrated synergy. BPC evidence here is preclinical, and TB-500 sequence may differ from the full-length thymosin beta-4 used in other research. Reliable human outcomes for this exact pair were not identified in the reviewed sources.');
+  if(unique.includes('bpc-157')&&unique.includes('tb-500'))notes.push('BPC-157 plus TB-500: a repair-related rationale is not demonstrated synergy. Small uncontrolled BPC human reports do not establish tissue repair. A four-person subgroup received material described as thymosin beta-4, without verified equivalence to this TB-500 fragment. Controlled clinical benefit for this exact pair was not established in the reviewed sources.');
   if(unique.includes('kpv')&&unique.includes('bpc-157'))notes.push('KPV plus BPC-157: inflammatory and repair signals have been investigated separately. The sources here do not establish improved human healing or gastrointestinal outcomes for the combination.');
   if(unique.includes('semax')&&unique.includes('selank'))notes.push('Semax plus Selank: studies examining the two separately or side by side are not trials proving that taking both improves cognition or anxiety. Combined effects and long-term safety remain unresolved.');
   if(unique.includes('pt-141')&&unique.includes('mt-2'))notes.push('Melanocortin overlap: PT-141 and melanotan-II share receptor-family activity. There is no demonstrated additive benefit here, and unwanted effects may overlap.');
