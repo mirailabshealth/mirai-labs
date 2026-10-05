@@ -50,7 +50,7 @@ as $$
 declare o public.mirai_orders;s mirai_private.commerce_settings;r record;l record;needed integer;take_n integer;free_n integer;
 begin
  if not mirai_private.is_admin() then raise exception 'Owner access required.';end if;
- select * into s from mirai_private.commerce_settings where id=1;
+ select * into s from mirai_private.commerce_settings where id;
  if s.provider<>'manual' and (not s.payments_ready or not s.email_ready) then raise exception 'Payment and email connections must be tested and enabled before approval.';end if;
  if p_shipping is null or p_tax is null or p_shipping<0 or p_tax<0 then raise exception 'Confirm shipping and tax amounts.';end if;
  select * into o from public.mirai_orders where id=p_order for update;
