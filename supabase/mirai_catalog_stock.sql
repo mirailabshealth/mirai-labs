@@ -8,16 +8,21 @@
 -- automatically as inventory changes. Until this function exists, the
 -- portal degrades gracefully (no badges, current behavior).
 --
--- ASSUMPTIONS — verify before running
--- 1. Inventory lots live in public.mirai_lots. If your lots table has a
---    different name, replace "mirai_lots" below.
--- 2. The table has columns: compound_id, vial_size, available, expires_on.
---    If "available" is not a real column (computed in the owner RPC instead),
---    replace sum(l.available) with sum(l.on_hand - l.reserved).
+-- READS FROM
+-- The owner inventory lots table. The owner RPC mirai_inventory() returns
+-- lots with (id, compound_id, vial_size, batch, on_hand, reserved,
+-- available, expires_on, low_stock, coa_url); this function aggregates the
+-- same underlying table for verified customers, exposing only totals.
+--
+-- !!! VERIFY THE TABLE NAME BEFORE RUNNING !!!
+-- This assumes the lots table is mirai_private.inventory_lots. Check in the
+-- dashboard: Table Editor -> schema dropdown -> mirai_private -> confirm the
+-- lots table name. If it differs, replace it in the query below before
+-- running. A wrong name fails loudly at creation time ("relation does not
+-- exist") and changes nothing.
 --
 -- HOW TO RUN
--- Supabase dashboard -> SQL editor -> paste -> Run. Or: supabase db push
--- if you use the CLI workflow.
+-- Supabase dashboard -> SQL editor -> paste -> Run.
 
 create or replace function public.mirai_catalog_stock()
 returns table (
@@ -28,20 +33,20 @@ returns table (
 language plpgsql
 stable
 security definer
-set search_path = public
+set search_path = ''
 as $$
 begin
   -- Same gate as the catalog itself: verified customers only.
   if not mirai_private.verified() then
-    raise exception 'not verified';
+    raise exception 'Please verify your email and sign in.';
   end if;
 
   return query
   select
     l.compound_id,
     l.vial_size,
-    sum(l.available)::integer as available
-  from public.mirai_lots as l
+    sum(greatest(l.on_hand - coalesce(l.reserved, 0), 0))::integer as available
+  from mirai_private.inventory_lots as l
   where l.expires_on is null
      or l.expires_on > current_date
   group by l.compound_id, l.vial_size;
