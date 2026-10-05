@@ -95,3 +95,12 @@ Migration and rollback-only database tests are in affiliate-tiers-source.zip.
 ## One-time affiliate codes
 
 Affiliate applications now begin in the verified account portal (Affiliate tab). Applicants choose an available code once and acknowledge that it is permanent. Codes are normalized to uppercase, reserved atomically on successful application, and cannot be changed or transferred. Failed validation or duplicate attempts do not consume the choice. Owner approval activates the chosen code without an override field. Rejection/deactivation does not release the code. Existing commission milestones and order/payment approval are unchanged. Source migration and rollback-only tests are in affiliate-code-source.zip.
+
+
+## Customer order emails — October 4, 2026
+
+New requests queue a customer confirmation with the MIR order number and instructions to wait for approval. Owner approval still queues the existing payment instructions. After the owner verifies payment and marks the order shipped with tracking, a shipping update is queued to the verified email of the account that owns the order.
+
+The customer-order dispatcher runs once per minute when email automation is enabled. The worker uses private, single-use delivery tokens and stable message IDs. Sent means accepted by Gmail, not guaranteed inbox delivery. Uncertain SMTP outcomes stop for owner review rather than automatically resending. Check Automation activity and Gmail Sent before retrying a failed notification. Older pending request/shipping jobs were skipped at activation; they are not sent retroactively.
+
+Deployment source: supabase/migrations/20261004_customer_order_emails.sql; supabase/functions/support-email/index.ts; supabase/tests/customer_order_emails.sql. After the worker deploys, schedule mirai-customer-order-email every minute to call mirai_private.dispatch_customer_order_emails(). This does not change order approval, stock reservation, payment verification, affiliate commissions, or payouts.
