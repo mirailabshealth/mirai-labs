@@ -5,17 +5,26 @@
 -- Returns one row per ACTIVE (compound_id, vial_size) in the catalog with the
 -- total AVAILABLE vials across unexpired lots. Items with no lots recorded
 -- (or only expired/fully-reserved lots) come back as 0, so the portal shows
--- "Out of stock" for anything with no inventory -- exactly what the badge is
--- for. The portal calls it on every catalog render and refreshes every
--- 60 seconds, so badges appear/disappear automatically as inventory changes.
--- Until this function exists, the portal degrades gracefully (no badges).
+-- "Out of stock" for anything with no inventory. The portal calls it on every
+-- catalog render and refreshes every 60 seconds, so badges appear/disappear
+-- automatically as inventory changes. Until this function exists, the portal
+-- degrades gracefully (no badges).
 --
--- READS FROM
--- The owner inventory lots table (mirai_private.stock_lots, confirmed in the
--- dashboard Table Editor). The owner RPC mirai_inventory() returns lots with
--- (id, compound_id, vial_size, batch, on_hand, reserved, available,
--- expires_on, low_stock, coa_url); this function aggregates the same
--- underlying table for verified customers, exposing only totals.
+-- HOW AVAILABLE IS COMPUTED
+-- Mirrors the owner mirai_inventory() RPC exactly: per lot,
+--   reserved  = sum(stock_allocations.quantity) where state in ('held','committed')
+--   available = on_hand - reserved   (floored at 0 here)
+-- Only unexpired lots (expires_on is null or in the future) count.
+-- Verified against the live database 2026-10-05: stock_lots has
+-- (id, compound_id, vial_size, batch, coa_url, expires_on, on_hand,
+--  low_stock, created_at) -- there is NO reserved column on the table.
+--
+-- SECURITY
+-- SECURITY DEFINER so it can read the private lots tables; the
+-- mirai_private.verified() gate means only signed-in, email-verified
+-- customers can call it (same gate as the catalog itself). EXECUTE is
+-- granted to `authenticated` only. It exposes totals per compound/size --
+-- no lot-level detail, no costs, no customer data.
 --
 -- HOW TO RUN
 -- Supabase dashboard -> SQL editor -> paste -> Run.
@@ -38,29 +47,44 @@ begin
   end if;
 
   return query
-  with lot_stock as (
+  with lot_avail as (
+    -- Per-lot available, same formula as mirai_inventory().
     select
+      l.id as lot_id,
       l.compound_id as cid,
       l.vial_size as vsz,
-      sum(greatest(l.on_hand - coalesce(l.reserved, 0), 0))::integer as avail
+      greatest(
+        l.on_hand - coalesce(sum(a.quantity) filter (where a.state in ('held','committed')), 0),
+        0
+      )::integer as avail
     from mirai_private.stock_lots as l
+    left join mirai_private.stock_allocations as a on a.lot_id = l.id
     where l.expires_on is null
        or l.expires_on > current_date
-    group by l.compound_id, l.vial_size
+    group by l.id, l.compound_id, l.vial_size, l.on_hand
+  ),
+  agg as (
+    -- Total available per compound/size across unexpired lots.
+    select
+      la.cid as acid,
+      la.vsz as avsz,
+      sum(la.avail)::integer as total_avail
+    from lot_avail as la
+    group by la.cid, la.vsz
   )
   -- Every active catalog item gets a row; missing lots mean zero available.
   select
     c.compound_id,
     c.vial_size,
-    coalesce(s.avail, 0) as available
+    coalesce(g.total_avail, 0) as available
   from (
     select distinct cat.compound_id, cat.vial_size
     from public.mirai_catalog as cat
     where cat.active is not false
   ) as c
-  left join lot_stock as s
-    on s.cid = c.compound_id
-   and s.vsz = c.vial_size;
+  left join agg as g
+    on g.acid = c.compound_id
+   and g.avsz = c.vial_size;
 end;
 $$;
 
