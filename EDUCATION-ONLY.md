@@ -5,6 +5,15 @@ new affiliate applications and referral promotions have been removed from its
 active public experience. Existing account sign-in and support remain available.
 Prior order and commission records remain private and are not deleted.
 
+## Production verification
+
+Applied to Supabase on October 11, 2026 (US Eastern; October 12 UTC).
+Verified five active protective triggers, zero visitor/client execute grants on
+the checked commerce and affiliate RPCs, zero queued payment instruction emails,
+and zero payment-email cron jobs. Website inline JavaScript parses; simulated
+client, affiliate, profile and support routes render without sales forms.
+The public guide and closed affiliate page were checked on the deployed site.
+
 ## Deployment
 
 GitHub Pages publishes the HTML and shared navigation changes. It does not deploy
