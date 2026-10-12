@@ -21,7 +21,7 @@
 
 
 <script src="./analytics.js?v=20261004" defer></script></head>
-<body class="bg-white text-slate-900 antialiased">
+<body class="bg-white text-slate-900 antialiased"><aside style="padding:12px 20px;background:#172033;color:white;text-align:center;font:13px/1.6 system-ui" aria-label="Website status">Mirai Labs is currently an educational website. Product sales, checkout and affiliate applications are closed. Information is not medical advice.</aside>
 
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
     <span class="text-red-400 font-medium">FOR RESEARCH & EDUCATIONAL USE ONLY</span>
@@ -79,8 +79,8 @@
             <p class="text-sm text-slate-600 leading-relaxed whitespace-pre-line" id="note-details"></p><details class="mt-4"><summary class="text-sm font-semibold cursor-pointer">Sources for this selection</summary><ul id="note-sources" class="space-y-2 text-xs mt-3"></ul></details>
           </div>
 
-          <a id="start-researching" href="portal.html?view=client" class="block text-center w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full text-sm font-medium transition">Start researching</a>
-          <p class="text-xs text-slate-500 mt-3 text-center">Open the client catalog to choose vial sizes and quantities and submit an order request. Your research list is for learning only.</p>
+          <a id="start-researching" href="guide.html" class="block text-center w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full text-sm font-medium transition">Explore the research guide</a>
+          <p class="text-xs text-slate-500 mt-3 text-center">Compare published research. A research list is not evidence that a combination is safe or effective.</p>
           <p class="text-[11px] text-amber-700 mt-3 text-center leading-snug">Stacking notes are educational only. Consult a healthcare provider regarding any research compounds.</p>
         </div>
       </div>
@@ -174,7 +174,7 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
     });
 
     const referral = new URLSearchParams(location.search).get('ref') || '';
-    if (/^[A-Za-z0-9_-]{3,24}$/.test(referral)) document.getElementById('start-researching').href = 'portal.html?view=client&ref=' + encodeURIComponent(referral);
+
 
     updateUI();
     renderPicker();

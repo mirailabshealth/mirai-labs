@@ -20,9 +20,9 @@
   <style>body{font-family:'Inter',system-ui,sans-serif}</style>
 
 
-<script src="./analytics.js?v=20261004" defer></script><link rel="stylesheet" href="./vial-art.css?v=20261004">
-<script src="./vial-art.js?v=20261004"></script></head>
-<body class="bg-white text-slate-900 antialiased">
+<script src="./analytics.js?v=20261004" defer></script>
+</head>
+<body class="bg-white text-slate-900 antialiased"><aside style="padding:12px 20px;background:#172033;color:white;text-align:center;font:13px/1.6 system-ui" aria-label="Website status">Mirai Labs is currently an educational website. Product sales, checkout and affiliate applications are closed. Information is not medical advice.</aside>
 
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
     <span class="text-red-400 font-medium">FOR RESEARCH & EDUCATIONAL USE ONLY</span>
@@ -85,7 +85,7 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
     } else {
       document.title = `${p.name} — Mirai Labs 未来`;
       document.getElementById('content').innerHTML = `
-        <figure class="vial-detail-art">${window.miraiVial.render(p.name)}<figcaption class="vial-art-note">Product illustration · packaging may vary.<br>Choose your vial size in the account catalog.</figcaption></figure>
+        
         <div class="text-sm font-medium text-red-600 mb-2">${p.categoryLabel}</div>
         <h1 class="text-3xl font-bold tracking-tight mb-3">${p.name}</h1>
         <p class="text-slate-600 text-lg mb-8">${p.shortDesc}</p>
@@ -100,7 +100,7 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
 
 
         <div class="flex flex-wrap gap-3">
-          <a href="portal.html?view=client" class="bg-slate-900 hover:bg-slate-700 text-white px-6 py-3 rounded-full text-sm font-medium transition">Start researching</a>
+          <a href="guide.html" class="bg-slate-900 hover:bg-slate-700 text-white px-6 py-3 rounded-full text-sm font-medium transition">Explore the research guide</a>
           <a id="add-research-list" href="stack.html" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full text-sm font-medium transition">
             Compare research
           </a>

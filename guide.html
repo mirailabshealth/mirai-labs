@@ -18,9 +18,9 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>body{font-family:'Inter',system-ui,sans-serif}</style>
-<script src="./analytics.js?v=20261004" defer></script><link rel="stylesheet" href="./vial-art.css?v=20261004">
-<script src="./vial-art.js?v=20261004"></script></head>
-<body class="bg-white text-slate-900 antialiased">
+<script src="./analytics.js?v=20261004" defer></script>
+</head>
+<body class="bg-white text-slate-900 antialiased"><aside style="padding:12px 20px;background:#172033;color:white;text-align:center;font:13px/1.6 system-ui" aria-label="Website status">Mirai Labs is currently an educational website. Product sales, checkout and affiliate applications are closed. Information is not medical advice.</aside>
 
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
     <span class="text-red-400 font-medium">FOR RESEARCH & EDUCATIONAL USE ONLY</span>
@@ -103,7 +103,7 @@
 
   <script src="assets/data.js?v=20261005"></script>
   <script src="research-evidence.js?v=20261005"></script>
-  <script src="assets/pricing.js?v=20261002-confirmed-sizes"></script>
+  
   <script>
     let currentCat = 'all', currentSearch = '';
     const params = new URLSearchParams(window.location.search);
@@ -118,10 +118,10 @@
       document.getElementById('result-count').textContent = filtered.length;
       document.getElementById('peptide-grid').innerHTML = filtered.map(p => `
         <a href="peptide.html?id=${p.id}" class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-red-200 hover:shadow-lg transition flex flex-col">
-          <div class="vial-guide-art">${window.miraiVial.render(p.name)}<span class="vial-art-note">Product illustration</span></div>
+          
           <div class="p-5 flex-1 flex flex-col">
             <div class="text-[10px] font-semibold text-red-600 uppercase tracking-wider mb-1">${p.categoryLabel}</div>
-            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3><p class="text-xs font-medium text-slate-700 bg-slate-100 rounded-lg p-2 mt-3">${researchEscape(researchEvidence[p.id].level)}</p><p class="text-sm font-semibold text-red-700 mt-2">${priceFrom(p.id)}</p><p class="text-xs text-slate-500 mt-1">Select size for estimate. Shipping and tax additional.</p>
+            <h3 class="font-semibold text-slate-900 group-hover:text-red-600 transition">${p.name}</h3><p class="text-xs font-medium text-slate-700 bg-slate-100 rounded-lg p-2 mt-3">${researchEscape(researchEvidence[p.id].level)}</p>
             <p class="text-xs text-slate-500 mt-2 line-clamp-3 flex-1">${p.shortDesc}</p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               ${p.tags.slice(0,3).map(t => `<span class="px-2 py-0.5 rounded-full bg-slate-50 text-slate-500 text-[10px]">${t}</span>`).join('')}
