@@ -10,13 +10,13 @@ function evidence(id, level, mechanism, findings, limits, safety, sources) {
 }
 evidence('retatrutide','Human randomized trial',
 'This investigational multi-receptor agonist activates GLP-1, GIP and glucagon receptors. These signals influence appetite, glucose handling and energy metabolism; receptor activity alone does not establish a clinical benefit.',
-'A 2023 phase 2 obesity trial followed adults for 48 weeks. Mean weight reduction reached 24.2% in the highest studied group. This was an individual-drug trial, not a trial of adding retatrutide to other weight-management peptides.',
+'A 2023 randomized placebo-controlled phase 2 trial enrolled 338 adults with obesity or overweight. At 48 weeks, mean weight reduction reached 24.2% in the highest studied group versus 2.1% with placebo. This was an individual-drug trial, not a trial of adding retatrutide to other weight-management peptides.',
 'Phase 2 results cannot establish long-term outcomes or predict results for a particular person. Percentages from separate trials should not be treated as head-to-head comparisons.',
 'Gastrointestinal adverse effects and increased heart rate were reported. Combining it with another GLP-1-active compound introduces overlapping pharmacology without established benefit in the studies cited.',[study('37366315','2023: Retatrutide phase 2 obesity trial')]);
 evidence('tirzepatide','Human randomized trial',
 'Tirzepatide activates GIP and GLP-1 receptors, affecting glucose-dependent insulin secretion and appetite. A dual-action molecule is not the same as mixing two separately supplied products.',
 'SURMOUNT-1 (2022) studied 2,539 adults with obesity or overweight without diabetes over 72 weeks. The highest studied group had a mean 20.9% weight reduction versus 3.1% with placebo, with lifestyle intervention in both groups.',
-'These findings concern the trial formulation and population. They do not establish equivalence of research vials or arbitrary combinations.',
+'These findings concern the trial formulation and population. They do not establish equivalence of experimental preparations or arbitrary combinations.',
 'Gastrointestinal effects were common. FDA states that Zepbound should not be combined with another tirzepatide product or a GLP-1 receptor agonist.',[study('35658024','2022: SURMOUNT-1'),glpSource]);
 evidence('semaglutide','Human randomized trial',
 'Semaglutide activates the GLP-1 receptor, influencing appetite, insulin and glucagon signaling, and gastric emptying.',
@@ -25,13 +25,13 @@ evidence('semaglutide','Human randomized trial',
 'Nausea and diarrhea were common trial adverse effects. Adding other appetite- or GLP-1-active agents may compound tolerability problems; the magnitude of an untested interaction is unknown.',[study('33567185','2021: STEP 1 trial')]);
 evidence('cagrilintide','Human randomized trial',
 'Cagrilintide is a long-acting amylin analogue studied for satiety signaling. Amylin and GLP-1 act through different receptors, providing a rationale for research on the pair, not proof that any combination is safe.',
-'A 2021 randomized phase 2 trial in adults with overweight or obesity found greater weight reduction with cagrilintide than placebo over 26 weeks.',
+'A 2021 randomized phase 2 trial assigned 706 adults with overweight or obesity across cagrilintide, liraglutide and placebo groups. Over 26 weeks, estimated weight reduction across cagrilintide groups was 6.0–10.8%, versus 3.0% with placebo in the trial-product estimand.',
 'Monotherapy evidence and cagrilintide-semaglutide trial evidence answer different questions. Neither establishes outcomes when cagrilintide is added to retatrutide or tirzepatide.',
 'Gastrointestinal adverse effects were reported. Combination-related nausea or reduced intake must be evaluated directly rather than assumed to be acceptable.',[study('34798060','2021: Cagrilintide phase 2 trial')]);
 evidence('cagrisema','Direct human combination trial',
 'CagriSema refers to coadministration of cagrilintide and semaglutide, combining amylin-related satiety signaling with GLP-1 receptor agonism.',
 'REDEFINE 1 (2025) randomized 3,417 adults with overweight or obesity without diabetes. At 68 weeks, the treatment-policy analysis estimated mean weight change of −20.4% with the combination versus −3.0% with placebo. Gastrointestinal adverse events occurred in 79.6% versus 39.9%.',
-'The trial tested controlled study medicines and a defined protocol. A catalog blend is not shown to have the same identity, stability, bioavailability or outcomes. This trial does not validate additional compounds.',
+'The trial tested controlled study medicines and a defined protocol. A differently prepared blend is not shown to have the same identity, stability, bioavailability or outcomes. This trial does not validate additional compounds.',
 'Adding semaglutide or cagrilintide separately duplicates a component. Adding another GLP-1-active compound creates further overlap.',[study('40544433','2025: REDEFINE 1 combination trial')]);
 evidence('survodutide','Human randomized trial',
 'Survodutide activates GLP-1 and glucagon receptors. Research examines the balance between appetite, energy expenditure and glucose regulation.',
@@ -67,7 +67,7 @@ evidence("bpc-157",
 [{"url": "https://pubmed.ncbi.nlm.nih.gov/21030672/", "label": "2011: Tendon explants and fibroblast signaling"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/34324435/", "label": "2021: Retrospective knee-pain report (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/39325560/", "label": "2024: Uncontrolled bladder-symptom pilot (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/40131143/", "label": "2025: Two-person intravenous pilot (abstract reviewed)"}, {"url": "https://pubmed.ncbi.nlm.nih.gov/36588717/", "label": "2022: Rat and dog pharmacokinetics"}, {"url": "https://www.fda.gov/media/193343/download", "label": "FDA 2026: BPC-157 evidence review, including 2005 meeting abstract"}]);
 evidence("tb-500",
 "Uncertain product identity; no established human efficacy",
-"TB-500 is a commercial name, not a sufficient chemical specification. A 2012 analytical study identified Ac-LKKTETQ, an acetylated seven-amino-acid fragment, in a product sold under this name. This differs from unacetylated LKKTETQ and full-length 43-amino-acid thymosin beta-4. The sequence and modification of the Mirai batch have not been verified in this evidence review.",
+"TB-500 is a commercial name, not a sufficient chemical specification. A 2012 analytical study identified Ac-LKKTETQ, an acetylated seven-amino-acid fragment, in a product sold under this name. This differs from unacetylated LKKTETQ and full-length 43-amino-acid thymosin beta-4. The name alone does not establish the sequence or modification of a particular material.",
 "In a 2024 fibroblast wound-assay study, parent TB-500 did not significantly improve the measured wound-healing outcome; a shorter metabolite, Ac-LKKTE, did. This is evidence against assuming the parent and metabolite have identical effects in that assay. FDA’s 2026 review did not identify human administration studies establishing efficacy or safety of the fragment.",
 "A cell wound assay is not human tendon healing. Full-length thymosin beta-4 findings cannot establish efficacy, actin effects or pharmacokinetics of an unverified fragment product. The negative assay does not resolve all possible biological effects, but must not be omitted from the evidence.",
 "Absence of cytotoxicity in one assay does not establish systemic safety. Human pharmacokinetics, long-term safety and combination risks are not established. TB-500 has no FDA-approved drug product.",
@@ -93,16 +93,16 @@ evidence('ipamorelin','Preclinical receptor pharmacology',
 'Selectivity in a laboratory model does not establish better sleep, muscle growth, fat loss or safety in a CJC-1295 combination.',
 'FDA flags limited safety information and serious events in an intravenous study; reported events alone do not establish causation.',[study('9849822','1998: Ipamorelin pharmacology'),safetySource]);
 evidence("cjc-1295",
-"Human DAC studies do not validate the no-DAC item",
+"Human DAC studies do not validate the no-DAC terminology",
 "GHRH analogues stimulate pituitary growth-hormone-releasing-hormone receptors. The DAC modification enables albumin binding and prolonged exposure. A product called CJC-1295 without DAC must be chemically distinguished from the long-acting molecule; equivalence to modified GRF(1–29) requires a verified specification.",
-"Two 2006 randomized placebo-controlled healthy-adult studies lasted 28 and 49 days. Long-acting CJC-1295 increased GH and IGF-1 and had an estimated half-life of 5.8–8.1 days. These were endocrine measurements with the DAC molecule, not evidence of clinical benefit from the no-DAC catalog item.",
+"Two 2006 randomized placebo-controlled healthy-adult studies lasted 28 and 49 days. Long-acting CJC-1295 increased GH and IGF-1 and had an estimated half-life of 5.8–8.1 days. These were endocrine measurements with the DAC molecule, not evidence of clinical benefit from the no-DAC material.",
 "The DAC half-life cannot be assigned to a no-DAC peptide. Hormone increases do not prove muscle gain, improved sleep, injury recovery or longer life. These studies do not establish benefits or long-term safety of CJC no-DAC plus ipamorelin.",
 "No serious adverse reactions were reported in the published trials, but that does not mean no adverse effects. FDA’s appraisal describes reactions including injection-site effects, headache, flushing and hypotension. Long-term and combination risks remain uncertain. CJC-1295 has no FDA-approved drug product.",
 [{"url": "https://pubmed.ncbi.nlm.nih.gov/16352683/", "label": "2006: Two randomized long-acting CJC-1295 studies (abstract reviewed)"}, {"url": "https://www.fda.gov/media/183819/download", "label": "FDA 2024: CJC-1295 identities, clinical studies and safety appraisal"}]);
 evidence('tesamorelin','Human randomized trial',
 'Tesamorelin is a GHRH analogue that stimulates endogenous GH and downstream IGF-1 signaling. Effects on visceral fat differ from general weight reduction.',
-'A 2014 randomized trial in people with HIV and abdominal fat accumulation investigated visceral and liver fat, reporting reductions during six months of treatment.',
-'Disease-specific pharmaceutical evidence does not establish general anti-aging benefit or equivalence of research vials. Reduced visceral fat is not the same endpoint as lower body weight.',
+'A 2014 double-blind placebo-controlled trial enrolled 50 adults with HIV and abdominal fat accumulation for six months. The between-group effect on visceral fat area was −42 cm² (95% confidence interval −71 to −14). Liver-fat measurements also decreased. These are imaging outcomes in a specific population.',
+'Disease-specific pharmaceutical evidence does not establish general anti-aging benefit or equivalence of experimental preparations. Reduced visceral fat is not the same endpoint as lower body weight.',
 'The GH/IGF axis affects glucose regulation and tissue growth. Adding GH secretagogues increases pathway overlap without establishing improved clinical outcomes.',[study('25038357','2014: Tesamorelin trial in HIV-associated abdominal adiposity')]);
 evidence('sermorelin','Human hormone-response study',
 'Sermorelin corresponds to the active GHRH(1–29) amide fragment and stimulates pituitary GH release.',
@@ -136,7 +136,7 @@ evidence('ahk-cu','Human tissue ex vivo and cell study',
 'Systemic safety and useful combinations cannot be inferred from an ex vivo experiment.',[study('17703734','2007: AHK-Cu in isolated follicles and cultured cells')]);
 evidence('snap-8','Identity reference; efficacy evidence gap',
 'SNAP-8 is a name used for acetyl octapeptide-3, a cosmetic research peptide. Its chemical identity should be distinguished from acetyl hexapeptide products and botulinum toxin.',
-'The linked PubChem record supports compound identity. This review did not locate a robust, independently replicated clinical study establishing the effects of the exact catalog material.',
+'The linked PubChem record supports compound identity. This review did not locate a robust, independently replicated clinical study establishing the effects of the exact molecule and formulation.',
 'An identity database is not an efficacy study. Claims such as a predictable reduction in wrinkles or equivalence to a medical procedure are not established here.',
 'Cosmetic marketing does not establish injectable safety or safety in a blend.',[{url:'https://pubchem.ncbi.nlm.nih.gov/compound/Snap-8',label:'PubChem: SNAP-8 identity record (not an efficacy trial)'}]);
 evidence('matrixyl','Human topical formulation trial',
@@ -156,8 +156,8 @@ evidence('mots-c','Cell and animal studies',
 'FDA identifies a lack of human drug-exposure data in its review.',[study('25738459','2015: MOTS-c metabolic homeostasis in experimental models'),safetySource]);
 evidence('ss-31','Human randomized trial; indication-specific approval',
 'SS-31, or elamipretide, interacts with mitochondrial cardiolipin. Research examines whether this changes mitochondrial membrane function and energy production.',
-'MMPOWER-3 (2023) did not demonstrate significant improvement in its primary exercise/fatigue endpoints in primary mitochondrial myopathy. Separately, FDA granted accelerated approval in 2025 to Forzinity for muscle strength in Barth syndrome in patients weighing at least 30 kg.',
-'Different mitochondrial diseases are not interchangeable. The Barth approval requires confirmatory evidence and does not establish an anti-aging benefit or approval of research vials.',
+'MMPOWER-3 (2023), a 24-week placebo-controlled trial in 218 participants, did not demonstrate significant improvement in its primary exercise/fatigue endpoints in primary mitochondrial myopathy. Separately, FDA granted accelerated approval in 2025 to Forzinity for muscle strength in Barth syndrome in patients weighing at least 30 kg.',
+'Different mitochondrial diseases are not interchangeable. A negative controlled trial in primary mitochondrial myopathy must not be hidden by claims about a different disease. The Barth approval requires confirmatory evidence and does not establish an anti-aging benefit or approval of experimental preparations.',
 'Injection-site reactions are reported with the pharmaceutical product. Combining with NAD+ or MOTS-c lacks demonstrated benefit in the sources reviewed.',[study('37268435','2023: MMPOWER-3 randomized trial'),{url:'https://www.fda.gov/news-events/press-announcements/fda-grants-accelerated-approval-first-treatment-barth-syndrome',label:'FDA 2025: Forzinity accelerated approval and required confirmation'}]);
 evidence('nad','Small human metabolism pilot',
 'NAD+ is a coenzyme, not a peptide. It participates in electron transfer and is used by enzymes involved in cell signaling and repair.',
@@ -227,18 +227,23 @@ const blendComponents = {
 for (const id of ['glow','klow','bpc-tb','cjc-ipa']) {
   const parts = blendComponents[id];
   evidence(id,'Combination evidence gap',
-    'This blend combines '+parts.map(x=>peptides.find(p=>p.id===x).name).join(', ')+'. Individual mechanisms are described in the linked component profiles.',
+    'For this educational comparison, the name refers to '+parts.map(x=>peptides.find(p=>p.id===x).name).join(', ')+'. These names are not standardized formulations; composition and ratios must not be assumed from a label. Individual mechanisms are described in the linked component profiles.',
     'No controlled human study establishing clinical benefit of this exact blend was identified in the sources reviewed. The references below concern individual components or related experimental pathways, not validation of the finished blend.',
     'Different mechanisms do not prove synergy. Sequence, ratios, stability and route can change the result; a blend does not inherit the efficacy of its components.',
     'Adding another blend or separate component can duplicate exposure. Combined toxicity, immunogenicity and long-term effects have not been established here.',
     [...new Map(parts.flatMap(x=>researchEvidence[x].sources).map(s=>[s.url,s])).values()]);
 }
+// New combination study: abstract reviewed 2026-10-12; chemical equivalence is unresolved.
+const tendon2026=study('42542926','2026: Rat Achilles repair comparison; abstract reviewed, molecular specification requires full-text appraisal');
+const tendonNote='A 2026 exploratory study randomized 32 male rats across control, BPC-157, material described as synthetic thymosin beta-4 (TB-500), and the combination for four weeks after tendon repair. The TB-500 group showed a biomechanical advantage versus control; the combination did not add benefit over the individual agents. The abstract does not resolve equivalence to the acetylated TB-500 fragment. This is animal evidence, not human recovery evidence.';
+for(const id of ['bpc-157','tb-500','bpc-tb']){researchEvidence[id].findings+=' '+tendonNote;researchEvidence[id].sources.push(tendon2026);}
 for (const id of ['bpc-157','tb-500','cjc-1295']) researchEvidence[id].reviewed='October 5, 2026 (UTC)';
+for(const id of ['retatrutide','cagrilintide','tesamorelin','ss-31'])researchEvidence[id].reviewed='October 12, 2026 (selected sources; not a systematic search)';
 for (const p of peptides) {
   const e = researchEvidence[p.id];
   if (!e) throw new Error('Missing evidence profile: '+p.id);
   p.mechanism=e.mechanism; p.keyFindings=e.findings; p.shortDesc=e.mechanism.split('. ')[0].replace(/\.$/, '')+'.';
-  p.researchFocus=[e.level, 'Study-specific findings and limitations', 'Combination evidence and overlapping pathways'];
+  p.researchFocus=p.tags.slice(0,3).map(t=>t+' research');
   delete p.researchDoseNotes;
 }
 function researchEscape(value) { return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -253,10 +258,10 @@ function renderEvidence(id) {
     <h2 class="text-xl font-semibold mb-3">${researchEscape(e.level)}</h2>
     <p class="text-xs text-slate-500">Source review: ${researchEscape(e.reviewed || 'October 3, 2026 (US Eastern)')}. Labels describe the cited evidence, not a systematic review or endorsement.</p>
   </section>
-  ${[['What it does in research',e.mechanism],['What the cited studies found',e.findings],['What this does not establish',e.limits],['Safety and combination uncertainties',e.safety]].map(([h,t])=>`<section class="mb-8"><h2 class="text-lg font-semibold mb-3">${h}</h2><p class="text-slate-600 leading-relaxed">${researchEscape(t)}</p></section>`).join('')}
+  ${[['Mechanism of interest',e.mechanism],['Primary research focus',peptides.find(p=>p.id===id).researchFocus.join(' · ')],['What the cited studies found',e.findings],['What this does not establish',e.limits],['Safety and combination uncertainties',e.safety]].map(([h,t])=>`<section class="mb-8"><h2 class="text-lg font-semibold mb-3">${h}</h2><p class="text-slate-600 leading-relaxed">${researchEscape(t)}</p></section>`).join('')}
   ${components?`<section class="mb-8"><h2 class="text-lg font-semibold mb-3">Read the component evidence</h2><ul class="space-y-2">${components.map(x=>`<li><a class="text-red-700 underline" href="peptide.html?id=${x}">${researchEscape(peptides.find(p=>p.id===x).name)}</a></li>`).join('')}</ul></section>`:''}
-  <section class="mb-8"><h2 class="text-lg font-semibold mb-3">Sources & further reading</h2><ul class="space-y-3 text-sm">${researchSourceLinks(e.sources)}</ul></section>
-  <section class="mb-8"><h2 class="text-lg font-semibold mb-3">What a certificate of analysis can establish</h2><p class="text-slate-600 leading-relaxed">Identity, chemical purity, amount per vial, biological potency, sterility, endotoxins and stability require appropriate, separate tests. A purity percentage alone does not establish the amount present, absence of microbes or endotoxins, or stability after storage. Results apply to the sampled batch and tested conditions; a COA does not prove clinical safety or effectiveness.</p><p class="mt-3 text-sm"><a class="text-red-700 underline" href="https://www.fda.gov/media/71510/download" target="_blank" rel="noopener noreferrer">FDA / ICH Q6B: analytical quality principles</a></p></section>
+  <section class="mb-8"><h2 class="text-lg font-semibold mb-3">Research dose context — literature only</h2><p class="text-slate-600 leading-relaxed">The cited publications describe study-specific exposures, routes, models and durations. This summary does not provide a personal-use schedule or a recommended amount. Where exposure details have not been independently extracted, consult the original methods; no values are inferred from related compounds. Research dose context is literature only — not a recommendation.</p></section><section class="mb-8"><h2 class="text-lg font-semibold mb-3">Sources & further reading</h2><ul class="space-y-3 text-sm">${researchSourceLinks(e.sources)}</ul></section>
+  <section class="mb-8"><h2 class="text-lg font-semibold mb-3">What a certificate of analysis can establish</h2><p class="text-slate-600 leading-relaxed">Identity, chemical purity, quantity of the substance, biological potency, sterility, endotoxins and stability require appropriate, separate tests. A purity percentage alone does not establish the amount present, absence of microbes or endotoxins, or stability after storage. Results apply to the sampled batch and tested conditions; a COA does not prove clinical safety or effectiveness.</p><p class="mt-3 text-sm"><a class="text-red-700 underline" href="https://www.fda.gov/media/71510/download" target="_blank" rel="noopener noreferrer">FDA / ICH Q6B: analytical quality principles</a></p></section>
   <div class="mb-8 p-5 rounded-xl bg-amber-50 text-amber-950 text-sm leading-relaxed">Research summaries are not dosing, mixing or treatment instructions. A study of a pharmaceutical preparation does not establish equivalence of a research product. Selecting items together does not establish that they are safe or effective together.</div>`;
 }
 // Assess the entire selection, including ingredients inside blends; never hide extra selections.
@@ -273,7 +278,7 @@ getStackNote = function(ids) {
   const glp=unique.filter(x=>['semaglutide','tirzepatide','retatrutide','survodutide','mazdutide'].includes(x));
   if(glp.length>1) {notes.push('GLP-1 pathway overlap: '+glp.map(id=>peptides.find(p=>p.id===id).name).join(', ')+'. No benefit for this multi-agonist combination is established by the cited individual trials. Gastrointestinal effects may overlap; FDA advises against combining tirzepatide with a GLP-1 receptor agonist.');sources.push(glpSource);}
   const exactCagri=unique.length===2&&unique.includes('semaglutide')&&unique.includes('cagrilintide')&&!duplicates.length;
-  if(unique.includes('semaglutide')&&unique.includes('cagrilintide'))notes.push('Direct combination evidence: cagrilintide plus semaglutide was studied in REDEFINE 1. That evidence concerns controlled study medicines; it does not validate a catalog blend, mixing compatibility or any extra compounds selected here.');
+  if(unique.includes('semaglutide')&&unique.includes('cagrilintide'))notes.push('Direct combination evidence: cagrilintide plus semaglutide was studied in REDEFINE 1. That evidence concerns controlled study medicines; it does not validate a differently prepared blend, mixing compatibility or any extra compounds selected here.');
   if(unique.includes('cagrilintide')&&glp.some(x=>x!=='semaglutide'))notes.push('Amylin plus a different metabolic agonist: the semaglutide combination trial cannot establish results for cagrilintide with tirzepatide, retatrutide, survodutide or mazdutide.');
   const gh=unique.filter(x=>['cjc-1295','ipamorelin','sermorelin','tesamorelin','ghrp-2','ghrp-6','igf-1-lr3'].includes(x));
   if(gh.length>1)notes.push('GH/IGF pathway overlap: different receptors can converge on growth-hormone signaling. A small GHRH(1–29) plus GHRP-2 experiment showed greater acute GH release, not proven muscle, sleep or recovery benefit. It does not validate CJC no-DAC plus ipamorelin or the full selection.');
@@ -282,6 +287,7 @@ getStackNote = function(ids) {
   if(unique.includes('semax')&&unique.includes('selank'))notes.push('Semax plus Selank: studies examining the two separately or side by side are not trials proving that taking both improves cognition or anxiety. Combined effects and long-term safety remain unresolved.');
   if(unique.includes('pt-141')&&unique.includes('mt-2'))notes.push('Melanocortin overlap: PT-141 and melanotan-II share receptor-family activity. There is no demonstrated additive benefit here, and unwanted effects may overlap.');
   if(unique.filter(x=>['nad','mots-c','ss-31','epitalon','foxo4-dri','glutathione'].includes(x)).length>1)notes.push('Cellular aging and energy pathways: NAD metabolism, mitochondrial membranes, telomerase and senescence are different processes. Combining them has not been shown in the cited sources to improve human lifespan or reverse aging.');
+  if(unique.includes('bpc-157')&&unique.includes('tb-500')){notes.push(tendonNote);sources.push(tendon2026);}
   if(selected.length===1&&!blendComponents[selected[0]])notes.push(researchEvidence[selected[0]].findings+' '+researchEvidence[selected[0]].limits);
   if(!notes.length)notes.push('No direct controlled human evidence for this exact selection was identified in the sources reviewed. Individual effects cannot predict the net result: interactions may be additive, opposing or harmful.');
   if(selected.length>1||blendComponents[selected[0]])notes.push('This is not a compatibility or interaction checker covering all medicines and conditions. No absence of a flag should be interpreted as safety. Physical mixing, stability and dosing are not assessed.');
