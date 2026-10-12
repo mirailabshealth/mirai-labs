@@ -1,8 +1,10 @@
-// Run: node scripts/check-education.cjs (Node.js, no packages needed).
+// Run from repository root: node scripts/check-education.cjs
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const html=fs.readFileSync(f,'utf8');for(const m of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)){if(!m[1].includes('application/ld+json'))new vm.Script(m[2],{filename:f});}}
-for(const f of ['guide.html','peptide.html','stack.html']){const h=fs.readFileSync(f,'utf8');assert(!/priceFrom\(|miraiVial.render|portal.html\?view=client|assets\/pricing.js/.test(h),f+' contains a sales route');}
-const affiliate=fs.readFileSync('affiliates.html','utf8');assert(!/<form|mirai_public_apply|createClient/.test(affiliate));assert(affiliate.includes('Affiliate program closed'));
-const portal=fs.readFileSync('portal.html','utf8');assert(portal.includes('registrationOpen:false'));assert(portal.includes('Prior order records'));assert(portal.includes('async function renderSupport('));assert(!portal.includes('Pay approved order'));
-assert(fs.readFileSync('assets/age-gate.js','utf8').includes('Existing account / owner sign-in'));
-console.log('PASS: scripts parse; public sales routes/art/prices removed; affiliate intake removed; historical support retained.');
+const files=fs.readdirSync('.').filter(f=>f.endsWith('.html'));
+for(const f of files){const h=fs.readFileSync(f,'utf8');for(const m of h.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)){if(!m[1].includes('application/ld+json'))new vm.Script(m[2],{filename:f});}const visible=h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ');assert(!/\b(buy|cart|checkout|shipping|orders?|prices?|purchase|availability)\b/i.test(visible),f+' contains commercial language');assert(!/pricing\.js|createClient|mirai_public_apply|mirai_create_order/.test(h),f+' contains a commercial integration');assert(h.includes('assets/age-gate.js'),f+' missing age gate');assert(h.includes('safety.html'),f+' missing Safety navigation');for(const m of h.matchAll(/(?:href|src)="([^"#:]+)"/g)){let path=m[1].split(/[?#]/)[0];if(!/^(https?:|mailto:)/.test(path))assert(fs.existsSync(path),f+' broken local reference '+path);}}
+const ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync('assets/data.js','utf8')+'\n'+fs.readFileSync('research-evidence.js','utf8')+'\nthis.catalog=peptides;this.profiles=researchEvidence;this.combination=getStackNote;this.render=renderEvidence;',ctx);
+assert.equal(ctx.catalog.length,45);assert.equal(new Set(ctx.catalog.map(p=>p.id)).size,45);
+for(const p of ctx.catalog){const e=ctx.profiles[p.id];for(const key of ['mechanism','findings','limits','safety'])assert(e[key]?.length>20,p.id+' missing '+key);assert(e.sources.length,p.id+' missing sources');assert(p.researchFocus.length);assert(ctx.render(p.id).includes('literature only'));for(const s of e.sources)assert(/^https:\/\//.test(s.url));}
+const combo=ctx.combination(ctx.catalog.map(p=>p.id));assert(combo.details.length>100);assert(combo.sources.length>20);assert(ctx.combination(['klow','bpc-157']).details.toLowerCase().includes('duplicat'));
+new vm.Script(fs.readFileSync('assets/age-gate.js','utf8'));
+console.log('PASS: '+files.length+' public pages; 45 evidence profiles; local links; age gate; full-selection combination notes; no commercial UI/integrations.');
