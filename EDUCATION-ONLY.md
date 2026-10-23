@@ -29,3 +29,7 @@ Run `node scripts/check-education.cjs` from the repository root (Node.js; no pac
 For editorial updates, verify the exact molecule and primary source, record the review date, distinguish abstract from full-text appraisal, retain null findings and uncertainty, then rerun validation. The context page is a dated snapshot, not an automatic news feed. Monitor FDA notices and new publications through a separately configured review process; no recurring automation was installed.
 
 Privacy protections for legacy records remain. Optional analytics scripts are no longer loaded by public pages in this release; previous records and backend retention are unchanged. No secrets or new credentials are included.
+
+## Mirai Health branding — October 22, 2026
+
+Public pages and the age acknowledgment now use Mirai Health. The Learn hub preserves access to the research guide, comparisons, safety and context. Outdated supplier and batch-testing claims were removed from About. Telehealth is described as a future experience; no clinical service, intake or enrollment is enabled. Existing contact email and page URLs remain in use. Scientific review dates are unchanged.
