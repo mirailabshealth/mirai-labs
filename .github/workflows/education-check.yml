@@ -1,0 +1,34 @@
+name: Education-only publication check
+
+on:
+  push:
+    branches: [main, 'cleanup/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  education:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Check source publication policy and educational content
+        run: node scripts/check-education.cjs
+      - name: Test publication guard regressions
+        run: node --test scripts/check-education.test.cjs
+      - name: Build using the GitHub Pages Jekyll action
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Check every file in the actual Pages output
+        run: node scripts/check-education.cjs --site _site

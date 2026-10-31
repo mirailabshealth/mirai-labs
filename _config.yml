@@ -1,0 +1,30 @@
+{
+  "include": [],
+  "exclude": [
+    ".github",
+    ".gitignore",
+    "EDUCATION-ONLY.md",
+    "OWNER-WORKFLOW.md",
+    "_site",
+    "affiliate-code-source.zip",
+    "affiliate-tiers-source.zip",
+    "analytics-source.zip",
+    "analytics.js",
+    "assets/pricing.js",
+    "assets/vial-sizes.js",
+    "customer-order-email-source.zip",
+    "inventory-workflow-source.zip",
+    "node_modules",
+    "notification-automation-source.zip",
+    "owner-order-alerts-source.zip",
+    "payment-email-source.zip",
+    "registration-update-source.zip",
+    "scripts",
+    "standard-shipping-source.zip",
+    "supabase",
+    "support-source.zip",
+    "vial-art.css",
+    "vial-art.js",
+    "vial-front.png"
+  ]
+}
