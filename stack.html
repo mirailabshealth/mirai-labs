@@ -82,8 +82,8 @@
     </div>
   <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
 
-  <script src="assets/data.js?v=20261012"></script>
-  <script src="research-evidence.js?v=20261012"></script>
+  <script src="assets/data.js?v=20261101"></script>
+  <script src="research-evidence.js?v=20261101"></script>
 <script>
 function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; } }
 </script>
@@ -154,7 +154,6 @@ function readSaved(key, fallback) { try { return JSON.parse(localStorage.getItem
       renderPicker(e.target.value.toLowerCase().trim());
     });
 
-    const referral = new URLSearchParams(location.search).get('ref') || '';
 
 
     updateUI();

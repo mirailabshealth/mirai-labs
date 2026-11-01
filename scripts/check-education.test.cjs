@@ -62,6 +62,28 @@ test('published integration added to an approved script fails', t => {
   assert.throws(() => validate(f), /commercial data or integration/);
 });
 
+test('currency amounts and structured offers fail in approved public files', t => {
+  for (const payload of ['<p>$99 per month</p>', '<p>USD 99</p>',
+    '<script type="application/ld+json">{"@type":"Offer"}</script>']) {
+    const f = fixture(t);
+    fs.appendFileSync(path.join(f.sourceRoot, 'index.html'), payload);
+    assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /commercial data or integration/);
+  }
+});
+
+test('broken local section anchors fail', t => {
+  const f = fixture(t);
+  fs.appendFileSync(path.join(f.sourceRoot, 'index.html'), '<a href="context.html#missing-section">Context</a>');
+  assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /missing anchor/);
+});
+
+test('stale inventory summaries cannot disagree with the evidence layer', t => {
+  const f = fixture(t);
+  const file = path.join(f.sourceRoot, 'assets/data.js');
+  fs.appendFileSync(file, '\npeptides[0].keyFindings="An obsolete trial summary.";');
+  assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /inventory findings are stale/);
+});
+
 test('missing pages and scientific assets fail', t => {
   const f = fixture(t);
   fs.unlinkSync(path.join(f.siteRoot, 'research-evidence.js'));

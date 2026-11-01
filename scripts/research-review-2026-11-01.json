@@ -1,0 +1,1407 @@
+{
+  "review_date_utc": "2026-11-01",
+  "base_commit": "7a73b74debfb9945567980ea70946e07e72c5f98",
+  "scope": "Selective primary-source update, not a systematic review. Existing PubMed citation identities and correction/retraction metadata checked. Broad name searches and a follow-up title/abstract screen returned candidate titles; selected relevant original-study abstracts were appraised. False-positive names, reviews, protocols, case reports, and animal models were not treated as controlled human efficacy evidence. Profile dates are changed only where selected scientific or official sources were appraised.",
+  "search_limits": {
+    "date_query": "2025/01/01:2026/11/01[dp]",
+    "broad_results_per_query": 4,
+    "followup_results_per_query": 8,
+    "followup_excludes": "Review, Systematic Review, Meta-Analysis publication types (indexing is imperfect)",
+    "limitation": "Capped name searches are not exhaustive; recent publication indexing, synonyms, full text, supplements, all indications, and every adverse-event source may be missed. Blends are assessed through named components and exact-combination evidence limits."
+  },
+  "updated_profiles": [
+    "retatrutide",
+    "tirzepatide",
+    "semaglutide",
+    "cagrilintide",
+    "cagrisema",
+    "survodutide",
+    "mazdutide",
+    "tesamorelin",
+    "ghrp-6",
+    "nad",
+    "igf-1-lr3",
+    "mt-2",
+    "kpv",
+    "epitalon",
+    "foxo4-dri",
+    "semax",
+    "ara-290",
+    "ss-31"
+  ],
+  "followup_queries": {
+    "retatrutide": {
+      "query": "(\"Retatrutide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "58",
+      "ids": [
+        "42608321",
+        "42904878",
+        "42135195",
+        "42878930",
+        "42603384",
+        "42849462",
+        "42810372",
+        "42853576"
+      ]
+    },
+    "tirzepatide": {
+      "query": "(\"Tirzepatide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "1339",
+      "ids": [
+        "42849688",
+        "42908672",
+        "42894545",
+        "42840232",
+        "42831032",
+        "42828252",
+        "42802751",
+        "42710812"
+      ]
+    },
+    "semaglutide": {
+      "query": "(\"Semaglutide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "2544",
+      "ids": [
+        "42727623",
+        "42886550",
+        "42610532",
+        "42669356",
+        "42330703",
+        "42894545",
+        "42892915",
+        "42840232"
+      ]
+    },
+    "cagrilintide": {
+      "query": "(\"Cagrilintide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "42",
+      "ids": [
+        "42603595",
+        "42951207",
+        "42935221",
+        "42838477",
+        "42744908",
+        "42503495",
+        "42763732",
+        "42456707"
+      ]
+    },
+    "cagrisema": {
+      "query": "(\"CagriSema\"[Title/Abstract] OR \"cagrilintide semaglutide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "32",
+      "ids": [
+        "42603595",
+        "42951207",
+        "42935221",
+        "42897974",
+        "42838477",
+        "42503495",
+        "42763732",
+        "42688617"
+      ]
+    },
+    "survodutide": {
+      "query": "(\"Survodutide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "31",
+      "ids": [
+        "42963450",
+        "42897119",
+        "42864267",
+        "42603384",
+        "42823075",
+        "42820639",
+        "42642663",
+        "42599381"
+      ]
+    },
+    "mazdutide": {
+      "query": "(\"Mazdutide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "26",
+      "ids": [
+        "42628555",
+        "42941641",
+        "42875732",
+        "42603384",
+        "42811393",
+        "42756349",
+        "42688617",
+        "42555719"
+      ]
+    },
+    "aod-9604": {
+      "query": "(\"AOD-9604\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "5-amino-1mq": {
+      "query": "(\"5-amino-1MQ\"[Title/Abstract] OR \"5-amino-1-methylquinolinium\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "adipotide": {
+      "query": "(\"Adipotide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "bpc-157": {
+      "query": "(\"BPC-157\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "24",
+      "ids": [
+        "42667535",
+        "42937313",
+        "42876687",
+        "42578445",
+        "42555375",
+        "42328738",
+        "42542926",
+        "42533460"
+      ]
+    },
+    "tb-500": {
+      "query": "(\"TB-500\"[Title/Abstract] OR \"thymosin beta 4\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "28",
+      "ids": [
+        "42937313",
+        "42934271",
+        "42431294",
+        "42876687",
+        "42578445",
+        "42542926",
+        "42394899",
+        "42440461"
+      ]
+    },
+    "kpv": {
+      "query": "(\"KPV\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "7",
+      "ids": [
+        "42854645",
+        "42585803",
+        "42064835",
+        "40935835",
+        "41533788",
+        "40073467",
+        "40030207"
+      ]
+    },
+    "thymosin-a1": {
+      "query": "(\"thymosin alpha 1\"[Title/Abstract] OR \"thymalfasin\"[Title/Abstract] OR \"thymosin α1\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "39",
+      "ids": [
+        "41824632",
+        "42858589",
+        "42693587",
+        "42295795",
+        "42698582",
+        "42464890",
+        "42464431",
+        "42563676"
+      ]
+    },
+    "ara-290": {
+      "query": "(\"ARA-290\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "2",
+      "ids": [
+        "42876687",
+        "41933665"
+      ]
+    },
+    "ipamorelin": {
+      "query": "(\"Ipamorelin\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "1",
+      "ids": [
+        "42578445"
+      ]
+    },
+    "cjc-1295": {
+      "query": "(\"CJC-1295\"[Title/Abstract] OR \"modified GRF 1-29\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "3",
+      "ids": [
+        "42876013",
+        "42578445",
+        "41138283"
+      ]
+    },
+    "tesamorelin": {
+      "query": "(\"Tesamorelin\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "7",
+      "ids": [
+        "42382101",
+        "42419889",
+        "42139091",
+        "42018810",
+        "41138283",
+        "39813152",
+        "40510111"
+      ]
+    },
+    "sermorelin": {
+      "query": "(\"Sermorelin\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "2",
+      "ids": [
+        "42465868",
+        "41138283"
+      ]
+    },
+    "ghrp-2": {
+      "query": "(\"GHRP-2\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "5",
+      "ids": [
+        "42732957",
+        "41596479",
+        "39672241",
+        "40677481",
+        "40277822"
+      ]
+    },
+    "ghrp-6": {
+      "query": "(\"GHRP-6\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "22",
+      "ids": [
+        "42799941",
+        "42753464",
+        "42465868",
+        "42461148",
+        "42352276",
+        "41901314",
+        "41534456",
+        "41406822"
+      ]
+    },
+    "igf-1-lr3": {
+      "query": "(\"IGF-1 LR3\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "3",
+      "ids": [
+        "41015370",
+        "39679943",
+        "39610283"
+      ]
+    },
+    "ghk-cu": {
+      "query": "(\"GHK-Cu\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "20",
+      "ids": [
+        "42887096",
+        "42320090",
+        "42586657",
+        "42058630",
+        "42619529",
+        "42578445",
+        "42573538",
+        "42404628"
+      ]
+    },
+    "ahk-cu": {
+      "query": "(\"AHK-Cu\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "snap-8": {
+      "query": "(\"acetyl octapeptide-3\"[Title/Abstract] OR \"SNAP-8\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "matrixyl": {
+      "query": "(\"palmitoyl pentapeptide\"[Title/Abstract] OR \"Matrixyl\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "7",
+      "ids": [
+        "42790608",
+        "42317129",
+        "42500768",
+        "41953401",
+        "40871567",
+        "39783908",
+        "39694719"
+      ]
+    },
+    "epitalon": {
+      "query": "(\"Epitalon\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "5",
+      "ids": [
+        "42209466",
+        "41240216",
+        "40908429",
+        "40493162",
+        "39788414"
+      ]
+    },
+    "mots-c": {
+      "query": "(\"MOTS-c\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "76",
+      "ids": [
+        "42633281",
+        "42126770",
+        "42918312",
+        "42952740",
+        "42939841",
+        "42895211",
+        "42153537",
+        "42767971"
+      ]
+    },
+    "ss-31": {
+      "query": "(\"elamipretide\"[Title/Abstract] OR \"SS-31\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "91",
+      "ids": [
+        "42357949",
+        "42600764",
+        "42546889",
+        "42924728",
+        "42898512",
+        "42827331",
+        "42638278",
+        "42709510"
+      ]
+    },
+    "nad": {
+      "query": "(\"intravenous NAD\"[Title/Abstract] OR \"intravenous nicotinamide adenine dinucleotide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "5",
+      "ids": [
+        "42961639",
+        "42751848",
+        "42053361",
+        "42358367",
+        "40954388"
+      ]
+    },
+    "foxo4-dri": {
+      "query": "(\"FOXO4-DRI\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "4",
+      "ids": [
+        "42391447",
+        "41625068",
+        "40593617",
+        "39994346"
+      ]
+    },
+    "glutathione": {
+      "query": "(\"glutathione supplementation\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "18",
+      "ids": [
+        "42202436",
+        "42574064",
+        "42453576",
+        "42369873",
+        "42282517",
+        "42903988",
+        "41887313",
+        "41866691"
+      ]
+    },
+    "semax": {
+      "query": "(\"Semax\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "13",
+      "ids": [
+        "42559144",
+        "42195624",
+        "42074872",
+        "42910684",
+        "42885627",
+        "42366656",
+        "40692165",
+        "41479572"
+      ]
+    },
+    "selank": {
+      "query": "(\"Selank\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "dsip": {
+      "query": "(\"DSIP\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "1",
+      "ids": [
+        "39798527"
+      ]
+    },
+    "pinealon": {
+      "query": "(\"Pinealon\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "0",
+      "ids": []
+    },
+    "p21": {
+      "query": "(\"P021\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "2",
+      "ids": [
+        "41945082",
+        "41740658"
+      ]
+    },
+    "pt-141": {
+      "query": "(\"bremelanotide\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "7",
+      "ids": [
+        "42485063",
+        "42340853",
+        "41960633",
+        "40513668",
+        "40678415",
+        "39793696",
+        "39231849"
+      ]
+    },
+    "mt-2": {
+      "query": "(\"melanotan II\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "2",
+      "ids": [
+        "41752902",
+        "40210573"
+      ]
+    },
+    "kisspeptin-10": {
+      "query": "(\"Kisspeptin-10\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "39",
+      "ids": [
+        "42364891",
+        "42936012",
+        "42871171",
+        "42379494",
+        "42806235",
+        "42783811",
+        "42726152",
+        "42707558"
+      ]
+    },
+    "oxytocin": {
+      "query": "(\"Oxytocin\"[Title/Abstract]) AND (2025/01/01:2026/11/01[dp]) NOT (Review[pt] OR Systematic Review[pt] OR Meta-Analysis[pt])",
+      "count": "1601",
+      "ids": [
+        "42855957",
+        "42766882",
+        "42810237",
+        "42657676",
+        "42627259",
+        "41910214",
+        "42648552",
+        "42875396"
+      ]
+    }
+  },
+  "publication_metadata": {
+    "25038357": {
+      "title": "Effect of tesamorelin on visceral fat and liver fat in HIV-infected patients with abdominal fat accumulation: a randomized clinical trial.",
+      "dates": [],
+      "corrections": []
+    },
+    "40954388": {
+      "title": "Effect of Nicotinamide Adenine Dinucleotide on Heart Failure Caused by Ischemic Cardiomyopathy: A Randomized, Placebo-Controlled Trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "09",
+          "day": "15"
+        }
+      ],
+      "corrections": []
+    },
+    "9849822": {
+      "title": "Ipamorelin, the first selective growth hormone secretagogue.",
+      "dates": [],
+      "corrections": []
+    },
+    "18492182": {
+      "title": "Topical palmitoyl pentapeptide provides improvement in photoaged human facial skin.",
+      "dates": [],
+      "corrections": []
+    },
+    "37366315": {
+      "title": "Triple-Hormone-Receptor Agonist Retatrutide for Obesity - A Phase 2 Trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2023",
+          "month": "06",
+          "day": "26"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "37888925"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "37888926"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "37888927"
+        }
+      ]
+    },
+    "21875351": {
+      "title": "Effects of oral glutathione supplementation on systemic oxidative stress biomarkers in human volunteers.",
+      "dates": [],
+      "corrections": []
+    },
+    "31599840": {
+      "title": "Bremelanotide for the Treatment of Hypoactive Sexual Desire Disorder: Two Randomized Phase 3 Trials.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "31599837"
+        }
+      ]
+    },
+    "40210573": {
+      "title": "Melanotan II nasal spray: a possible risk factor for oral mucosal malignant melanoma?",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "04",
+          "day": "09"
+        }
+      ],
+      "corrections": []
+    },
+    "42542926": {
+      "title": "Effects of BPC-157 and TB-500 on Achilles tendon healing in rats: A histopathological and biomechanical study.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "07",
+          "day": "23"
+        }
+      ],
+      "corrections": []
+    },
+    "30225715": {
+      "title": "Effects of Semax on the Default Mode Network of the Brain.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2018",
+          "month": "09",
+          "day": "17"
+        }
+      ],
+      "corrections": []
+    },
+    "22072637": {
+      "title": "A peptidomimetic targeting white fat causes weight loss and improved insulin resistance in obese monkeys.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "22539771"
+        }
+      ]
+    },
+    "39325560": {
+      "title": "Effect of BPC-157 on Symptoms in Patients with Interstitial Cystitis: A Pilot Study.",
+      "dates": [],
+      "corrections": []
+    },
+    "11045606": {
+      "title": "The tripeptide-copper complex glycyl-L-histidyl-L-lysine-Cu2+ stimulates matrix metalloproteinase-2 expression by fibroblast cultures.",
+      "dates": [],
+      "corrections": []
+    },
+    "35658024": {
+      "title": "Tirzepatide Once Weekly for the Treatment of Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2022",
+          "month": "06",
+          "day": "04"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "35657317"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "35760842"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "36155186"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "36191308"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "36239652"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "36239653"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "36239654"
+        }
+      ]
+    },
+    "24791752": {
+      "title": "Randomized controlled trial of oral glutathione supplementation on body stores of glutathione.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2014",
+          "month": "05",
+          "day": "05"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "25792077"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "25808115"
+        }
+      ]
+    },
+    "41752902": {
+      "title": "Changes in Oral Mucosa Associated with Melanotan II Injections: A Case Report.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "02",
+          "day": "03"
+        }
+      ],
+      "corrections": []
+    },
+    "34324435": {
+      "title": "Intra-Articular Injection of BPC 157 for Multiple Types of Knee Pain.",
+      "dates": [],
+      "corrections": []
+    },
+    "42585803": {
+      "title": "KPV attenuates adipogenesis and lipid metabolism through modulation of ROS-mediated AKT/mTORC1/PPARγ signaling.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "08",
+          "day": "09"
+        }
+      ],
+      "corrections": []
+    },
+    "17703734": {
+      "title": "The effect of tripeptide-copper complex on human hair growth in vitro.",
+      "dates": [],
+      "corrections": []
+    },
+    "40908429": {
+      "title": "Epitalon increases telomere length in human cell lines through telomerase upregulation or ALT activity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "09",
+          "day": "04"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "ErratumIn",
+          "pmid": "41240216"
+        }
+      ]
+    },
+    "29155147": {
+      "title": "Selective and membrane-permeable small molecule inhibitors of nicotinamide N-methyltransferase reverse high fat diet-induced obesity in mice.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2017",
+          "month": "11",
+          "day": "15"
+        }
+      ],
+      "corrections": []
+    },
+    "40131143": {
+      "title": "Safety of Intravenous Infusion of BPC157 in Humans: A Pilot Study.",
+      "dates": [],
+      "corrections": []
+    },
+    "28655344": {
+      "title": "Prevention of dendritic and synaptic deficits and cognitive impairment with a neurotrophic compound.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2017",
+          "month": "06",
+          "day": "27"
+        }
+      ],
+      "corrections": []
+    },
+    "8637402": {
+      "title": "Evaluation of melanotan-II, a superpotent cyclic melanotropic peptide in a pilot phase-I clinical study.",
+      "dates": [],
+      "corrections": []
+    },
+    "1299794": {
+      "title": "Effects of delta sleep-inducing peptide on sleep of chronic insomniac patients. A double-blind study.",
+      "dates": [],
+      "corrections": []
+    },
+    "40544433": {
+      "title": "Coadministered Cagrilintide and Semaglutide in Adults with Overweight or Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "06",
+          "day": "22"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259764"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259765"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259766"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259767"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259768"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41259769"
+        }
+      ]
+    },
+    "42961639": {
+      "title": "Effect of Intravenous Nicotinamide Adenine Dinucleotide on Left Ventricular Function After Primary Percutaneous Coronary Intervention in ST-Segment Elevation Myocardial Infarction: A Randomized Controlled Trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "10",
+          "day": "30"
+        }
+      ],
+      "corrections": []
+    },
+    "28340339": {
+      "title": "Targeted Apoptosis of Senescent Cells Restores Tissue Homeostasis in Response to Chemotoxicity and Aging.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentOn",
+          "pmid": "28340347"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "28392563"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "28489828"
+        }
+      ]
+    },
+    "39679943": {
+      "title": "IGF-1 LR3 does not promote growth in late-gestation growth-restricted fetal sheep.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2024",
+          "month": "12",
+          "day": "16"
+        }
+      ],
+      "corrections": []
+    },
+    "42820639": {
+      "title": "Survodutide Once Weekly in Adults with Obesity and Type 2 Diabetes.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "10",
+          "day": "01"
+        }
+      ],
+      "corrections": []
+    },
+    "18061177": {
+      "title": "PepT1-mediated tripeptide KPV uptake reduces intestinal inflammation.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2007",
+          "month": "10",
+          "day": "17"
+        }
+      ],
+      "corrections": []
+    },
+    "39814420": {
+      "title": "The efficacy and safety of thymosin α1 for sepsis (TESTS): multicentre, double blinded, randomised, placebo controlled, phase 3 trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "01",
+          "day": "15"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "ErratumIn",
+          "pmid": "40447307"
+        }
+      ]
+    },
+    "42814954": {
+      "title": "Retatrutide, a Triple Hormone Receptor Agonist, for Treatment of Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "09",
+          "day": "29"
+        }
+      ],
+      "corrections": []
+    },
+    "42251859": {
+      "title": "Cagrilintide-semaglutide (CagriSema) versus semaglutide or cagrilintide in people with type 2 diabetes (REIMAGINE 2): a double-blind, randomised, controlled, phase 3 study.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "06",
+          "day": "07"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "ErratumIn",
+          "pmid": "42320507"
+        }
+      ]
+    },
+    "37268435": {
+      "title": "Efficacy and Safety of Elamipretide in Individuals With Primary Mitochondrial Myopathy: The MMPOWER-3 Randomized Clinical Trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2023",
+          "month": "06",
+          "day": "02"
+        }
+      ],
+      "corrections": []
+    },
+    "34798060": {
+      "title": "Once-weekly cagrilintide for weight management in people with overweight and obesity: a multicentre, randomised, double-blind, placebo-controlled and active-controlled, dose-finding phase 2 trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2021",
+          "month": "11",
+          "day": "16"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "34798059"
+        }
+      ]
+    },
+    "42251595": {
+      "title": "Treatment With 9-mg Mazdutide for Weight Reduction in Chinese Adults With Obesity: The GLORY-2 Randomized Clinical Trial.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "42251768"
+        }
+      ]
+    },
+    "38382158": {
+      "title": "Simultaneous quantification of TB-500 and its metabolites in in-vitro experiments and rats by UHPLC-Q-Exactive orbitrap MS/MS and their screening by wound healing activities in-vitro.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2024",
+          "month": "02",
+          "day": "07"
+        }
+      ],
+      "corrections": []
+    },
+    "33567185": {
+      "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2021",
+          "month": "02",
+          "day": "10"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "33567184"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "33822032"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "33826913"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "33859431"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "33961244"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34192446"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34192447"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34192448"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34192449"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34192450"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34224258"
+        }
+      ]
+    },
+    "42382101": {
+      "title": "The effect of growth hormone-releasing hormone on cognition and brain connectivity in adults with cognition ranging from normal to mild cognitive impairment.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "06",
+          "day": "17"
+        }
+      ],
+      "corrections": []
+    },
+    "42810372": {
+      "title": "Retatrutide in adults with obesity and type 2 diabetes (TRIUMPH-2): a double-blind, parallel-group, randomised, placebo-controlled, phase 3 trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "09",
+          "day": "29"
+        }
+      ],
+      "corrections": []
+    },
+    "40421736": {
+      "title": "Once-Weekly Mazdutide in Chinese Adults with Obesity or Overweight.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "05",
+          "day": "25"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "40929641"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "40929642"
+        }
+      ]
+    },
+    "21030672": {
+      "title": "The promoting effect of pentadecapeptide BPC 157 on tendon healing involves tendon outgrowth, cell survival, and cell migration.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2010",
+          "month": "10",
+          "day": "28"
+        }
+      ],
+      "corrections": []
+    },
+    "21978084": {
+      "title": "Pinealon increases cell viability by suppression of free radical levels and activating proliferative processes.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2011",
+          "month": "10",
+          "day": "06"
+        }
+      ],
+      "corrections": []
+    },
+    "7586605": {
+      "title": "GH responses to intravenous bolus infusions of GH releasing hormone and GH releasing peptide 2 separately and in combination in adult volunteers.",
+      "dates": [],
+      "corrections": []
+    },
+    "21632807": {
+      "title": "Kisspeptin-10 is a potent stimulator of LH and increases pulse frequency in men.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2011",
+          "month": "06",
+          "day": "01"
+        }
+      ],
+      "corrections": []
+    },
+    "7617137": {
+      "title": "Growth hormone-releasing peptide-6 stimulates sleep, growth hormone, ACTH and cortisol release in normal man.",
+      "dates": [],
+      "corrections": []
+    },
+    "42253238": {
+      "title": "Survodutide Once Weekly for the Treatment of Adults with Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "06",
+          "day": "07"
+        }
+      ],
+      "corrections": []
+    },
+    "42854645": {
+      "title": "Lysine-Proline-Valine attenuates oxidized low-density lipoprotein-induced foam cell formation and inflammatory responses in RAW264.7 macrophages.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "10",
+          "day": "07"
+        }
+      ],
+      "corrections": []
+    },
+    "36588717": {
+      "title": "Pharmacokinetics, distribution, metabolism, and excretion of body-protective compound 157, a potential drug for treating various wounds, in rats and dogs.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2022",
+          "month": "12",
+          "day": "14"
+        }
+      ],
+      "corrections": []
+    },
+    "42628555": {
+      "title": "Efficacy and safety of mazdutide in adults with obesity or overweight: a US-based, multicentre, phase 2, randomised, placebo-controlled clinical trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "08",
+          "day": "21"
+        }
+      ],
+      "corrections": []
+    },
+    "42320507": {
+      "title": "Correction to Lancet Diabetes Endocrinol 2026; published online June 7. https://doi.org/10.1016/S2213-8587(26)00125-7.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "06",
+          "day": "19"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "ErratumFor",
+          "pmid": "42251859"
+        }
+      ]
+    },
+    "39813152": {
+      "title": "Effects of Tesamorelin on Neurocognitive Impairment in Persons With HIV and Abdominal Obesity.",
+      "dates": [],
+      "corrections": []
+    },
+    "25738459": {
+      "title": "The mitochondrial-derived peptide MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "25738453"
+        }
+      ]
+    },
+    "12937682": {
+      "title": "Epithalon peptide induces telomerase activity and telomere elongation in human somatic cells.",
+      "dates": [],
+      "corrections": []
+    },
+    "23168581": {
+      "title": "Safety and efficacy of ARA 290 in sarcoidosis patients with symptoms of small fiber neuropathy: a randomized, double-blind pilot study.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2012",
+          "month": "11",
+          "day": "15"
+        }
+      ],
+      "corrections": []
+    },
+    "22567179": {
+      "title": "Pinealon protects the rat offspring from prenatal hyperhomocysteinemia.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2012",
+          "month": "04",
+          "day": "06"
+        }
+      ],
+      "corrections": []
+    },
+    "42462342": {
+      "title": "Phase III Open-Label, Randomized Clinical Trial of Epidermal Growth Factor and Growth Hormone Releasing Hexapeptide in Acute Ischemic Stroke.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "07",
+          "day": "16"
+        }
+      ],
+      "corrections": []
+    },
+    "34644471": {
+      "title": "Intranasal Oxytocin in Children and Adolescents with Autism Spectrum Disorder.",
+      "dates": [],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "34644477"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "34880473"
+        }
+      ]
+    },
+    "27977473": {
+      "title": "Usefulness of ambulatory blood pressure monitoring to assess the melanocortin receptor agonist bremelanotide.",
+      "dates": [],
+      "corrections": []
+    },
+    "3169264": {
+      "title": "Stimulation of collagen synthesis in fibroblast cultures by the tripeptide-copper complex glycyl-L-histidyl-L-lysine-Cu2+.",
+      "dates": [],
+      "corrections": []
+    },
+    "22962027": {
+      "title": "Synthesis and characterization of the N-terminal acetylated 17-23 fragment of thymosin beta 4 identified in TB-500, a product suspected to possess doping potential.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2012",
+          "month": "09",
+          "day": "07"
+        }
+      ],
+      "corrections": []
+    },
+    "41625068": {
+      "title": "FOXO4-DRI regulates endothelial cell senescence via the P53 signaling pathway.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "01",
+          "day": "15"
+        }
+      ],
+      "corrections": []
+    },
+    "40353578": {
+      "title": "Tirzepatide as Compared with Semaglutide for the Treatment of Obesity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "05",
+          "day": "11"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "CommentIn",
+          "pmid": "41124642"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41124643"
+        },
+        {
+          "RefType": "CommentIn",
+          "pmid": "41124644"
+        }
+      ]
+    },
+    "8708565": {
+      "title": "Superior potency of infused IGF-I analogues which bind poorly to IGF-binding proteins is maintained when administered by injection.",
+      "dates": [],
+      "corrections": []
+    },
+    "40961952": {
+      "title": "Once-weekly semaglutide 7·2 mg in adults with obesity (STEP UP): a randomised, controlled, phase 3b trial.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "09",
+          "day": "14"
+        }
+      ],
+      "corrections": []
+    },
+    "11146367": {
+      "title": "Metabolic studies of a synthetic lipolytic domain (AOD9604) of human growth hormone.",
+      "dates": [],
+      "corrections": []
+    },
+    "40692165": {
+      "title": "Semax peptide targets the μ opioid receptor gene Oprm1 to promote deubiquitination and functional recovery after spinal cord injury in female mice.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "07",
+          "day": "21"
+        }
+      ],
+      "corrections": []
+    },
+    "41240216": {
+      "title": "Correction: Epitalon increases telomere length in human cell lines through telomerase upregulation or ALT activity.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2025",
+          "month": "11",
+          "day": "15"
+        }
+      ],
+      "corrections": [
+        {
+          "RefType": "ErratumFor",
+          "pmid": "40908429"
+        }
+      ]
+    },
+    "42904878": {
+      "title": "Retatrutide Once Weekly for Treatment of Obstructive Sleep Apnea.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2026",
+          "month": "10",
+          "day": "21"
+        }
+      ],
+      "corrections": []
+    },
+    "18454096": {
+      "title": "[Efficacy and possible mechanisms of action of a new peptide anxiolytic selank in the therapy of generalized anxiety disorders and neurasthenia].",
+      "dates": [],
+      "corrections": []
+    },
+    "31572171": {
+      "title": "A Pilot Study Investigating Changes in the Human Plasma and Urine NAD+ Metabolome During a 6 Hour Intravenous Infusion of NAD.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2019",
+          "month": "09",
+          "day": "12"
+        }
+      ],
+      "corrections": []
+    },
+    "16352683": {
+      "title": "Prolonged stimulation of growth hormone (GH) and insulin-like growth factor I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults.",
+      "dates": [
+        {
+          "DateType": "Electronic",
+          "year": "2005",
+          "month": "12",
+          "day": "13"
+        }
+      ],
+      "corrections": []
+    }
+  },
+  "primary_regulatory_sources": [
+    "https://www.govinfo.gov/content/pkg/FR-2026-10-30/html/2026-22192.htm",
+    "https://www.hhs.gov/sites/default/files/hhs-503a-peptide-enforcement-discretion-policy-appendix-b.pdf",
+    "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+    "https://www.fda.gov/news-events/press-announcements/fda-grants-accelerated-approval-first-treatment-barth-syndrome",
+    "https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding"
+  ],
+  "validation": {
+    "public_pages": 16,
+    "profiles": 45,
+    "regression_tests": 39,
+    "dom_checks": "All pages; all profile renderings; guide search; selecting/removing all 45; duplication flags; mailto construction without delivery; malformed/disabled local storage; both age acknowledgment branches. Local jsdom 26.1.0 harness; remote styles disabled and Tailwind config stubbed.",
+    "live_before_change": "19 approved files returned 200 and matched base commit byte-for-byte. Sampled retired pricing and source paths returned 404. Browser confirmed 45 guide cards and loaded Tailwind layout.",
+    "external_links": "PubMed metadata resolved all 73 then-cited study IDs, without explicit retraction flags. Fixed a 404 FDA framework URL. BMJ correction URL denied the automated fetch; replaced with its verified PubMed correction record. Tailwind returned 403 to scripted lookup but loaded in the live browser.",
+    "limits": "Automated link checks and metadata are not independent verification of every study or every full-text correction. No database, clinical workflow, patient intake or delivery-email backend was changed."
+  }
+}
