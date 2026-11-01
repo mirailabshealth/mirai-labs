@@ -62,3 +62,14 @@ node scripts/check-education.cjs --site _site
 ```
 
 The `Education-only publication check` workflow runs the source check, negative regression tests, the same Jekyll action used by Pages, and the complete output check on pull requests and main/cleanup branch pushes. Review its passing result before merging. The existing branch-based Pages publisher remains in use: `_config.yml` enforces its exclusions, while the validation workflow is a separate check, not an automatic deployment gate. Direct pushes to main can trigger Pages independently of that check. Any future replacement publisher must validate its exact output directory before upload, and must never upload the repository root as an unfiltered static artifact.
+
+
+## Research and site audit — November 1, 2026 (UTC)
+
+The 16 public pages and 45 compound/blend profiles were checked. Eighteen profiles received newer original-study findings or more precise interpretation: retatrutide, tirzepatide, semaglutide, cagrilintide, CagriSema, survodutide, mazdutide, tesamorelin, GHRP-6, NAD+, IGF-1 LR3, melanotan-II, KPV, epitalon, FOXO4-DRI, Semax, ARA-290 and SS-31. The inventory summaries now match the canonical evidence layer, and every blend receives current component references. Experimental and negative results remain explicit.
+
+Context distinguishes the October 30 Federal Register draft-policy notice and linked HHS interim enforcement policy from approval and clinical evidence. It explains the single-active-ingredient limitation without representing the policy as support for blends. Retatrutide/cagrilintide and the narrow Forzinity approval retain their separate context. FAQ distinguishes published studies from batch tests; no product test reports or clinical service are represented as available. About identifies Mirai Health LLC. A broken FDA framework link was fixed; the TESTS correction now links to its PubMed record.
+
+The dated search scope and citation metadata are in `scripts/research-review-2026-11-01.json`, excluded from Pages with the maintenance scripts. This was a capped, selective screening and abstract appraisal, not an exhaustive systematic or full-text review. Older profile review dates are deliberately preserved. No recurring monitoring is configured.
+
+Validation: source publication guard; 39 negative/positive regression tests; local DOM integration across all 16 pages and 45 profiles, search, full-list selection/removal, duplicate detection, mailto preparation, malformed/disabled storage, and age acknowledgment branches. No test message was sent. The publication guard now also rejects currency amounts and structured sales offers, missing local section anchors, and stale inventory findings/mechanisms. The existing CI builds and checks the full Jekyll output before merge. Historical database records, migrations and source archives remain unchanged and excluded from Pages.

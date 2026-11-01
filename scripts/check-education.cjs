@@ -32,6 +32,8 @@ const commercialSignals = [
   /\.supabase\.(?:co|in)\b|formspree\.io|js\.stripe\.com|paypal\.com\/sdk|buy\.stripe\.com/i,
   /\b(?:price_cents|unit_price_cents|priceCents|unitPriceCents|quantity_tiers|audienceDiscount)\b/i,
   /USD\s+cents\s+per\s+vial|public\s+customer\s+estimates/i,
+  /(?:[$€£]\s*\d|\b(?:USD|EUR|GBP)\s*\d|\b(?:priceCurrency|priceSpecification)\b)/i,
+  /["']@type["']\s*:\s*["'](?:Offer|AggregateOffer)["']/i,
 ];
 
 function inventory(root, skip = () => false, dir = '') {
@@ -93,15 +95,21 @@ function checkContent(root, files) {
     assert(text.includes('safety.html'), `${file}: missing Safety navigation`);
     for (const match of text.matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)) {
       const ref = match[1];
-      if (/^(?:https?:|mailto:|#)/i.test(ref)) continue;
+      if (/^(?:https?:|mailto:)/i.test(ref)) continue;
       const local = decodeURIComponent(ref.split(/[?#]/)[0]);
-      const target = path.posix.normalize(path.posix.join(path.posix.dirname(file), local));
+      const target = local ? path.posix.normalize(path.posix.join(path.posix.dirname(file), local)) : file;
       assert(files.includes(target), `${file}: broken or unpublished local reference ${local}`);
+      const fragment = ref.includes('#') ? decodeURIComponent(ref.split('#')[1]) : '';
+      if (fragment) {
+        const ids = [...read(target).matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map(m => m[1]);
+        assert(ids.includes(fragment), `${file}: missing anchor ${ref}`);
+      }
     }
   }
   const ctx = {};
   vm.createContext(ctx);
-  vm.runInContext(read('assets/data.js') + '\n' + read('research-evidence.js') +
+  vm.runInContext(read('assets/data.js') + '\nthis.inventory=JSON.parse(JSON.stringify(peptides));', ctx);
+  vm.runInContext(read('research-evidence.js') +
     '\nthis.catalog=peptides;this.profiles=researchEvidence;this.combination=getStackNote;this.render=renderEvidence;', ctx);
   assert.equal(ctx.catalog.length, 45);
   assert.equal(new Set(ctx.catalog.map(p => p.id)).size, 45);
@@ -110,7 +118,12 @@ function checkContent(root, files) {
     for (const key of ['mechanism', 'findings', 'limits', 'safety']) assert(e[key]?.length > 20, `${p.id}: missing ${key}`);
     assert(e.sources.length, `${p.id}: missing sources`);
     assert(p.researchFocus.length);
-    assert(ctx.render(p.id).includes('literature only'));
+    const rendered = ctx.render(p.id);
+    assert(rendered.includes('literature only'));
+    for (const signal of commercialSignals) assert(!signal.test(rendered), `${p.id}: commercial profile content`);
+    const inventory = ctx.inventory.find(item => item.id === p.id);
+    assert.equal(inventory.keyFindings, e.findings, `${p.id}: inventory findings are stale`);
+    assert.equal(inventory.mechanism, e.mechanism, `${p.id}: inventory mechanism is stale`);
     for (const source of e.sources) assert(/^https:\/\//.test(source.url));
   }
   const combo = ctx.combination(ctx.catalog.map(p => p.id));
