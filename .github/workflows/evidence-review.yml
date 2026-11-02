@@ -1,0 +1,60 @@
+name: PubMed evidence review
+
+on:
+  schedule:
+    - cron: '23 7 * * 1' # Mondays 07:23 UTC; avoid the busy start of the hour.
+  # Initialize on installation and recheck when maintainers merge monitor changes.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/evidence-review.yml'
+      - 'scripts/evidence-monitor/**'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Preview only; do not create issues or advance the checkpoint'
+        type: boolean
+        default: true
+      since:
+        description: 'Optional earlier start date, YYYY-MM-DD (blank uses checkpoint)'
+        type: string
+        default: ''
+      until:
+        description: 'Optional end date, YYYY-MM-DD (blank uses today UTC)'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirai-pubmed-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    if: github.repository == 'mirailabshealth/mirai-labs' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Test conservative screening and durable deduplication
+        run: python3 -m unittest discover -s scripts/evidence-monitor -p 'test_*.py' -v
+      - name: Screen PubMed and queue human review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MONITOR_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+          MONITOR_SINCE: ${{ inputs.since }}
+          MONITOR_UNTIL: ${{ inputs.until }}
+          NCBI_EMAIL: ${{ vars.NCBI_EMAIL }}
+        run: |
+          args=()
+          if [ "$MONITOR_DRY_RUN" = "false" ]; then
+            args+=(--create-issues)
+          fi
+          python3 scripts/evidence-monitor/monitor.py "${args[@]}"

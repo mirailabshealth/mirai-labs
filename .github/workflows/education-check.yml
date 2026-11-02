@@ -25,6 +25,8 @@ jobs:
         run: node scripts/check-education.cjs
       - name: Test publication guard regressions
         run: node --test scripts/check-education.test.cjs
+      - name: Test evidence monitoring without network access or write permissions
+        run: python3 -m unittest discover -s scripts/evidence-monitor -p 'test_*.py' -v
       - name: Build using the GitHub Pages Jekyll action
         uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
         with:
