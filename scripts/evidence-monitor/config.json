@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "repository": "mirailabshealth/mirai-labs",
+  "baseline_date": "2026-11-01",
+  "review_record": "scripts/research-review-2026-11-01.json",
+  "overlap_days": 30,
+  "max_results_per_query": 2000,
+  "max_new_issues": 25,
+  "profiles": [
+    {
+      "id": "retatrutide",
+      "name": "Retatrutide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "42814954",
+        "42810372",
+        "42904878",
+        "37366315"
+      ]
+    },
+    {
+      "id": "tirzepatide",
+      "name": "Tirzepatide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "40353578",
+        "35658024"
+      ]
+    },
+    {
+      "id": "semaglutide",
+      "name": "Semaglutide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "40961952",
+        "33567185",
+        "40353578"
+      ]
+    },
+    {
+      "id": "cagrilintide",
+      "name": "Cagrilintide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "34798060",
+        "42251859"
+      ]
+    },
+    {
+      "id": "cagrisema",
+      "name": "CagriSema",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "40544433",
+        "42251859",
+        "42320507"
+      ],
+      "additional_query": "(\"cagrilintide\"[Title/Abstract] AND \"semaglutide\"[Title/Abstract])"
+    },
+    {
+      "id": "survodutide",
+      "name": "Survodutide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "42253238",
+        "42820639"
+      ]
+    },
+    {
+      "id": "mazdutide",
+      "name": "Mazdutide",
+      "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
+      "reference_pmids": [
+        "42251595",
+        "42628555",
+        "40421736"
+      ]
+    },
+    {
+      "id": "tesamorelin",
+      "name": "Tesamorelin",
+      "priority_reason": "Human trials with disease-specific outcomes; avoid generalizing to cognition or longevity.",
+      "reference_pmids": [
+        "25038357",
+        "42382101",
+        "39813152"
+      ]
+    },
+    {
+      "id": "ss-31",
+      "name": "Elamipretide / SS-31",
+      "priority_reason": "Clinical trials and a narrow indication require careful population and endpoint interpretation.",
+      "reference_pmids": [
+        "37268435"
+      ]
+    }
+  ],
+  "additional_reviewed": {}
+}
