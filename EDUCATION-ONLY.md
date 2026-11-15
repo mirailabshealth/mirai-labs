@@ -87,3 +87,12 @@ The owner authorized a transition from an education-first homepage to navigation
 All 16 pages share navigation to care programs, how it works, the learning library, research safety, and patient login. The homepage, About, Contact, legacy portal help, Privacy, and Terms pages no longer show the research-only 21+ acknowledgement. The acknowledgement and scientific disclosures remain on the ten research pages. Clinical-program eligibility is determined by the partner, not this website. Contact differentiates partner patient support from educational inquiries, and the legacy portal route explains that old accounts are separate.
 
 Research profiles, review dates, recurring evidence monitoring, protected historical records, and publishing exclusions are unchanged. No analytics/pixels, new database access, or medical-data collection were added. The approved publication inventory now includes the shared navigation stylesheet (20 files). Validation additionally checks care destinations, partner attribution, seven distinct program cards, the absence of embedded home-page intake, and research-gate scope.
+
+## November 15, 2026 — Research library and selected evidence update
+
+- Preserved all 45 profiles and added an accessible, statically rendered library directory with search, topic/evidence filters, honest appraisal dates, research news and trial-reading guidance.
+- Added selected primary-source findings to nine profiles: five clinical updates plus BPC-157, GHK-Cu, MOTS-c and thymosin alpha-1. Abstract-level review, preclinical/observational limits, negative findings and adverse events are explicit. Source and profile dates are not automatically refreshed by a search.
+- Added PubMed and ClinicalTrials.gov discovery links to every profile, labeled as external searches rather than verified matching trials or clinical endorsement.
+- Added the November 10 FSMB policy clarification and retained separation of approval, federal enforcement policy, state requirements and clinical evidence.
+- Stored query/count/PMID/metadata and appraisal decisions in `scripts/research-review-2026-11-15.json`. The 41-query incremental screen is capped and selective, not exhaustive; four named blends use component searches. The two high-volume metabolic queries exceeded the primary cap; supplementary indexing-date searches do not establish complete publication-date coverage.
+- Added adopted PMID references to the existing nine-profile monitor for correction checks/deduplication. No automated medical-claim updates or expansion to all-profile monitoring.

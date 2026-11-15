@@ -15,7 +15,8 @@
         "42814954",
         "42810372",
         "42904878",
-        "37366315"
+        "37366315",
+        "43001755"
       ]
     },
     {
@@ -24,7 +25,8 @@
       "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
       "reference_pmids": [
         "40353578",
-        "35658024"
+        "35658024",
+        "43003902"
       ]
     },
     {
@@ -34,7 +36,10 @@
       "reference_pmids": [
         "40961952",
         "33567185",
-        "40353578"
+        "40353578",
+        "43013292",
+        "43000472",
+        "43014326"
       ]
     },
     {
@@ -53,7 +58,8 @@
       "reference_pmids": [
         "40544433",
         "42251859",
-        "42320507"
+        "42320507",
+        "43033821"
       ],
       "additional_query": "(\"cagrilintide\"[Title/Abstract] AND \"semaglutide\"[Title/Abstract])"
     },
@@ -63,7 +69,8 @@
       "priority_reason": "Active human metabolic trials; comparative, combination and safety findings can affect existing summaries.",
       "reference_pmids": [
         "42253238",
-        "42820639"
+        "42820639",
+        "43003106"
       ]
     },
     {

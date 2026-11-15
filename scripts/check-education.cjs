@@ -141,6 +141,14 @@ function checkContent(root, files) {
     assert.equal(inventory.mechanism, e.mechanism, `${p.id}: inventory mechanism is stale`);
     for (const source of e.sources) assert(/^https:\/\//.test(source.url));
   }
+  const cards = [...read('learn.html').matchAll(/<article class="library-card"[\s\S]*?<\/article>/g)].map(m => m[0]);
+  assert.equal(cards.length, 45, 'Library must preserve all 45 profile cards');
+  for (const p of ctx.catalog) {
+    const matches = cards.filter(card => card.includes(`href="peptide.html?id=${p.id}"`));
+    assert.equal(matches.length, 1, `${p.id}: missing or duplicate library card`);
+    assert(matches[0].includes(ctx.profiles[p.id].reviewed || 'October 3, 2026 (US Eastern)'), `${p.id}: library appraisal date is stale`);
+    assert(ctx.render(p.id).includes('https://clinicaltrials.gov/search?term='), `${p.id}: missing trial discovery link`);
+  }
   const combo = ctx.combination(ctx.catalog.map(p => p.id));
   assert(combo.details.length > 100);
   assert(combo.sources.length > 20);
