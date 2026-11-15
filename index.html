@@ -1,184 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mirai Health 未来 — Understand the Science. Explore Your Health.</title>
-  <meta name="description" content="Explore Mirai Health’s educational library: peptide research, study findings, evidence limits, and safety context. Clear information for informed conversations about health.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            mirai: {50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d'}
-          }
-        }
-      }
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>body{font-family:'Inter',system-ui,sans-serif}</style>
-<style>.edu-nav{position:relative!important;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:22px max(20px,calc((100vw - 1200px)/2));background:#fff;border-bottom:1px solid #e2e7ee;font:14px/1.5 system-ui}.edu-brand{font-weight:800;letter-spacing:2px;color:#172033;text-decoration:none;white-space:nowrap}.edu-brand span{color:#b91c1c}.edu-links{display:flex;flex-wrap:wrap;gap:12px 20px}.edu-links a{color:#485467;text-decoration:none}.edu-links a:hover,.edu-links a[aria-current=page]{color:#b91c1c;text-decoration:underline}.edu-nav a:focus-visible,button:focus-visible{outline:3px solid #b91c1c;outline-offset:4px}html{scroll-behavior:smooth}body{overflow-wrap:break-word}#peptide-grid>*{min-width:0}.edu-notice{padding:12px 20px;background:#172033;color:#fff;text-align:center;font:12px/1.6 system-ui}.edu-section{max-width:1100px;margin:36px auto;padding:26px;border:1px solid #e2e7ee;border-radius:18px;background:#f8fafc}.edu-section h2{font-size:24px;font-weight:700;margin-bottom:14px}.edu-section p{margin:12px 0}.edu-section a{color:#b91c1c;text-decoration:underline}.edu-form{display:grid;gap:14px}.edu-form label{display:grid;gap:6px;font-weight:600}.edu-form input,.edu-form textarea{padding:12px;border:1px solid #cbd5e1;border-radius:8px;font:inherit;max-width:100%;width:100%;box-sizing:border-box}.edu-form button{background:#b91c1c;color:#fff;padding:13px;border:0;border-radius:9px;font:inherit;cursor:pointer}@media(max-width:640px){.edu-nav{padding:18px}.edu-links{gap:12px 16px;font-size:13px}.edu-section{margin:24px 16px;padding:20px}#peptide-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#peptide-grid>div{padding:14px}#peptide-grid h3{font-size:16px}}</style></head>
-<body class="bg-white text-slate-900 antialiased"><aside class="edu-notice">Research & educational information only · Not medical advice · Not for human or animal consumption</aside>
-
-  <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center tracking-wide">
-    <span class="text-red-400 font-medium">FOR RESEARCH & EDUCATIONAL USE ONLY</span>
-    <span class="mx-2 text-slate-500">•</span>
-    Not for human or animal consumption • Not medical advice
-  </div>
-
-  <nav class="edu-nav" aria-label="Main navigation"><a class="edu-brand" href="index.html">MIRAI HEALTH <span>未来</span></a><div class="edu-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="stack.html">Stack Builder</a><a href="safety.html">Safety</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="context.html">Research context</a></div></nav>
-
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-700 text-xs font-medium mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-          Welcome to Mirai Health
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-          Understand the science.<br>
-          <span class="text-red-600">Explore your health.</span>
-        </h1>
-        <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-          Clear information for informed conversations about your health. Explore peptide research, understand what studies show, and learn where the evidence is still developing.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="learn.html" class="bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-full font-medium transition shadow-lg shadow-red-600/20">
-            Explore the Learning Library
-          </a>
-          <a href="stack.html" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-7 py-3.5 rounded-full font-medium transition">
-            Open Stack Builder
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="border-y border-slate-100 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h2 class="text-2xl font-bold tracking-tight text-center mb-12">Start with understanding</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
-          <h3 class="font-semibold mb-2">Learn the mechanisms</h3>
-          <p class="text-sm text-slate-500 leading-relaxed">Explore individual peptides — what receptors they target, what research models they appear in, and key findings from the literature.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
-          <h3 class="font-semibold mb-2">Compare the evidence</h3>
-          <p class="text-sm text-slate-500 leading-relaxed">Compare research on individual compounds and combinations, including overlapping pathways and evidence gaps. These comparisons are not treatment plans.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
-          <h3 class="font-semibold mb-2">Request deeper info</h3>
-          <p class="text-sm text-slate-500 leading-relaxed">Save topics of interest and prepare an email with your questions. Review and send it through your email app to request educational information.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div class="flex items-end justify-between mb-10">
-      <div>
-        <h2 class="text-2xl font-bold tracking-tight">Research Categories</h2>
-        <p class="text-slate-500 mt-1">Browse by primary area of investigation</p>
-      </div>
-      <a href="guide.html" class="text-red-600 hover:text-red-700 font-medium text-sm hidden sm:block">View all →</a>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <a href="guide.html?cat=metabolic" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Metabolic Research</h3>
-        <p class="text-sm text-slate-500 mt-1">Retatrutide, Tirzepatide, Semaglutide & related compounds</p>
-      </a>
-      <a href="guide.html?cat=recovery" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Recovery & Healing</h3>
-        <p class="text-sm text-slate-500 mt-1">BPC-157, TB-500, KPV & tissue research peptides</p>
-      </a>
-      <a href="guide.html?cat=gh" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Growth Hormone Axis</h3>
-        <p class="text-sm text-slate-500 mt-1">Ipamorelin, CJC-1295, Tesamorelin</p>
-      </a>
-      <a href="guide.html?cat=skin" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Skin & Remodeling</h3>
-        <p class="text-sm text-slate-500 mt-1">GHK-Cu and related matrix research</p>
-      </a>
-      <a href="guide.html?cat=longevity" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Longevity & Cellular</h3>
-        <p class="text-sm text-slate-500 mt-1">Epitalon, MOTS-c, SS-31</p>
-      </a>
-      <a href="guide.html?cat=cognitive" class="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition">
-        <h3 class="font-semibold group-hover:text-red-600 transition">Cognitive & Neuropeptides</h3>
-        <p class="text-sm text-slate-500 mt-1">Semax, Selank</p>
-      </a>
-    </div>
-  </section>
-
-
-  <section class="bg-amber-50 border-y border-amber-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-      <p class="text-sm text-amber-900 max-w-3xl mx-auto">
-        <strong>Important:</strong> Information about research peptides and combinations is provided for educational and scientific discussion only. It is not medical advice and does not recommend human use. Always consult a qualified healthcare provider before considering any research compound or stack. <a href="about.html" class="underline font-medium">Safety &amp; Research Considerations →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-red-600 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4">A clearer starting point for your health questions.</h2>
-      <p class="text-red-100 mb-8 max-w-xl mx-auto">Start with the learning library, then explore individual studies, safety considerations, and questions to discuss with a qualified clinician.</p>
-      <a href="learn.html" class="inline-block bg-white text-red-600 hover:bg-red-50 px-8 py-3.5 rounded-full font-semibold transition">
-        Visit the Learning Library
-      </a>
-    </div>
-  </section>
-
-<section class="edu-section"><h2>Mirai Labs is now Mirai Health</h2><p>A new name for our next chapter, with the same commitment to clear, evidence-informed education. Our research library remains available here.</p><p>This website currently provides educational resources. Telehealth consultations and patient enrollment are not yet available through this site.</p><p><a href="about.html">Get to know Mirai Health →</a></p></section>
-<section class="edu-section"><h2>Research & regulatory context</h2><p>Regulatory sources checked November 1, 2026 · United States. This resource explains research; it does not recommend human use. Most experimental compounds discussed here are not FDA-approved medicines. Approval belongs to a specified pharmaceutical formulation and indication, not every material carrying a similar name.</p><p>Compounded preparations are not FDA approved. FDA advisory discussions, trial registration and a research-use label do not establish approval. See the dated context for the October 2026 HHS policy and its limits. Compounding policy and clinical evidence can change.</p><p><a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss">FDA: unapproved GLP-1 preparations</a> · <a href="context.html">Read the dated context and sources</a></p></section><footer class="bg-slate-900 text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid md:grid-cols-3 gap-10">
-        <div>
-          <div class="flex items-center gap-3 text-white mb-4">
-            <div class="w-7 h-7 rounded-full bg-red-600 flex items-center justify-center"><div class="w-2.5 h-2.5 rounded-full bg-white"></div></div>
-            <div>
-              <span class="font-semibold tracking-tight">MIRAI HEALTH</span>
-              <span class="text-red-500 text-xs ml-1">未来</span>
-            </div>
-          </div>
-          <p class="text-sm leading-relaxed">Science for a Brighter Tomorrow. Educational resource on research peptides. Strictly for research and educational purposes.</p>
-        </div>
-        <div>
-          <h4 class="text-white font-medium mb-3 text-sm">Navigate</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
-            <li><a href="guide.html" class="hover:text-white transition">Peptide Guide</a></li>
-            <li><a href="stack.html" class="hover:text-white transition">Stack Builder</a></li>
-            <li><a href="about.html" class="hover:text-white transition">About</a></li>
-            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-medium mb-3 text-sm">Important</h4>
-          <ul class="space-y-2 text-sm">
-            <li>Research & Educational Use Only</li>
-            <li>Not for Human Consumption</li>
-            <li>Not Medical Advice</li>
-            <li>Not FDA Approved</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-10 pt-6 text-xs text-center text-slate-500">
-        <p class="mb-2">All information is provided for educational and research discussion purposes only. Nothing on this site constitutes medical advice or a recommendation for human use.</p>
-        <p>© 2026 Mirai Health 未来 — Science for a Brighter Tomorrow.</p>
-      </div>
-    </div>
-  <p style="text-align:center;padding:12px;font-size:13px"><a href="./research-use-only.html">Research Use Only Policy</a></p><p style="text-align:center;padding:12px;font-size:13px"><a href="./terms.html">Terms & Conditions</a> · <a href="./privacy.html">Privacy Policy</a></p></footer>
-
-  <script src="assets/age-gate.js?v=20261022"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mirai Health — Explore Care Programs</title>
+<meta name="description" content="Find your next step with Mirai Health. Explore care programs through Agile Telehealth, access patient login, or visit our separate educational research library.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="stylesheet" href="assets/care-navigation.css?v=20261115">
+</head><body class="care-home" data-site-section="care">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="edu-nav" aria-label="Main navigation"><a class="edu-brand" href="index.html" aria-label="Mirai Health home">MIRAI HEALTH <span>未来</span></a><div class="edu-links"><a href="index.html#programs">Care programs</a><a href="index.html#how-it-works">How it works</a><a href="learn.html">Learning library</a><a href="safety.html">Research safety</a><a class="patient-login" href="https://agiletelehealth-bm.portal.tellescope.com/login" rel="noreferrer">Patient login ↗</a></div></nav>
+<main id="main">
+<section class="care-hero wrap" aria-labelledby="hero-title">
+<div><p class="eyebrow">MIRAI HEALTH · YOUR NEXT CHAPTER</p><h1 id="hero-title">Your next step.<br><em>A clearer path to care.</em></h1>
+<p class="hero-intro">Explore a program that fits your questions. Continue to our partner’s landing page to learn more and begin a clinical assessment.</p>
+<div class="hero-actions"><a class="button primary" href="#programs">Explore care programs <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://agiletelehealth.com/mirai-health/?utm_pid=mirai-health" rel="noreferrer">Visit weight-loss landing page ↗</a></div>
+<p class="partner-note">In partnership with OpenLoop · Program pages and intake hosted by Agile Telehealth.</p></div>
+<aside class="next-step" aria-label="A simple path to your next step"><span class="sun-mark" aria-hidden="true"></span><p class="eyebrow">START WITH WHAT MATTERS TO YOU</p><h2>Find your program.<br>Take the next step.</h2><ol><li><span>01</span>Choose a care program below.</li><li><span>02</span>Explore details on Agile Telehealth.</li><li><span>03</span>Begin the partner’s assessment.</li></ol><p>Already a patient? <a href="https://agiletelehealth-bm.portal.tellescope.com/login" rel="noreferrer">Go to patient login ↗</a></p></aside>
+</section>
+<section class="program-section" id="programs" aria-labelledby="program-title"><div class="wrap"><p class="eyebrow">EXPLORE YOUR OPTIONS</p><h2 id="program-title">Where would you like to start?</h2><p class="section-intro">Choose a program to open Mirai Health’s page on Agile Telehealth. Each link takes you directly to that program.</p><div class="program-grid"><a class="program-card" href="https://agiletelehealth.com/mirai-health/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">01</span><h3>Weight management</h3><p>Explore the weight-management program and its clinical assessment process.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/hair-loss/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">02</span><h3>Hair loss</h3><p>Explore separate hair-loss programs for men and women.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/hrt/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">03</span><h3>Menopause care</h3><p>Explore hormone and non-hormonal options for menopause symptoms.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/trt/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">04</span><h3>Testosterone care</h3><p>Learn about the testosterone program, clinical evaluation, and lab assessment.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/ed/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">05</span><h3>Sexual health · ED</h3><p>Explore the erectile-dysfunction program and a private clinical assessment.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/longevity/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">06</span><h3>Longevity</h3><p>Review the longevity program and discuss suitability with a licensed clinician.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a>
+<a class="program-card" href="https://agiletelehealth.com/mirai-health/microdosing/?utm_pid=mirai-health" rel="noreferrer"><span class="program-number" aria-hidden="true">07</span><h3>GLP-1 microdosing</h3><p>Learn about the partner’s microdosing program and its clinical assessment.</p><span class="program-action">Explore program <span aria-hidden="true">↗</span></span><span class="sr-only"> on Agile Telehealth</span></a><aside class="program-help"><p class="eyebrow">NEED A HAND?</p><h3>A little guidance goes a long way.</h3><p>For help finding a page or accessing your account, visit our contact page. Clinical questions belong with the care team.</p><a href="contact.html">Find the right support →</a></aside></div><p class="care-disclosure">Clinical eligibility and treatment are determined by licensed clinicians. Prescriptions are not guaranteed. Program access varies by state and individual circumstances. This website does not collect medical information or provide medical care.</p></div></section>
+<section class="wrap how-section" id="how-it-works" aria-labelledby="how-title"><p class="eyebrow">A SIMPLE START</p><h2 id="how-title">From a question to your next step.</h2><div class="steps"><article><span>01 / EXPLORE</span><h3>Choose your program</h3><p>Use the program cards to learn about the area of care that interests you.</p></article><article><span>02 / CONTINUE</span><h3>Visit our partner</h3><p>You’ll leave this website for Agile Telehealth, where you can review program details and begin the appropriate intake.</p></article><article><span>03 / CONNECT</span><h3>Let the clinical team guide you</h3><p>Follow the partner’s assessment process. A licensed clinician determines whether treatment is appropriate.</p></article></div></section>
+<section class="wrap care-faq" aria-labelledby="faq-title"><h2 id="faq-title">Before you get started</h2><details><summary>Where will I complete my assessment?</summary><p>Program links open Agile Telehealth. The assessment takes place through the partner’s OpenLoop intake. Please enter personal health information only in the clinical service’s intake or patient portal, not in a Mirai education inquiry.</p></details><details><summary>Where do existing patients sign in?</summary><p>Use <a href="https://agiletelehealth-bm.portal.tellescope.com/login" rel="noreferrer">patient login ↗</a> to access the Agile Telehealth patient portal. This is separate from any historical Mirai Labs account.</p></details><details><summary>Are research-library compounds offered as treatments?</summary><p>No such assumption should be made. Our learning library discusses scientific research, including experimental compounds. Inclusion in that library does not mean a compound is offered by the partner or suitable for human use.</p></details></section>
+<section class="library-section"><div class="wrap library-inner"><div><p class="eyebrow">FOR CURIOUS MINDS</p><h2>Understand the science.</h2><p>Our educational library remains a separate space to explore studies, evidence limits, and research safety. It is not a treatment menu or medical advice.</p></div><a class="button secondary" href="learn.html">Visit the learning library →</a></div></section>
+</main>
+<footer class="care-footer"><div class="wrap"><a class="edu-brand" href="index.html">MIRAI HEALTH <span>未来</span></a><p>Science for a Brighter Tomorrow.</p><nav aria-label="Footer navigation"><a href="about.html">About Mirai</a><a href="contact.html">Contact &amp; support</a><a href="safety.html">Research safety</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="fine-print">Mirai Health LLC provides program navigation and educational resources. Clinical assessments and care are handled through the external partner service and its clinicians. External services have their own terms and privacy practices. Research information is not medical advice.</p><p class="fine-print">© 2026 Mirai Health LLC · 未来</p></div></footer>
+<script src="assets/age-gate.js?v=20261115"></script></body></html>

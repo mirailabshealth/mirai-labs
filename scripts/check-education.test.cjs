@@ -26,7 +26,7 @@ function write(root, file, content) {
 test('educational source and complete buildless artifact pass', t => {
   const f = fixture(t);
   assert.match(validate({ sourceRoot: f.sourceRoot }), /45 evidence profiles/);
-  assert.match(validate(f), /19 published files/);
+  assert.match(validate(f), /20 published files/);
 });
 
 for (const file of retired) test(`unreferenced retired source fails: ${file}`, t => {
@@ -119,4 +119,32 @@ test('symlinks cannot smuggle historical files into the artifact', t => {
   fs.unlinkSync(path.join(f.siteRoot, 'assets/data.js'));
   fs.symlinkSync(path.join(f.sourceRoot, 'assets/data.js'), path.join(f.siteRoot, 'assets/data.js'));
   assert.throws(() => validate(f), /symbolic links are not publishable/);
+});
+
+test('care links must retain partner tracking and approved paths', t => {
+  for (const [from, to, message] of [
+    ['?utm_pid=mirai-health', '?utm_pid=another-brand', /missing Mirai partner tracking/],
+    ['https://agiletelehealth.com/mirai-health/hair-loss/', 'https://agiletelehealth.com/hair-loss/', /unapproved care destination/],
+  ]) {
+    const f = fixture(t);
+    const file = path.join(f.sourceRoot, 'index.html');
+    write(f.sourceRoot, 'index.html', fs.readFileSync(file, 'utf8').replaceAll(from, to));
+    assert.throws(() => validate({ sourceRoot: f.sourceRoot }), message);
+  }
+});
+
+test('research pages cannot bypass the research age acknowledgement', t => {
+  const f = fixture(t);
+  const file = path.join(f.sourceRoot, 'learn.html');
+  write(f.sourceRoot, 'learn.html', fs.readFileSync(file, 'utf8').replace('<body>', '<body data-site-section="care">'));
+  assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /incorrect research-gate scope/);
+});
+
+test('care home cannot embed an intake or lose a program card', t => {
+  for (const mutation of [text => text + '<form></form>', text => text.replace('class="program-card"', 'class="missing-card"')]) {
+    const f = fixture(t);
+    const file = path.join(f.sourceRoot, 'index.html');
+    write(f.sourceRoot, 'index.html', mutation(fs.readFileSync(file, 'utf8')));
+    assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /clinical intake|seven care programs/);
+  }
 });
