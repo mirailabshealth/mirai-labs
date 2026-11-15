@@ -12,7 +12,7 @@ const peptides = [
       "GIP research",
       "glucagon research"
     ],
-    "keyFindings": "TRIUMPH-1 (2026) randomized 2,339 adults with obesity without diabetes. At 80 weeks, mean weight change in the highest studied group was −25.0% versus −3.9% with placebo using the treatment-regimen (intention-to-treat) estimand. TRIUMPH-2 (2026) randomized 1,152 adults with obesity and type 2 diabetes; the corresponding changes were −18.8% versus −5.1%. A separate October 2026 report of the nested sleep-apnea trials (243 and 448 participants) found larger reductions in apnea–hypopnea events than placebo. These nested participants are not independent replications of the parent trials. Eli Lilly funded these studies.",
+    "keyFindings": "TRIUMPH-1 (2026) randomized 2,339 adults with obesity without diabetes. At 80 weeks, mean weight change in the highest studied group was −25.0% versus −3.9% with placebo using the treatment-regimen (intention-to-treat) estimand. TRIUMPH-2 (2026) randomized 1,152 adults with obesity and type 2 diabetes; the corresponding changes were −18.8% versus −5.1%. A separate October 2026 report of the nested sleep-apnea trials (243 and 448 participants) found larger reductions in apnea–hypopnea events than placebo. These nested participants are not independent replications of the parent trials. Eli Lilly funded these studies. November 8, 2026: TRIUMPH-4 and TRIUMPH-1-OA reported knee-osteoarthritis outcomes in 445 and 574 randomized adults without diabetes, respectively. Retatrutide reduced pain scores and body weight more than placebo. In TRIUMPH-4, intention-to-treat differences in WOMAC pain versus placebo were −1.70 and −1.38 points for the two studied groups. Eli Lilly funded the trials.",
     "tags": [
       "GLP-1",
       "GIP",
@@ -32,7 +32,7 @@ const peptides = [
       "GIP research",
       "dual agonist research"
     ],
-    "keyFindings": "SURMOUNT-1 (2022) randomized 2,539 adults with obesity or overweight without diabetes; mean weight reduction at 72 weeks reached 20.9% versus 3.1% with placebo. SURMOUNT-5 (2025) directly compared tirzepatide with semaglutide in 751 adults with obesity without diabetes. At 72 weeks, mean weight change was −20.2% versus −13.7%, respectively. This was an open-label randomized comparison of defined regimens, not a trial combining the two drugs. Eli Lilly funded both trials.",
+    "keyFindings": "SURMOUNT-1 (2022) randomized 2,539 adults with obesity or overweight without diabetes; mean weight reduction at 72 weeks reached 20.9% versus 3.1% with placebo. SURMOUNT-5 (2025) directly compared tirzepatide with semaglutide in 751 adults with obesity without diabetes. At 72 weeks, mean weight change was −20.2% versus −13.7%, respectively. This was an open-label randomized comparison of defined regimens, not a trial combining the two drugs. Eli Lilly funded both trials. November 9, 2026: In a 40-week randomized study, 120 adults receiving tirzepatide were assigned to resistance exercise or usual activities. The exercise group lost less total lean soft tissue: between-group difference 1.09 kg (95% CI 0.43–1.75). Measured strength improved with exercise while declining in the comparison group.",
     "tags": [
       "GLP-1",
       "GIP",
@@ -50,7 +50,7 @@ const peptides = [
       "GLP-1 research",
       "incretin research"
     ],
-    "keyFindings": "STEP 1 (2021) randomized 1,961 adults with overweight or obesity without diabetes; mean weight reduction at 68 weeks was 14.9% versus 2.4% with placebo. STEP UP (2025) randomized 1,407 adults with obesity without diabetes to two semaglutide regimens or placebo. At 72 weeks, the treatment-policy analysis estimated weight change of −18.7% in the higher-exposure group, −15.6% in the comparator semaglutide group and −3.9% with placebo. Novo Nordisk funded these trials. SURMOUNT-5 separately compared semaglutide with tirzepatide; it did not combine them.",
+    "keyFindings": "STEP 1 (2021) randomized 1,961 adults with overweight or obesity without diabetes; mean weight reduction at 68 weeks was 14.9% versus 2.4% with placebo. STEP UP (2025) randomized 1,407 adults with obesity without diabetes to two semaglutide regimens or placebo. At 72 weeks, the treatment-policy analysis estimated weight change of −18.7% in the higher-exposure group, −15.6% in the comparator semaglutide group and −3.9% with placebo. Novo Nordisk funded these trials. SURMOUNT-5 separately compared semaglutide with tirzepatide; it did not combine them. November 11, 2026: A prespecified secondary SOUL analysis of 9,650 high-risk adults with type 2 diabetes reported fewer total first and subsequent major cardiovascular events with oral semaglutide: 683 versus 791 with placebo (mean ratio 0.86, 95% CI 0.76–0.97). This is another analysis of the same trial population. Separately, a November 8 randomized mechanistic study in 81 adults with obesity and heart failure with preserved ejection fraction found lower exercise cardiac filling pressure after 52 weeks.",
     "tags": [
       "GLP-1",
       "incretin"
@@ -85,7 +85,7 @@ const peptides = [
       "GLP-1 research",
       "combination research"
     ],
-    "keyFindings": "REDEFINE 1 (2025) randomized 3,417 adults with overweight or obesity without diabetes. At 68 weeks, the treatment-policy analysis estimated mean weight change of −20.4% with the combination versus −3.0% with placebo. Gastrointestinal adverse events occurred in 79.6% versus 39.9%. REIMAGINE 2 (2026) randomized 2,713 people with inadequately controlled type 2 diabetes receiving metformin, with or without an SGLT2 inhibitor. At 68 weeks, the primary efficacy-estimand comparison found HbA1c reductions of 1.91 versus 1.75 percentage points with the higher-exposure combination versus its semaglutide comparator (difference 0.16 percentage points). Gastrointestinal disorders were the most common adverse events. Novo Nordisk funded both trials.",
+    "keyFindings": "REDEFINE 1 (2025) randomized 3,417 adults with overweight or obesity without diabetes. At 68 weeks, the treatment-policy analysis estimated mean weight change of −20.4% with the combination versus −3.0% with placebo. Gastrointestinal adverse events occurred in 79.6% versus 39.9%. REIMAGINE 2 (2026) randomized 2,713 people with inadequately controlled type 2 diabetes receiving metformin, with or without an SGLT2 inhibitor. At 68 weeks, the primary efficacy-estimand comparison found HbA1c reductions of 1.91 versus 1.75 percentage points with the higher-exposure combination versus its semaglutide comparator (difference 0.16 percentage points). Gastrointestinal disorders were the most common adverse events. Novo Nordisk funded both trials. November 14, 2026: REDEFINE 9 randomized 309 adults with overweight or obesity without diabetes. At 68 weeks, the efficacy-estimand weight changes in two combination groups were −20.7% and −21.0%, versus −2.0% with pooled placebo. Novo Nordisk funded the trial.",
     "tags": [
       "amylin",
       "GLP-1",
@@ -104,7 +104,7 @@ const peptides = [
       "glucagon research",
       "dual agonist research"
     ],
-    "keyFindings": "SYNCHRONIZE-1 (2026) randomized 725 adults with obesity or overweight and a related complication, without diabetes. At 76 weeks, treatment-regimen mean weight changes were −12.2% and −13.0% in the two active groups versus −5.4% with placebo. SYNCHRONIZE-2 (2026) randomized 752 adults with overweight or obesity and type 2 diabetes; corresponding changes were −8.2% and −9.8% versus −3.9%. Boehringer Ingelheim funded both studies.",
+    "keyFindings": "SYNCHRONIZE-1 (2026) randomized 725 adults with obesity or overweight and a related complication, without diabetes. At 76 weeks, treatment-regimen mean weight changes were −12.2% and −13.0% in the two active groups versus −5.4% with placebo. SYNCHRONIZE-2 (2026) randomized 752 adults with overweight or obesity and type 2 diabetes; corresponding changes were −8.2% and −9.8% versus −3.9%. Boehringer Ingelheim funded both studies. November 9, 2026: SYNCHRONIZE-CVOT randomized 5,530 adults with obesity and increased cardiovascular risk; 5,507 received treatment. Over a median 22 months, the primary cardiovascular composite hazard ratio was 0.89 (95% CI 0.67–1.18) versus placebo. This met the prespecified noninferiority margin of 1.65. Boehringer Ingelheim funded the study.",
     "tags": [
       "GLP-1",
       "glucagon",
@@ -193,7 +193,7 @@ const peptides = [
       "angiogenesis research",
       "cytoprotection research"
     ],
-    "keyFindings": "A 2021 retrospective knee-pain report contacted 16 people: 11 of 12 given BPC-157 alone reported improvement, as did 3 of 4 given BPC-157 with material described as thymosin beta-4. There was no randomized comparator or objective demonstration of tissue repair. A 2024 bladder-symptom pilot included 12 women without a control group. A 2025 intravenous pilot involved only two previously exposed adults. FDA also reviewed a 2005 ulcerative-colitis randomized study reported only as a meeting abstract: 53 enrolled, 46 completed, and the between-group confidence interval crossed zero. A 2026 exploratory study randomized 32 male rats across control, BPC-157, material described as synthetic thymosin beta-4 (TB-500), and the combination for four weeks after tendon repair. The TB-500 group showed a biomechanical advantage versus control; the combination did not add benefit over the individual agents. The abstract does not resolve equivalence to the acetylated TB-500 fragment. This is animal evidence, not human recovery evidence.",
+    "keyFindings": "A 2021 retrospective knee-pain report contacted 16 people: 11 of 12 given BPC-157 alone reported improvement, as did 3 of 4 given BPC-157 with material described as thymosin beta-4. There was no randomized comparator or objective demonstration of tissue repair. A 2024 bladder-symptom pilot included 12 women without a control group. A 2025 intravenous pilot involved only two previously exposed adults. FDA also reviewed a 2005 ulcerative-colitis randomized study reported only as a meeting abstract: 53 enrolled, 46 completed, and the between-group confidence interval crossed zero. A 2026 exploratory study randomized 32 male rats across control, BPC-157, material described as synthetic thymosin beta-4 (TB-500), and the combination for four weeks after tendon repair. The TB-500 group showed a biomechanical advantage versus control; the combination did not add benefit over the individual agents. The abstract does not resolve equivalence to the acetylated TB-500 fragment. This is animal evidence, not human recovery evidence. A production-method study examined BPC-157 fusion proteins expressed in bacteria and tested gastric injury in rats. This is preclinical work on specific fusion constructs, not a controlled human trial or evidence of equivalent activity for other BPC-157 preparations.",
     "tags": [
       "tissue repair",
       "angiogenesis",
@@ -309,7 +309,7 @@ const peptides = [
       "T-cell research",
       "thymosin research"
     ],
-    "keyFindings": "The large TESTS phase 3 trial (2025) evaluated adults with sepsis. It did not demonstrate a significant reduction in 28-day mortality compared with placebo.",
+    "keyFindings": "The large TESTS phase 3 trial (2025) evaluated adults with sepsis. It did not demonstrate a significant reduction in 28-day mortality compared with placebo. A single-centre retrospective cohort of 327 critically ill adults with tuberculosis-related sepsis found an association between thymosin alpha-1 exposure and lower observed 28-day mortality after statistical adjustment. This was not randomized; confounding and treatment-selection effects prevent a causal treatment-benefit conclusion. It does not establish general immune enhancement.",
     "tags": [
       "immune",
       "T-cell",
@@ -485,7 +485,7 @@ const peptides = [
       "collagen research",
       "remodeling research"
     ],
-    "keyFindings": "A 1988 cultured-fibroblast study investigated collagen synthesis. Later cell work examined matrix-remodeling enzymes and their inhibitors.",
+    "keyFindings": "A 1988 cultured-fibroblast study investigated collagen synthesis. Later cell work examined matrix-remodeling enzymes and their inhibitors. A 2026 tissue-engineering study attached GHK-Cu to polymer microspheres and reported mineralization and vessel-formation signals in laboratory assays. These scaffold results do not establish human skin rejuvenation, bone healing, or the effects of injected free GHK-Cu.",
     "tags": [
       "copper peptide",
       "collagen",
@@ -575,7 +575,7 @@ const peptides = [
       "mitochondrial research",
       "metabolic research"
     ],
-    "keyFindings": "A 2015 study used cells and mice to investigate metabolic homeostasis, obesity and insulin resistance, reporting favorable experimental metabolic signals.",
+    "keyFindings": "A 2015 study used cells and mice to investigate metabolic homeostasis, obesity and insulin resistance, reporting favorable experimental metabolic signals. A pilot study in 32 peritoneal-dialysis patients measured endogenous MOTS-c in several body fluids and reported associations with oxidative-stress and vascular measures. Participants were not tested in a trial of administered MOTS-c. Such associations cannot establish that supplementation improves vascular health or exercise performance.",
     "tags": [
       "mitochondrial",
       "metabolic"

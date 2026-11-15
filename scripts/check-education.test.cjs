@@ -136,7 +136,7 @@ test('care links must retain partner tracking and approved paths', t => {
 test('research pages cannot bypass the research age acknowledgement', t => {
   const f = fixture(t);
   const file = path.join(f.sourceRoot, 'learn.html');
-  write(f.sourceRoot, 'learn.html', fs.readFileSync(file, 'utf8').replace('<body>', '<body data-site-section="care">'));
+  write(f.sourceRoot, 'learn.html', fs.readFileSync(file, 'utf8').replace('<body class="library-home">', '<body class="library-home" data-site-section="care">'));
   assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /incorrect research-gate scope/);
 });
 
@@ -146,5 +146,15 @@ test('care home cannot embed an intake or lose a program card', t => {
     const file = path.join(f.sourceRoot, 'index.html');
     write(f.sourceRoot, 'index.html', mutation(fs.readFileSync(file, 'utf8')));
     assert.throws(() => validate({ sourceRoot: f.sourceRoot }), /clinical intake|seven care programs/);
+  }
+});
+
+
+test('library cannot silently lose a profile or falsely refresh its appraisal date', t => {
+  for (const mutation of [text => text.replace('class="library-card"', 'class="lost-card"'), text => text.replaceAll('October 3, 2026 (US Eastern)', 'November 15, 2026')]) {
+    const f = fixture(t);
+    const file = path.join(f.sourceRoot, 'learn.html');
+    write(f.sourceRoot, 'learn.html', mutation(fs.readFileSync(file, 'utf8')));
+    assert.throws(() => validate({sourceRoot:f.sourceRoot}), /45 profile cards|appraisal date is stale/);
   }
 });
