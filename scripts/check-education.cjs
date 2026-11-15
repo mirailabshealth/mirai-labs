@@ -83,7 +83,7 @@ function checkContent(root, files) {
     if (file.endsWith('.js')) new vm.Script(text, { filename: file });
   }
   const html = files.filter(file => file.endsWith('.html'));
-  assert.equal(html.length, 16, 'Educational pages must be preserved');
+  assert.equal(html.length, 16, 'Existing public pages must be preserved');
   for (const file of html) {
     const text = read(file);
     for (const match of text.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
@@ -91,11 +91,21 @@ function checkContent(root, files) {
     }
     const visible = text.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi, '').replace(/<[^>]+>/g, ' ');
     assert(!/\b(buy|cart|checkout|shipping|orders?|prices?|purchase|availability)\b/i.test(visible), `${file}: commercial language`);
-    assert(text.includes('assets/age-gate.js'), `${file}: missing age gate`);
+    assert(text.includes('assets/age-gate.js'), `${file}: missing shared controls`);
+    const generalPages = ['index.html', 'about.html', 'contact.html', 'portal.html', 'privacy.html', 'terms.html'];
+    assert.equal(text.includes('data-site-section="care"'), generalPages.includes(file), `${file}: incorrect research-gate scope`);
     assert(text.includes('safety.html'), `${file}: missing Safety navigation`);
     for (const match of text.matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)) {
       const ref = match[1];
-      if (/^(?:https?:|mailto:)/i.test(ref)) continue;
+      if (/^https?:/i.test(ref)) {
+        const url = new URL(ref.replace(/&amp;/g, '&'));
+        if (url.hostname === 'agiletelehealth.com') {
+          assert(url.protocol === 'https:' && /^\/mirai-health\/(?:hair-loss\/|hrt\/|trt\/|ed\/|longevity\/|microdosing\/)?$/.test(url.pathname), `${file}: unapproved care destination`);
+          assert.equal(url.searchParams.get('utm_pid'), 'mirai-health', `${file}: missing Mirai partner tracking`);
+        }
+        continue;
+      }
+      if (/^mailto:/i.test(ref)) continue;
       const local = decodeURIComponent(ref.split(/[?#]/)[0]);
       const target = local ? path.posix.normalize(path.posix.join(path.posix.dirname(file), local)) : file;
       assert(files.includes(target), `${file}: broken or unpublished local reference ${local}`);
@@ -106,6 +116,11 @@ function checkContent(root, files) {
       }
     }
   }
+  const home = read('index.html');
+  const programLinks = [...home.matchAll(/<a class="program-card" href="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(programLinks.length, 7, 'Home must expose seven care programs');
+  assert.equal(new Set(programLinks).size, 7, 'Care programs must have unique destinations');
+  assert(!/<(?:form|iframe)\b/i.test(home), 'Care home must not collect or embed clinical intake');
   const ctx = {};
   vm.createContext(ctx);
   vm.runInContext(read('assets/data.js') + '\nthis.inventory=JSON.parse(JSON.stringify(peptides));', ctx);
@@ -130,7 +145,7 @@ function checkContent(root, files) {
   assert(combo.details.length > 100);
   assert(combo.sources.length > 20);
   assert(ctx.combination(['klow', 'bpc-157']).details.toLowerCase().includes('duplicat'));
-  return `${html.length} public pages; 45 evidence profiles; local links; age gate; full-selection combination notes; no commercial UI/integrations`;
+  return `${html.length} public pages; 45 evidence profiles; local links; tracked care navigation; research age gate; full-selection combination notes; no commercial UI/integrations`;
 }
 
 function validate({ sourceRoot = repository, siteRoot } = {}) {

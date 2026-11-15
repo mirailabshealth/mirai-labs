@@ -1,6 +1,6 @@
 // Shared educational controls. No commerce or analytics initialization.
 (()=>{
-  document.querySelectorAll('.edu-links a').forEach(a=>{if(new URL(a.href).pathname===location.pathname)a.setAttribute('aria-current','page');});
+  document.querySelectorAll('.edu-links a').forEach(a=>{if(new URL(a.href).origin===location.origin && new URL(a.href).pathname===location.pathname && !new URL(a.href).hash)a.setAttribute('aria-current','page');});
   const form=document.getElementById('education-form');
   if(form){
     if(typeof selected!=='undefined')form.elements.compounds.value=selected.map(id=>peptides.find(p=>p.id===id)?.name).filter(Boolean).join(', ');
@@ -10,6 +10,8 @@
       document.getElementById('education-status').textContent='Your email app should open. Review and send there. If it does not open, email mirai.labs.health@gmail.com directly. This website has not submitted your message.';
     });
   }
+  // Care-navigation and general information pages are not research resources.
+  if(document.body.dataset.siteSection==='care')return;
   let acknowledged=false;try{acknowledged=localStorage.getItem('mirai_education_age_v1')==='21';}catch{}
   if(acknowledged)return;
   const dialog=document.createElement('dialog');dialog.setAttribute('aria-labelledby','age-title');dialog.setAttribute('aria-describedby','age-explanation');
