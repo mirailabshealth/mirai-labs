@@ -285,6 +285,13 @@ researchEvidence["thymosin-a1"].sources.push(study("42972235","Selected 2026 pri
 researchEvidence["thymosin-a1"].reviewed="November 15, 2026 (selected new abstract; prior sources retained; not a systematic review)";
 researchEvidence["mots-c"].level="Preclinical studies and human biomarker association; no intervention benefit established here";
 const policyContextIds=['bpc-157','tb-500','kpv','epitalon','mots-c','semax','bpc-tb','glow','klow'];
+// Targeted alert review, November 16, 2026; see scripts/research-review-2026-11-16.json.
+researchEvidence["tirzepatide"].findings += " November 11, 2026: TOGETHER-PsA reported 52-week follow-up of 271 adults with active psoriatic arthritis and obesity, or overweight with a weight-related comorbidity. This randomized, open-label, assessor-blinded trial compared ixekizumab plus tirzepatide with ixekizumab alone. ACR50 (at least 50% improvement by American College of Rheumatology response criteria) was reported in 43.7% versus 15.7%. These are later outcomes from the same trial previously reported at week 36, not an independent replication. Eli Lilly sponsored the trial.";
+researchEvidence["tirzepatide"].limits += " TOGETHER-PsA's 52-week outcomes were prespecified but exploratory and not adjusted for multiple comparisons. The trial did not include a tirzepatide-only arm; its results do not establish tirzepatide monotherapy for psoriatic arthritis or a new regulatory authorization.";
+researchEvidence["tirzepatide"].safety += " The TOGETHER-PsA abstract reported no new safety concerns; this limited trial cannot exclude rare harms or establish the safety of other combinations.";
+researchEvidence["tirzepatide"].sources.push(study("43012507","2026: TOGETHER-PsA 52-week exploratory combination follow-up; abstract reviewed November 16"));
+researchEvidence["tirzepatide"].reviewed="November 16, 2026 (targeted TOGETHER-PsA abstract review; earlier sources retained; not a systematic or full-text review)";
+
 for (const p of peptides) {
   const e = researchEvidence[p.id];
   if (!e) throw new Error('Missing evidence profile: '+p.id);

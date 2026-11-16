@@ -29,6 +29,7 @@ One issue per **PMID**, with all matching monitored profiles consolidated. Each 
 | Indexed clinical trial with a human-study signal | Could affect an existing clinical summary | Indexing alone does not establish study quality or applicability. |
 | Human abstract with randomization and results language, not yet trial-indexed | Early indexing may omit publication types | Explicitly provisional; may be a false positive. |
 | Human observational/case report with a safety term in its title | Could justify examining a safety concern | Does not establish causation, incidence or efficacy. |
+| Simulated/standardized-patient study identified in the title | Contextual review of scripted encounters or clinician behavior | Not evidence of medication adverse-event incidence or causation; verify actual design. |
 | Linked or identified correction, retraction or concern notice | Could alter an existing citation's interpretation | A notice is not new efficacy evidence. |
 
 Reviews, systematic reviews, meta-analyses, protocols, editorials, ordinary comments, preprints, retracted papers as efficacy evidence, animal-only indexed studies, and clearly preclinical titles are excluded from the automatic clinical queue. Human results may be positive, null or negative: the screen does not filter by favorable outcomes. No abstract text is copied into issues or automatically interpreted into a medical claim. No public profile, study finding, review date, approval status or website file is modified by the monitor.
@@ -97,3 +98,7 @@ Keep a dated issue comment or editorial record even for a completed regulatory c
 - [NCBI E-Utilities quick start](https://eutilities.github.io/site/Quick_Start/eu_quick/) and [usage limits](https://eutilities.github.io/site/API_Key/usageandkey/)
 - [GitHub scheduled workflow behavior](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
 - [GitHub issues REST API](https://docs.github.com/en/rest/issues/issues) and [API retry/write guidance](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api)
+
+## November 16, 2026 targeted review
+
+See `scripts/research-review-2026-11-16.json` for decisions on issues #13–#15. All three PMIDs were present in November 15 discovery records, which does not itself establish appraisal. Issue #14 warrants a limited exploratory follow-up addition; #13 and #15 do not warrant changes to the current semaglutide profile. Historical issue titles remain unchanged. Future explicitly simulated/standardized-patient titles receive `contextual-study`, with correction notices still taking precedence. This title heuristic is not a complete study-design classifier; ambiguous abstracts still require review.
