@@ -269,6 +269,12 @@ def classify(record, linked_notice=False):
         return None, 'preclinical title without a human study signal'
     if not human:
         return None, 'no explicit human-study signal'
+    # Scripted encounters study clinician behavior, not drug-exposed patient outcomes.
+    # Keep a review candidate; do not silently discard it or call it a drug safety signal.
+    if re.search(r'\b(simulated|standardi[sz]ed)[- ]patients?\b', title):
+        return ('contextual-study', 'The title identifies simulated or standardized patients. '
+                'Check whether outcomes concern scripted encounters or clinician behavior rather than '
+                'actual medication exposure; do not infer drug adverse-event incidence or causation.')
     if types & TRIAL_TYPES:
         return ('trial', 'PubMed labels this a clinical trial and supplies a human-study signal. '
                 'Verify design, completed results, population, endpoints, harms and relevance before changing any claim.')

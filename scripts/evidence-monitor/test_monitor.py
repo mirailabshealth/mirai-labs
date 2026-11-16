@@ -72,6 +72,21 @@ class FakeGitHub:
 
 
 class ScreeningTests(unittest.TestCase):
+    def test_simulated_patient_study_is_context_not_drug_safety(self):
+        for phrase in ['simulated-patient', 'standardized patient', 'standardised-patient']:
+            record = article(title=f'Pharmacovigilance and adverse reactions: a {phrase} study',
+                             types=['Observational Study'],
+                             abstract='Adult simulated patients visited pharmacies. Results: triage varied.')
+            self.assertEqual(m.classify(record)[0], 'contextual-study')
+            self.assertIn('actual medication exposure', m.classify(record)[1])
+            self.assertEqual(m.classify(record, linked_notice=True)[0], 'notice')
+
+    def test_actual_patient_study_mentioning_simulation_remains_safety(self):
+        record = article(title='Pancreatitis in patients receiving semaglutide: a cohort study',
+                         types=['Observational Study'],
+                         abstract='Adult patients were followed. Unlike simulated-patient studies, outcomes were clinical.')
+        self.assertEqual(m.classify(record)[0], 'safety-signal')
+
     def test_randomized_human_null_result_is_eligible(self):
         kind, reason = m.classify(article())
         self.assertEqual(kind, 'trial')

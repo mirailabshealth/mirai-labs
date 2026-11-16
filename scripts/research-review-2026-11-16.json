@@ -1,0 +1,63 @@
+{
+  "review_date": "2026-11-16",
+  "reviewer": "AI-assisted editorial review (ChatGPT/Codex), requested by repository owner",
+  "base_commit": "48d98d9359230f4d9067622673a1f91e80a83536",
+  "scope": "Targeted appraisal of alerts #13\u2013#15 against current profiles and November 15 audit. Not a systematic review or clinical recommendation. No new regulatory-status determination.",
+  "access": "All three primary abstracts retrieved directly using NCBI EFetch on November 16. Publisher full text for PMID 43030794 inspected; full text for the two trials unavailable through the web reader. Sponsor reports corroborate trial context but do not substitute for independent appraisal.",
+  "previous_audit": "All three PMIDs occur in discovery_records and discovery query results in research-review-2026-11-15.json. None has a specific screen_disposition there or a citation in the affected profiles at the base commit. Discovery is not completed appraisal.",
+  "records": [
+    {
+      "issue": 13,
+      "pmid": "43003105",
+      "doi": "10.1016/S0140-6736(26)02043-X",
+      "profile": "semaglutide",
+      "decision": "no change",
+      "classification": "New original trial; comparator context for this profile",
+      "design": "Phase 2b randomized study in biopsy-confirmed MASH with F2\u2013F3 fibrosis. 386 randomized; 381 treated. Three blinded efinopegdutide arms and placebo; separate open-label semaglutide reference arm. 52-week histological endpoints. Merck funded.",
+      "findings": "Efinopegdutide improved MASH resolution versus placebo. Fibrosis improvement varied by dose; the highest dose did not achieve statistical significance on that endpoint. Gastrointestinal events and discontinuations matter. Semaglutide was a reference treatment, not the principal investigational agent.",
+      "limits": "Abstract-only review. Reported primary-endpoint denominators differ from treated-arm sizes despite a stated missing-biopsy-as-failure analysis; resolve analysis populations in full text before reusing numerical estimates. Do not transfer efinopegdutide benefits or harms to semaglutide, infer superiority over the reference arm, or infer regulatory authorization.",
+      "reason": "Existing semaglutide profile makes no claim from this trial and contains no misattribution to correct. A comparator-context study is not automatically irrelevant, but no numerical or efficacy addition is warranted from the currently accessible material.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/43003105/",
+        "https://doi.org/10.1016/S0140-6736(26)02043-X",
+        "https://clinicaltrials.gov/study/NCT05877547"
+      ]
+    },
+    {
+      "issue": 14,
+      "pmid": "43012507",
+      "doi": "10.1002/art.70375",
+      "profile": "tirzepatide",
+      "decision": "update needed",
+      "classification": "New exploratory follow-up of an overlapping trial population",
+      "design": "TOGETHER-PsA, NCT06588296: phase 3b randomized open-label assessor-blinded trial, 271 adults, ixekizumab plus tirzepatide (138) versus ixekizumab alone (133). Earlier week-36 results and current week-52 outcomes are the same trial, not independent replications. Lilly sponsored.",
+      "findings": "At 52 weeks ACR50 was 43.7% versus 15.7%; abstract reports no new safety concerns. Add a narrowly framed follow-up summary with trial identity, treatment arms and population.",
+      "limits": "Week-52 endpoints are prespecified but exploratory and not multiplicity-controlled. Open-label treatment can affect reported outcomes despite assessor blinding. No tirzepatide-only arm; no monotherapy efficacy inference for PsA. Abstract-only review cannot fully assess missing data, detailed adverse-event rates or all author conflicts. Sample and duration cannot rule out rare harms. This review makes no new approval claim.",
+      "reason": "The profile did not previously cover TOGETHER-PsA; longer follow-up adds relevant combination context while preserving uncertainty. New source added to correction monitoring and only this profile appraisal date advanced.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/43012507/",
+        "https://doi.org/10.1002/art.70375",
+        "https://clinicaltrials.gov/study/NCT06588296",
+        "https://lilly.gcs-web.com/news-releases/news-release-details/new-phase-3b-data-lillys-taltz-ixekizumab-and-zepbound-1"
+      ]
+    },
+    {
+      "issue": 15,
+      "pmid": "43030794",
+      "doi": "10.3390/jcm15218652",
+      "profile": "semaglutide",
+      "decision": "no change",
+      "classification": "Contextual simulated-patient research; not a new medication adverse-event signal",
+      "design": "Cross-sectional covert simulated-patient encounters at 384 urban pharmacies in three Jordanian governorates. Scripted scenarios include suspected semaglutide-associated pancreatitis, empagliflozin-associated ketoacidosis and apixaban-associated bleeding.",
+      "findings": "Measures recognition, triage and reporting behavior, not adverse events in medication-exposed patients.",
+      "limits": "Scripted encounters and selected urban settings limit generalizability. Cannot estimate pancreatitis incidence, establish medication causality, or demonstrate a new safety risk.",
+      "reason": "No current profile statement relies on this study. No medication-safety wording change warranted. Future title-identified simulated/standardized-patient studies receive a contextual-study alert rather than safety-signal; the alert remains queued for review.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/43030794/",
+        "https://www.mdpi.com/2077-0383/15/21/8652"
+      ]
+    }
+  ],
+  "issue_handling": "Decisions recorded here. Existing issues not automatically closed or edited. PMID markers remain available for durable deduplication.",
+  "regulatory_review": "No regulatory updates inferred from these publications. Official regulatory review remains separate under the monitor README."
+}
