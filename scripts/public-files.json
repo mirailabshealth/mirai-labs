@@ -6,6 +6,9 @@
   "assets/data.js",
   "assets/evidence-guide.css",
   "assets/evidence-guide.js",
+  "assets/newsletter-config.js",
+  "assets/newsletter.css",
+  "assets/newsletter.js",
   "contact.html",
   "context.html",
   "evidence-guide-es.html",
@@ -22,5 +25,6 @@
   "research-use-only.html",
   "safety.html",
   "stack.html",
+  "subscribe.html",
   "terms.html"
 ]
