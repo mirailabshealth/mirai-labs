@@ -83,7 +83,7 @@ function checkContent(root, files) {
     if (file.endsWith('.js')) new vm.Script(text, { filename: file });
   }
   const html = files.filter(file => file.endsWith('.html'));
-  assert.equal(html.length, 18, 'Existing public pages and the bilingual evidence guides must be preserved');
+  assert.equal(html.length, 19, 'Existing public pages and the bilingual evidence guides must be preserved');
   for (const file of html) {
     const text = read(file);
     for (const match of text.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
@@ -92,7 +92,7 @@ function checkContent(root, files) {
     const visible = text.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi, '').replace(/<[^>]+>/g, ' ');
     assert(!/\b(buy|cart|checkout|shipping|orders?|prices?|purchase|availability)\b/i.test(visible), `${file}: commercial language`);
     assert(text.includes('assets/age-gate.js'), `${file}: missing shared controls`);
-    const generalPages = ['index.html', 'about.html', 'contact.html', 'portal.html', 'privacy.html', 'terms.html'];
+    const generalPages = ['index.html', 'about.html', 'contact.html', 'portal.html', 'privacy.html', 'terms.html', 'subscribe.html'];
     assert.equal(text.includes('data-site-section="care"'), generalPages.includes(file), `${file}: incorrect research-gate scope`);
     assert(text.includes('safety.html'), `${file}: missing Safety navigation`);
     for (const match of text.matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)) {
