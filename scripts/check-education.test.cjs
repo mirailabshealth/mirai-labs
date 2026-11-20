@@ -26,7 +26,7 @@ function write(root, file, content) {
 test('educational source and complete buildless artifact pass', t => {
   const f = fixture(t);
   assert.match(validate({ sourceRoot: f.sourceRoot }), /45 evidence profiles/);
-  assert.match(validate(f), /20 published files/);
+  assert.match(validate(f), /24 published files/);
 });
 
 for (const file of retired) test(`unreferenced retired source fails: ${file}`, t => {

@@ -83,7 +83,7 @@ function checkContent(root, files) {
     if (file.endsWith('.js')) new vm.Script(text, { filename: file });
   }
   const html = files.filter(file => file.endsWith('.html'));
-  assert.equal(html.length, 16, 'Existing public pages must be preserved');
+  assert.equal(html.length, 18, 'Existing public pages and the bilingual evidence guides must be preserved');
   for (const file of html) {
     const text = read(file);
     for (const match of text.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
