@@ -26,7 +26,7 @@ function write(root, file, content) {
 test('educational source and complete buildless artifact pass', t => {
   const f = fixture(t);
   assert.match(validate({ sourceRoot: f.sourceRoot }), /45 evidence profiles/);
-  assert.match(validate(f), /24 published files/);
+  assert.match(validate(f), /28 published files/);
 });
 
 for (const file of retired) test(`unreferenced retired source fails: ${file}`, t => {
@@ -156,5 +156,23 @@ test('library cannot silently lose a profile or falsely refresh its appraisal da
     const file = path.join(f.sourceRoot, 'learn.html');
     write(f.sourceRoot, 'learn.html', mutation(fs.readFileSync(file, 'utf8')));
     assert.throws(() => validate({sourceRoot:f.sourceRoot}), /45 profile cards|appraisal date is stale/);
+  }
+});
+
+// Course tuition is a narrow exception; all prior peptide-commerce guards remain.
+test('academy rejects additional prices and enrollment forms', t => {
+  const f = fixture(t);
+  const original = fs.readFileSync(path.join(repository, 'academy.html'), 'utf8');
+  write(f.sourceRoot, 'academy.html', original.replace('</main>', '<p>$99</p></main>'));
+  assert.throws(() => validate({ sourceRoot: f.sourceRoot }));
+  write(f.sourceRoot, 'academy.html', original.replace('</main>', '<form></form></main>'));
+  assert.throws(() => validate({ sourceRoot: f.sourceRoot }));
+});
+test('academy rejects altered tuition and removed closed-enrollment notice', t => {
+  const f = fixture(t);
+  const original = fs.readFileSync(path.join(repository, 'academy.html'), 'utf8');
+  for (const changed of [original.replace('$399', '$499'), original.replaceAll('Enrollment is not open.', 'Enroll today.')]) {
+    write(f.sourceRoot, 'academy.html', changed);
+    assert.throws(() => validate({ sourceRoot: f.sourceRoot }));
   }
 });

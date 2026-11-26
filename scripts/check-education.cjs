@@ -79,11 +79,17 @@ function checkContent(root, files) {
   const read = file => fs.readFileSync(path.join(root, file), 'utf8');
   for (const file of files) {
     const text = read(file);
-    for (const signal of commercialSignals) assert(!signal.test(text), `${file}: commercial data or integration (${signal})`);
+    if (file === 'academy.html') {
+      assert.equal((text.match(/<span id="academy-tuition">\$399<\/span>/g) || []).length, 1, 'Academy must have exactly one planned tuition marker');
+      assert(text.includes('<p class="academy-note" id="academy-status">Enrollment is not open.'), 'Academy enrollment must remain closed');
+      assert(!/<(?:form|iframe)\b/i.test(text), 'Academy cannot collect payment or enrollment');
+    }
+    const checked = file === 'academy.html' ? text.replace('<span id="academy-tuition">$399</span>', '<span id="academy-tuition">Planned tuition</span>') : text;
+    for (const signal of commercialSignals) assert(!signal.test(checked), `${file}: commercial data or integration (${signal})`);
     if (file.endsWith('.js')) new vm.Script(text, { filename: file });
   }
   const html = files.filter(file => file.endsWith('.html'));
-  assert.equal(html.length, 18, 'Existing public pages and the bilingual evidence guides must be preserved');
+  assert.equal(html.length, 20, 'Existing public pages and the bilingual evidence guides must be preserved');
   for (const file of html) {
     const text = read(file);
     for (const match of text.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
